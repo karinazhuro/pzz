@@ -12,7 +12,7 @@ $colorBackgroundHover: #fff;
   font-style: normal;
 }
 
-#basket {
+#cart {
   display: flex;
   justify-content: flex-end;
   font-family: Malina,sans-serif;
@@ -59,7 +59,7 @@ $colorBackgroundHover: #fff;
         font: 32px/1.1 Malina, sans-serif;
         color: $colorPrice;
 
-        .order {
+        .basket {
           font: 20px/22px Malina, sans-serif;
           letter-spacing: -.5px;
           background: $colorBackgroundBasket;
