@@ -38,7 +38,7 @@ gulp.task('compile', function(){
 gulp.task("watch", function(done) {
     browserSync.init({
         server:'app/'
-    })
+    });
 
     gulp.watch("app/scss/**/*.scss", gulp.series('compile'));
     gulp.watch('app/*.html').on('change', browserSync.reload);

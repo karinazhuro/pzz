@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 $url = 'https://cors-anywhere.herokuapp.com/https://pzz.by/api/v1/basket/add-item';
 $data = array('key1' => 'value1', 'key2' => 'value2');
 
@@ -14,3 +15,8 @@ $result = file_get_contents($url, false, $context);
 if ($result === FALSE) { /* Handle error */ }
 
 var_dump($result);
+=======
+<?php
+print_r($_POST);
+?>
+>>>>>>> Stashed changes
