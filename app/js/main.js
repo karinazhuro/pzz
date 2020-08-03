@@ -1,20 +1,18 @@
 'use strict';
 
 const xhr = new XMLHttpRequest();
-// const xhrAddItem = new XMLHttpRequest();
 
-const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+// const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 const pizzas = 'https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc';
-const addItem = 'https://pzz.by/api/v1/basket/add-item';
+const addItem = 'https://pzz.by/api/v1/basket/add-item?type=responseObjectXhrAddItem.response.data.type';
 
-xhr.open('GET', proxyUrl + pizzas, true);
+xhr.open('GET', pizzas, true);
 xhr.responseType = 'json';
 xhr.send();
 
 xhr.onload = function () {
 		let newContent = '';
 		const content = document.getElementById('content');
-		const btn = document.querySelectorAll('.basket');
 		const responseObject = xhr.response;
 		const response = responseObject.response;
 
@@ -42,60 +40,22 @@ xhr.onload = function () {
 				}
 		}
 		content.innerHTML = newContent;
-};
 
-document.onclick = event => {
-		if (event.target.classList.contains('basket')) {
-				sendData({test: 'ok'});
+		document.onclick = event => {
+				if (event.target.classList.contains('basket')) {
+								const xhrAddItem = new XMLHttpRequest();
+								const formData = new FormData();
+								// const responseObjectXhrAddItem = xhrAddItem.response;
 
-				function sendData(data) {
-						const xhrAddItem = new XMLHttpRequest();
-						const formData = new FormData();
-						const responseObjectXhrAddItem = xhrAddItem.response;
-						const type = responseObjectXhrAddItem.response.data.type;
+								formData.append('type', 'responseObjectXhrAddItem.response.data.type');
+								// formData.append('id', 'responseObjectXhrAddItem.response.data.id');
+								// formData.append('size', 'responseObjectXhrAddItem.response.data.size');
+								// formData.append('dough', 'responseObjectXhrAddItem.response.data.dough');
 
-						for( name in data ) {
-								formData.append('type', type);
-								formData.append('id', responseObjectXhrAddItem.response.data.id);
-								formData.append('size', responseObjectXhrAddItem.response.data.size);
-								formData.append('dough', responseObjectXhrAddItem.response.data.dough);
-						}
-
-						xhrAddItem.addEventListener('load', function (event) {
-								alert('Yeah! Data sent and response loaded.');
-						});
-
-						xhrAddItem.addEventListener(' error', function (event) {
-								alert('Oops! Something went wrong.');
-						});
-
-						xhrAddItem.open('POST', proxyUrl + addItem, true);
-
-
-						xhrAddItem.send(formData);
+								xhrAddItem.open('POST', addItem, true);
+								xhrAddItem.setRequestHeader('Content-Type', 'multipart/form-data');
+								xhrAddItem.send(formData);
 				}
-
-// 				const order = document.getElementsByClassName('order');
-//
-// 				xhrAddItem.open('POST', proxyUrl + addItem, true);
-// 				xhrAddItem.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-// 				xhrAddItem.send(formData);
-//
-// 				// xhrAddItem.onload = function () {
-// 				// 		let contentPizza = '';
-// 				// 		let a = 0;
-// 				// 		const order = document.getElementsByClassName('order');
-// 				// 		const responseObjectXhrAddItem = xhrAddItem.response;
-// 				//
-// 				// 		xhrAddItem.onreadystatechange = function () {
-// 				// 				if (this.readyState === 4 && this.status === 200) {
-// 				// 						for (let i = 0; i < responseObjectXhrAddItem.response.data.length; i++) {
-// 				// 								contentPizza += '<div class="orderPizza"> ';
-// 				// 						}
-// 				// 				}
-// 				//
-// 				// 				order.innerHTML = contentPizza;
-// 				// 		}
-// 				// }
 		}
-}
+
+};
