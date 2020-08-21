@@ -29,14 +29,13 @@ $(function () {
               <p class="anonce">${data[i].anonce}</p></div>`;
             }
           })
-        // console.log(response.headers.keys());
       });
   }
 
   getListPizzas();
 
   $(document).on('click', '.basket', function (e) {
-    async function addPizzaToCart() {
+    // async function addPizzaToCart() {
       const addToCart = 'https://pzz.by/api/v1/basket/add-item';
       const id = e.target.dataset.id;
       const sizeBig = e.target.dataset.sizebig;
@@ -55,26 +54,13 @@ $(function () {
       formData.append('size', size);
       formData.append('dough', 'thin');
 
-      const response = await fetch(addToCart, {
+      const response = fetch(addToCart, {
         method: 'POST',
         body: formData,
       });
-      const responseJson = await response.json();
-    }
+      const responseJson = response.json();
+    // }
 
-    addPizzaToCart();
+    // addPizzaToCart();
   });
-
-  // async function basket() {
-  //   const urlBasket = 'https://pzz.by/api/v1/basket';
-  //   const response = await fetch(urlBasket)
-  //     .then(function (response) {
-  //       response.json()
-  //         .then(function (data) {
-  //           console.log(data);
-  //         })
-  //     })
-  // }
-  //
-  // basket();
 });
