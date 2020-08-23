@@ -4,7 +4,8 @@ $(function () {
   async function getListPizzas() {
     const content = document.getElementById('content');
     const pizzasUrl = 'https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc';
-    const response = await fetch(pizzasUrl)
+
+    await fetch(pizzasUrl)
       .then(function (response) {
         response.json()
           .then(function (obj) {
@@ -17,13 +18,13 @@ $(function () {
 
               <p class="pizza">Большая</p>
               <p class="price">${(data[i].big_price / 10000).toFixed(2)}
-              <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}"">В корзину</button></p>
+              <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button></p>
               <p class="weight">${data[i].big_weight}</p></div>
 
               <div class="size">
               <p class="pizza">Стандартная</p>
               <p class="price">${(data[i].medium_price / 10000).toFixed(2)}
-              <button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}"">В корзину</button></p>
+              <button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button></p>
               <p class="weight">${data[i].medium_weight}</p></div>
 
               <p class="anonce">${data[i].anonce}</p></div>`;
@@ -34,33 +35,33 @@ $(function () {
 
   getListPizzas();
 
-  $(document).on('click', '.basket', function (e) {
-    // async function addPizzaToCart() {
-      const addToCart = 'https://pzz.by/api/v1/basket/add-item';
-      const id = e.target.dataset.id;
-      const sizeBig = e.target.dataset.sizebig;
-      const sizeMedium = e.target.dataset.sizemedium;
-      let formData = new FormData();
-      let size = '';
+  $(document).on('click', '.basket', addToCart);
 
-      if (sizeBig) {
-        size = 'big';
-      } else if (sizeMedium) {
-        size = 'medium';
-      }
+  function addToCart(e) {
+    const addToCart = 'https://pzz.by/api/v1/basket/add-item';
+    const id = e.target.dataset.id;
+    const sizeBig = e.target.dataset.sizebig;
+    const sizeMedium = e.target.dataset.sizemedium;
+    const formData = new FormData();
+    let size = '';
 
-      formData.append('type', 'pizza');
-      formData.append('id', id);
-      formData.append('size', size);
-      formData.append('dough', 'thin');
+    if (sizeBig) {
+      size = 'big';
+    } else if (sizeMedium) {
+      size = 'medium';
+    }
 
-      const response = fetch(addToCart, {
-        method: 'POST',
-        body: formData,
-      });
-      const responseJson = response.json();
-    // }
+    formData.append('type', 'pizza');
+    formData.append('id', id);
+    formData.append('size', size);
+    formData.append('dough', 'thin');
 
-    // addPizzaToCart();
-  });
+    fetch(addToCart, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(function (response) {
+        return response.json();
+      })
+  }
 });
