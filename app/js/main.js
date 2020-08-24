@@ -64,13 +64,4 @@ $(function () {
       })
   }
 
-  $(document).on('click', '#street', getStreets);
-  async function getStreets(e) {
-    const street = 'https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A%D0%9B%D0%9E%2Ctitle%3A%D0%9B%D0%9E';
-    const house = 'https://pzz.by/api/v1/house/resolve-pizzeria/21927';
-    await fetch(street)
-        .then(function (response) {
-          console.log(response.json())
-        })
-  }
 });
