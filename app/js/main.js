@@ -36,8 +36,7 @@ $(function () {
   getListPizzas();
 
   $(document).on('click', '.basket', addToCart);
-
-  function addToCart(e) {
+  async function addToCart(e) {
     const addToCart = 'https://pzz.by/api/v1/basket/add-item';
     const id = e.target.dataset.id;
     const sizeBig = e.target.dataset.sizebig;
@@ -56,12 +55,22 @@ $(function () {
     formData.append('size', size);
     formData.append('dough', 'thin');
 
-    fetch(addToCart, {
+    await fetch(addToCart, {
       method: 'POST',
       body: formData,
     })
       .then(function (response) {
         return response.json();
       })
+  }
+
+  $(document).on('click', '#street', getStreets);
+  async function getStreets(e) {
+    const street = 'https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A%D0%9B%D0%9E%2Ctitle%3A%D0%9B%D0%9E';
+    const house = 'https://pzz.by/api/v1/house/resolve-pizzeria/21927';
+    await fetch(street)
+        .then(function (response) {
+          console.log(response.json())
+        })
   }
 });
