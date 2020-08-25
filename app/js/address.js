@@ -12,57 +12,99 @@
 // }(window.Element.prototype);
 
 document.addEventListener('DOMContentLoaded', function () {
-  const modalButtons = document.getElementById('open-modal');
-  const overlay = document.querySelector('.overlay-modal');
-  const closeButtons = document.querySelectorAll('.modal-close');
+		const modalButtons = document.getElementById('open-modal');
+		const overlay = document.querySelector('.overlay-modal');
+		const closeButtons = document.querySelectorAll('.modal-close');
 
-  modalButtons.addEventListener('click', function (e) {
-    e.preventDefault();
+		modalButtons.addEventListener('click', function (e) {
+				e.preventDefault();
 
-    const modalId = this.getAttribute('data-modal');
-    const modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
+				const modalId = this.getAttribute('data-modal');
+				const modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
 
-    modalElem.classList.add('active');
-    overlay.classList.add('active');
-  }); // end click
+				modalElem.classList.add('active');
+				overlay.classList.add('active');
+		}); // end click
 
-  closeButtons.forEach(function (item) {
-    item.addEventListener('click', function (e) {
-      const parentModal = this.closest('.modal');
+		closeButtons.forEach(function (item) {
+				item.addEventListener('click', function (e) {
+						const parentModal = this.closest('.modal');
 
-      parentModal.classList.remove('active');
-      overlay.classList.remove('active');
-    });
-  });
+						parentModal.classList.remove('active');
+						overlay.classList.remove('active');
+				});
+		});
 
-  document.body.addEventListener('keyup', function (e) {
-    const key = e.keyCode;
+		document.body.addEventListener('keyup', function (e) {
+				const key = e.keyCode;
 
-    if (key === 27) {
-      document.querySelector('.modal.active').classList.remove('active');
-      document.querySelector('.overlay').classList.remove('active');
-    }
-  }, false);
+				if (key === 27) {
+						document.querySelector('.modal.active').classList.remove('active');
+						document.querySelector('.overlay').classList.remove('active');
+				}
+		}, false);
 
-  overlay.addEventListener('click', function () {
-    document.querySelector('.modal.active').classList.remove('active');
-    this.classList.remove('active');
-  });
+		overlay.addEventListener('click', function () {
+				document.querySelector('.modal.active').classList.remove('active');
+				this.classList.remove('active');
+		});
 
-  $(document).on('click', '#sendStreet', getStreet);
 
-  async function getStreet() {
+});
+
+$(document).on('click', '#sendStreet', searchStreet);
+let id = '';
+
+async function searchStreet(e) {
+		e.preventDefault();
 		const streetTitle = $('#street').val().toUpperCase();
 		const street = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${streetTitle}%2Ctitle%3A${streetTitle}`;
 
 		await fetch(street)
-      .then(function (response) {
-        response.json()
-					.then(function (obj) {
+		.then(function (response) {
+				response.json()
+				.then(function (obj) {
 						const data = obj.response.data;
-						console.log(data)
-					})
-      })
+						for (let i = 0; i < data.length; i++) {
+								if (data[i].title.toUpperCase() === streetTitle) {
+										id = data[i].id;
+								}
+						}
+				})
+		})
+}
 
-  }
-});
+
+$(document).on('click', '#house', selectStreet);
+let houseTitleOrder = '';
+
+async function selectStreet() {
+		const streetOrder = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
+		const houseTitle = $('#house').val()
+
+		await fetch(streetOrder)
+		.then(function (response) {
+				response.json()
+				.then(function (obj) {
+						const data = obj.response.data;
+						for (let i = 0; i < data.length; i++) {
+								console.log(houseTitle)
+								if (houseTitle === data[i].title) {
+										houseTitleOrder = data[i].title;
+								}
+						}
+						// console.log(data)
+				})
+		})
+}
+
+$(document).on('click', '#sendAddress', selectHouse);
+
+async function selectHouse(e) {
+		e.preventDefault()
+		// const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${}`
+
+		// if (houseTitle ===)
+		await fetch(houseUrl)
+
+}
