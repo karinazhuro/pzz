@@ -38,7 +38,7 @@ $(function () {
   $(document).on('click', '.basket', addToCart);
 
   async function addToCart(e) {
-    const addToCart = 'https://pzz.by/api/v1/basket/add-item';
+    const addToCartUrl = 'https://pzz.by/api/v1/basket/add-item';
     const id = e.target.dataset.id;
     const sizeBig = e.target.dataset.sizebig;
     const sizeMedium = e.target.dataset.sizemedium;
@@ -56,7 +56,7 @@ $(function () {
     formData.append('size', size);
     formData.append('dough', 'thin');
 
-    await fetch(addToCart, {
+    await fetch(addToCartUrl, {
       method: 'POST',
       body: formData,
     })
@@ -64,19 +64,4 @@ $(function () {
         return response.json();
       })
   }
-
-  // $(document).on('click', '#sendStreet', async function (e) {
-		//   e.preventDefault();
-  //   const streetTitle = $('#street').val().toUpperCase();
-  //   const street = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${streetTitle}%2Ctitle%3A${streetTitle}`;
-  //
-  //   await fetch(street)
-  //   .then(function (response) {
-  //     response.json()
-  //     .then(function (response) {
-  //       console.log(response)
-  //     })
-  //   })
-  // })
-
 });

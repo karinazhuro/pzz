@@ -2,8 +2,8 @@
 
 $(function (events, handler) {
   async function basket() {
-    const urlBasket = 'https://pzz.by/api/v1/basket';
-    await fetch(urlBasket)
+    const basketUrl = 'https://pzz.by/api/v1/basket';
+    await fetch(basketUrl)
       .then(function (response) {
         response.json()
           .then(function (obj) {
@@ -38,7 +38,7 @@ $(function (events, handler) {
   $(document).on('click', '.orderMinus', removeToCart);
 
   async function addToCart(e) {
-    const addToCart = 'https://pzz.by/api/v1/basket/add-item';
+    const addToCartUrl = 'https://pzz.by/api/v1/basket/add-item';
     const id = e.target.dataset.id;
     const size = e.target.dataset.size;
     const formData = new FormData();
@@ -48,13 +48,10 @@ $(function (events, handler) {
     formData.append('size', size);
     formData.append('dough', 'thin');
 
-    await fetch(addToCart, {
+    await fetch(addToCartUrl, {
       method: 'POST',
       body: formData,
     })
-      // .then(function (response) {
-      // 		response.json();
-      // })
       .then(function (response) {
         response.json()
           .then(function (obj) {
@@ -88,7 +85,7 @@ $(function (events, handler) {
 
 
   async function removeToCart(e) {
-    const removeToCart = 'https://pzz.by/api/v1/basket/remove-item';
+    const removeToCartUrl = 'https://pzz.by/api/v1/basket/remove-item';
     const id = e.target.dataset.id;
     const size = e.target.dataset.size;
     const formData = new FormData();
@@ -98,14 +95,10 @@ $(function (events, handler) {
     formData.append('size', size);
     formData.append('dough', 'thin');
 
-    await fetch(removeToCart, {
+    await fetch(removeToCartUrl, {
       method: 'POST',
       body: formData,
     })
-      // .then(function (response) {
-      // 		response.json();
-      // })
-
       .then(function (response) {
         response.json()
           .then(function (obj) {
@@ -135,6 +128,4 @@ $(function (events, handler) {
           })
       })
   }
-
-
 });
