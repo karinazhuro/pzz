@@ -8,28 +8,40 @@
 
 <body>
 <h1>Оформление заказа</h1>
-<h3>Ваш заказ</h3>
+<h2>Ваш заказ</h2>
 <div id="order"></div>
-<div class="modal">
-<div class="modal-content">
-	<button role="button" class="modal-close">закрыть</button>
-</div>
-</div>
-<h3 id="total"></h3>
-
 <h3>Адрес доставки</h3>
 <form id="fullDeliveryAddress">
-	<label for="name">Ваше имя</label><input type="text" id="name">
-	<label for="phone">Ваш мобильный телефон</label><input type="text" id="phone">
+	<label for="name">Ваше имя</label><input type="text" id="name"><br>
+	<label for="phone">Ваш мобильный телефон</label><input type="text" id="phone"><br>
 	<label for="street">Улица</label><input type="text" id="street">
 	<label for="house">Дом</label><input type="text" id="house">
 	<label for="flat">Квартира</label><input type="text" id="flat">
 	<label for="entrance">Подъезд</label><input type="text" id="entrance">
 	<label for="floor">Этаж</label><input type="text" id="floor">
-	<label for="intercom">Домофон</label><input type="text" id="intercom">
+	<label for="intercom">Домофон</label><input type="text" id="intercom"><br>
 	<label for="comment">Комментарий к заказу</label><input type="text" id="comment">
 
+	<div id="delivery">
+		<h3 id="deliveryTitle">Доставка без контакта с курьером</h3>
+		<input type="radio" id="contactDelivery" name="no-contact-delivery" checked>Привезите как обычно
+		<input type="radio" id="noContactDelivery" name="no-contact-delivery">Доставка без контакта с курьером
+	</div>
+
+	<div id="payment">
+		<h3 id="paymentTitle">Способ оплаты</h3>
+		<input type="radio" id="cash" name="payment">Наличными
+		<input type="radio" id="charge" name="payment" checked>Картой
+		<input type="radio" id="online" name="payment">Онлайн
+		<input type="radio" id="halva" name="payment">Халва
+	</div>
 </form>
+<h3 id="total"></h3>
+
+<button id="saveOrder">Сохранить данные</button>
+
+<button id="sendOrder">Оформить заказ</button>
+
 <script src="app/js/common.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="app/js/basket.js"></script>
