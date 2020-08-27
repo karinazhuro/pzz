@@ -6,16 +6,14 @@ $colorHover: #16bc00;
 $colorBackgroundHover: #fff;
 
 @font-face {
-  font-family: malina, sans-serif;
-  src: url(../fonts/malina-webfont.woff) format('woff');
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Malina";
+  src: url("../fonts/malina_webfont.ttf") format("truetype")
 }
 
 #cart {
   display: flex;
   justify-content: flex-end;
-  font-family: Malina,sans-serif;
+  font-family: Malina, sans-serif;
   font-size: 20px;
   text-decoration: none;
   letter-spacing: -.5px;
@@ -35,7 +33,7 @@ $colorBackgroundHover: #fff;
     margin: 20px;
 
     #title {
-      font-family: malina;
+      font-family: Malina, sans-serif;
       font-size: 24px;
       color: $colorPrimary;
       margin: 10px 0;
@@ -90,7 +88,6 @@ $colorBackgroundHover: #fff;
       color: $colorDesc;
     }
   }
-
 }
 
 

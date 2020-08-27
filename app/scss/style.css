@@ -1,8 +1,6 @@
 @font-face {
-  font-family: malina, sans-serif;
-  src: url(../fonts/malina-webfont.woff) format("woff");
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Malina";
+  src: url("../fonts/malina_webfont.ttf") format("truetype");
 }
 #cart {
   display: flex;
@@ -27,7 +25,7 @@
   margin: 20px;
 }
 #content .pizzas #title {
-  font-family: malina;
+  font-family: Malina, sans-serif;
   font-size: 24px;
   color: #ff5200;
   margin: 10px 0;
