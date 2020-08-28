@@ -2,51 +2,105 @@
   font-family: "Malina";
   src: url("../fonts/malina_webfont.ttf") format("truetype");
 }
-#cart {
+body {
+  padding: 20px;
+}
+body header {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  text-align: end;
+}
+body header #cart {
   font-family: Malina, sans-serif;
   font-size: 20px;
   text-decoration: none;
   letter-spacing: -0.5px;
   color: #ff5200;
-  margin: 20px;
+  margin: 5px 0;
 }
-
-#content {
+body header #open-modal {
+  color: #277dff;
+  text-decoration: none;
+  margin: 5px 0;
+}
+body header #open-modal:hover {
+  color: #16bc00;
+}
+body header .modal {
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  max-width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 30px;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: 0.3s all;
+}
+body header .modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+body header .modal .modal__cross {
+  cursor: pointer;
+  background: url("../img/close.svg") 100% 0 no-repeat;
+}
+body header .overlay {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  transition: 0.3s all;
+}
+body header .overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+body #content {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-#content .pizzas {
+body #content .pizzas {
   display: inherit;
   flex-direction: column;
   width: 300px;
   margin: 20px;
 }
-#content .pizzas #title {
+body #content .pizzas #title {
   font-family: Malina, sans-serif;
   font-size: 24px;
   color: #ff5200;
   margin: 10px 0;
 }
-#content .pizzas #title:hover {
+body #content .pizzas #title:hover {
   color: #16bc00;
   cursor: pointer;
 }
-#content .pizzas .size {
+body #content .pizzas .size {
   margin: 10px 0;
 }
-#content .pizzas .size .pizza {
+body #content .pizzas .size .pizza {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 15px;
   color: #999;
 }
-#content .pizzas .size .price {
+body #content .pizzas .size .price {
   font: 32px/1.1 Malina, sans-serif;
   color: #000;
 }
-#content .pizzas .size .price .basket {
+body #content .pizzas .size .price .basket {
   font: 20px/22px Malina, sans-serif;
   letter-spacing: -0.5px;
   background: #e9e9e9;
@@ -56,17 +110,17 @@
   padding: 7px 12px 8px;
   margin: 0 0 0 20px;
 }
-#content .pizzas .size .price .basket:hover {
+body #content .pizzas .size .price .basket:hover {
   background: #16bc00;
   color: #fff;
   cursor: pointer;
 }
-#content .pizzas .size .weight {
+body #content .pizzas .size .weight {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   color: #999;
 }
-#content .pizzas .anonce {
+body #content .pizzas .anonce {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 15px;
   color: #999;
