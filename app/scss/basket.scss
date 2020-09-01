@@ -1,3 +1,141 @@
+@import 'rules.scss';
+
 body {
   display: grid;
+  padding: 20px 90px;
+
+  #wrapper {
+    #orderRegistration {
+      font-family: Malina, sans-serif;
+      color: $colorSecondary;
+    }
+
+    #ourOrder {
+      font: 34px/1.1 Malina, sans-serif;
+      letter-spacing: -1px;
+      margin: 20px 0;
+      color: $colorSecondary;
+    }
+
+    #orderPizza {
+      margin: 0 20px;
+      display: flex;
+      justify-content: space-between;
+
+      #title {
+        #orderTitle {
+          color: $colorPrimary;
+          font: 28px/1.2 Malina, sans-serif;
+          letter-spacing: -.5px;
+        }
+
+        #orderSize {
+          font: 13px/1 Arial, Helvetica, sans-serif;
+          color: $colorDesc;
+          padding-top: 4px;
+        }
+      }
+
+      #changeCount {
+        display: flex;
+
+        .orderMinus {
+          @include buttonCount;
+        }
+
+        #orderCounter {
+          color: $colorSecondary;
+          font-size: 21px;
+          font-weight: 700;
+          line-height: 30px;
+          padding: 0 2px;
+          font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .orderPlus {
+          @include buttonCount;
+        }
+      }
+
+      #orderPrice {
+        font-size: 21px;
+        font-weight: 700;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+    }
+
+    #totalPrice {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      margin: 50px 0;
+
+      #totalTitle {
+        letter-spacing: -.5px;
+        padding: 0 20px 0 0;
+        color: #999;
+        font: 20px/22px Malina, sans-serif;
+      }
+
+      #totalCost {
+        font-size: 32px;
+        color: $colorSecondary;
+        font-family: Helvetica, Arial, sans-serif;
+        line-height: 42px;
+      }
+    }
+
+    #address {
+      font: 34px/1.1 Malina, sans-serif;
+      letter-spacing: -1px;
+      margin: 30px 0;
+    }
+
+    #fullDeliveryAddress {
+      #privateData {
+        list-style: none;
+
+        & > li {
+          margin: 20px 0;
+        }
+
+        .nameForTextarea {
+          font-size: 17px;
+          font: 17px/1.2 Helvetica, Arial, sans-serif;
+          color: $colorSecondary;
+          margin: 2px 0;
+        }
+
+        .textarea {
+          border: 1px solid #c3c3c3;
+          font-size: 21px;
+          padding: 4px 6px 4px 12px;
+          margin: 2px 0;
+          width: 336px;
+          color: $colorSecondary;
+          font-family: Helvetica,Arial,sans-serif;
+        }
+
+        #privateDataPhone {
+          #phoneCode {
+            width: 75px;
+          }
+
+          #phone {
+            width: 256px;
+            //float: left;
+          }
+
+          #example {
+            float: left;
+            color: #999;
+            font-size: 13px;
+            line-height: 16px;
+            padding-left: 12px;
+            padding-top: 2px;
+          }
+        }
+      }
+    }
+  }
 }

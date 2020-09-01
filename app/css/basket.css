@@ -1,2 +1,109 @@
+@font-face {
+  font-family: "Malina";
+  src: url("../fonts/malina_webfont.ttf") format("truetype"); }
+
 body {
-  display: grid; }
+  display: grid;
+  padding: 20px 90px; }
+  body #wrapper #orderRegistration {
+    font-family: Malina, sans-serif;
+    color: #000; }
+  body #wrapper #ourOrder {
+    font: 34px/1.1 Malina, sans-serif;
+    letter-spacing: -1px;
+    margin: 20px 0;
+    color: #000; }
+  body #wrapper #orderPizza {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between; }
+    body #wrapper #orderPizza #title #orderTitle {
+      color: #ff5200;
+      font: 28px/1.2 Malina, sans-serif;
+      letter-spacing: -.5px; }
+    body #wrapper #orderPizza #title #orderSize {
+      font: 13px/1 Arial, Helvetica, sans-serif;
+      color: #999;
+      padding-top: 4px; }
+    body #wrapper #orderPizza #changeCount {
+      display: flex; }
+      body #wrapper #orderPizza #changeCount .orderMinus {
+        cursor: pointer;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        font: 30px/1 Malina,sans-serif;
+        letter-spacing: -1px;
+        border: none;
+        border-radius: 50%;
+        background-color: #277dff;
+        margin: 0 10px; }
+      body #wrapper #orderPizza #changeCount #orderCounter {
+        color: #000;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 30px;
+        padding: 0 2px;
+        font-family: Helvetica, Arial, sans-serif; }
+      body #wrapper #orderPizza #changeCount .orderPlus {
+        cursor: pointer;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        font: 30px/1 Malina,sans-serif;
+        letter-spacing: -1px;
+        border: none;
+        border-radius: 50%;
+        background-color: #277dff;
+        margin: 0 10px; }
+    body #wrapper #orderPizza #orderPrice {
+      font-size: 21px;
+      font-weight: 700;
+      font-family: Helvetica, Arial, sans-serif; }
+  body #wrapper #totalPrice {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin: 50px 0; }
+    body #wrapper #totalPrice #totalTitle {
+      letter-spacing: -.5px;
+      padding: 0 20px 0 0;
+      color: #999;
+      font: 20px/22px Malina, sans-serif; }
+    body #wrapper #totalPrice #totalCost {
+      font-size: 32px;
+      color: #000;
+      font-family: Helvetica, Arial, sans-serif;
+      line-height: 42px; }
+  body #wrapper #address {
+    font: 34px/1.1 Malina, sans-serif;
+    letter-spacing: -1px;
+    margin: 30px 0; }
+  body #wrapper #fullDeliveryAddress #privateData {
+    list-style: none; }
+    body #wrapper #fullDeliveryAddress #privateData > li {
+      margin: 20px 0; }
+    body #wrapper #fullDeliveryAddress #privateData .nameForTextarea {
+      font-size: 17px;
+      font: 17px/1.2 Helvetica, Arial, sans-serif;
+      color: #000;
+      margin: 2px 0; }
+    body #wrapper #fullDeliveryAddress #privateData .textarea {
+      border: 1px solid #c3c3c3;
+      font-size: 21px;
+      padding: 4px 6px 4px 12px;
+      margin: 2px 0;
+      width: 336px;
+      color: #000;
+      font-family: Helvetica,Arial,sans-serif; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
+      width: 75px; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phone {
+      width: 256px; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #example {
+      float: left;
+      color: #999;
+      font-size: 13px;
+      line-height: 16px;
+      padding-left: 12px;
+      padding-top: 2px; }
