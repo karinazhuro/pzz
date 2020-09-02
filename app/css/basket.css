@@ -95,15 +95,25 @@ body {
       margin: 2px 0;
       width: 336px;
       color: #000;
-      font-family: Helvetica,Arial,sans-serif; }
+      font-family: Helvetica, Arial, sans-serif; }
     body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
-      width: 75px; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phone {
-      width: 256px; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #example {
+      width: 75px;
       float: left;
+      margin: 2px 5px 0 0; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phone {
+      width: 256px;
+      float: left;
+      margin: 2px 12px 2px 0; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #example {
       color: #999;
       font-size: 13px;
       line-height: 16px;
-      padding-left: 12px;
-      padding-top: 2px; }
+      padding: 2px 0 0 0; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataAddress {
+      float: left;
+      margin: 0 0 20px 0;
+      display: flex; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper:not(:first-child) {
+        margin: 0 10px 0 10px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper:not(:last-child) {
+        margin: 0 10px 0 10px; }

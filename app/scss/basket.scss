@@ -113,27 +113,43 @@ body {
           margin: 2px 0;
           width: 336px;
           color: $colorSecondary;
-          font-family: Helvetica,Arial,sans-serif;
+          font-family: Helvetica, Arial, sans-serif;
         }
 
         #privateDataPhone {
           #phoneCode {
             width: 75px;
+            float: left;
+            margin: 2px 5px 0 0;
           }
 
           #phone {
             width: 256px;
-            //float: left;
+            float: left;
+            margin: 2px 12px 2px 0;
           }
 
           #example {
-            float: left;
             color: #999;
             font-size: 13px;
             line-height: 16px;
-            padding-left: 12px;
-            padding-top: 2px;
+            padding: 2px 0 0 0;
           }
+        }
+
+        #privateDataAddress {
+          float: left;
+          margin: 0 0 20px 0;
+          display: flex;
+
+          .privateDataWrapper:not(:first-child) {
+            margin: 0 10px 0 10px;
+          }
+
+          .privateDataWrapper:not(:last-child) {
+            margin: 0 10px 0 10px;
+          }
+
         }
       }
     }
