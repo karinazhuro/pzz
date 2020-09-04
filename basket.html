@@ -11,7 +11,7 @@
 <div id="wrapper">
 	<h1 id="orderRegistration">Оформление заказа</h1>
 	<h2 id="ourOrder">Ваш заказ</h2>
-	<div id="orderPizza"></div>
+	<div id="order"></div>
 	<div id="totalPrice">
 		<h3 id="totalTitle">Итого: </h3>
 		<h3 id="totalCost"></h3>
@@ -19,51 +19,55 @@
 	<h2 id="address">Адрес доставки</h2>
 	<form id="fullDeliveryAddress">
 		<ul id="privateData">
-			<li id="privateDataName"><label class="nameForTextarea" for="name">Ваше имя</label><br><input class="textarea"
-																																																		type="text"
-																																																		id="name"></li>
-
+			<li id="privateDataName"><label class="nameForTextarea" for="name">Ваше имя</label><br>
+				<input class="textarea" type="text" id="name">
+			</li>
 			<li id="privateDataPhone"><label class="nameForTextarea" for="phone">Ваш мобильный телефон</label><br>
 				<input class="textarea" type="tel" id="phoneCode" value="+375">
 				<input class="textarea" type="tel" id="phone">
 				<span id="example">Пример:<br>+375 297556655</span>
 			</li>
-
 			<li id="privateDataAddress">
 				<div class="privateDataWrapper" id="streetWrapper">
-					<label class="nameForTextarea" for="street">Улица</label><br><input class="textarea" type="text" id="street"
-																																							list="datalistStreet">
+					<label class="nameForTextarea" for="street">Улица</label><br>
+					<input class="textarea" type="text" id="street" list="datalistStreet">
 					<datalist id="datalistStreet"></datalist>
 				</div>
 				<div class="privateDataWrapper" id="houseWrapper">
-					<label class="nameForTextarea" for="house">Дом</label>
+					<label class="nameForTextarea" for="house">Дом</label><br>
 					<input class="textarea" type="text" id="house" list="datalistHouse">
 					<datalist id="datalistHouse"></datalist>
 				</div>
 				<div class="privateDataWrapper" id="flatWrapper">
-					<label class="nameForTextarea" for="flat">Квартира</label><br><input class="textarea" type="text" id="flat">
+					<label class="nameForTextarea privateDataHouse" for="flat">Квартира</label><br>
+					<input class="textarea privateDataHouseTextArea" type="text" id="flat">
 				</div>
 				<div class="privateDataWrapper" id="entranceWrapper">
-					<label class="nameForTextarea" for="entrance">Подъезд</label><input class="textarea" type="text"
-																																							id="entrance">
+					<label class="nameForTextarea privateDataHouse" for="entrance">Подъезд</label><br>
+					<input class="textarea privateDataHouseTextArea" type="text" id="entrance">
 				</div>
 				<div class="privateDataWrapper" id="floorWrapper">
-					<label class="nameForTextarea" for="floor">Этаж</label><input class="textarea" type="text" id="floor">
-				</div>
+					<label class="nameForTextarea privateDataHouse" for="floor">Этаж</label><br>
+					<input class="textarea privateDataHouseTextArea" type="text" id="floor"></div>
 				<div class="privateDataWrapper" id="intercomWrapper">
-					<label class="nameForTextarea" for="intercom">Домофон</label><input class="textarea" type="text"
-																																							id="intercom">
+					<label class="nameForTextarea privateDataHouse" for="intercom">Домофон</label><br>
+					<input class="textarea privateDataHouseTextArea" type="text" id="intercom">
 				</div>
 			</li>
-			<li><label class="nameForTextarea" for="comment">Комментарий к заказу</label>
+			<li id="privateDataComment">
+				<label class="nameForTextarea" for="comment">Комментарий к заказу</label><br>
 				<input class="textarea" type="text" id="comment">
 			</li>
 		</ul>
-
 		<div id="delivery">
 			<h3 id="deliveryTitle">Доставка без контакта с курьером</h3>
-			<input type="radio" id="contactDelivery" name="no-contact-delivery" checked>Привезите как обычно
-			<input type="radio" id="noContactDelivery" name="no-contact-delivery">Доставка без контакта с курьером
+			<p id="deliveryDesc">Бесконтактная доставка исключает необходимость контактировать с курьером
+				и доступна только при онлайн оплате заказа с доставкой.</p>
+			<input type="radio" class="deliveryContact" id="contactDelivery" name="no-contact-delivery" checked>Привезите как
+			обычно
+			<input type="radio" class="deliveryContact" id="noContactDelivery" name="no-contact-delivery">Доставка без
+			контакта с
+			курьером
 		</div>
 
 		<div id="payment">

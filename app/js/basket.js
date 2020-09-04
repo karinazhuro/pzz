@@ -9,7 +9,7 @@ $(function (events, handler) {
 						.then(function (obj) {
 								const data = obj.response.data;
 								for (let i = 0; i < data.items.length; i++) {
-										const order = document.getElementById('orderPizza');
+										const order = document.getElementById('order');
 										const total = document.getElementById('totalCost');
 										let size = '';
 
@@ -19,7 +19,7 @@ $(function (events, handler) {
 												size = 'Стандартная';
 										}
 
-										order.innerHTML += `
+										order.innerHTML += `<div id="orderPizza">
 															<div id="title">
                  <h3 id="orderTitle">${data.items[i].title}</h3>
                 	<p id="orderSize">${size}</p>
@@ -29,7 +29,8 @@ $(function (events, handler) {
 																		<div id="orderCounter">1</div>                	
 																		<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
                 </div>
-                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>`;
+                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
+															</div>`;
 										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 								}
 						})
@@ -59,7 +60,7 @@ $(function (events, handler) {
 				.then(function (response) {
 						response.json()
 						.then(function (obj) {
-								const order = document.getElementById('orderPizza');
+								const order = document.getElementById('order');
 								const data = obj.response.data;
 								order.innerHTML = '';
 
@@ -73,18 +74,19 @@ $(function (events, handler) {
 												size = 'Стандартная';
 										}
 
-										order.innerHTML += `
+										order.innerHTML += `<div id="orderPizza">
 															<div id="title">
                  <h3 id="orderTitle">${data.items[i].title}</h3>
                 	<p id="orderSize">${size}</p>
                </div>
                 <div id="changeCount">
-                <button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-																<div id="orderCounter">1</div>                	
-																<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
+                		<button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
+																		<div id="orderCounter">1</div>                	
+																		<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
                 </div>
-                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>`;
-										total.innerHTML = `Итого: ${data.total}`;
+                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
+															</div>`;
+										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 								}
 						})
 				})
@@ -108,7 +110,7 @@ $(function (events, handler) {
 				.then(function (response) {
 						response.json()
 						.then(function (obj) {
-								const order = document.getElementById('orderPizza');
+								const order = document.getElementById('order');
 								const data = obj.response.data;
 								order.innerHTML = '';
 
@@ -122,18 +124,19 @@ $(function (events, handler) {
 												size = 'Стандартная';
 										}
 
-										order.innerHTML += `
+										order.innerHTML += `<div id="orderPizza">
 															<div id="title">
                  <h3 id="orderTitle">${data.items[i].title}</h3>
                 	<p id="orderSize">${size}</p>
                </div>
                 <div id="changeCount">
-                <button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-																<div id="orderCounter">1</div>                	
-																<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
+                		<button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
+																		<div id="orderCounter">1</div>                	
+																		<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
                 </div>
-                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>`;
-										total.innerHTML = `Итого: ${data.total}`;
+                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
+															</div>`;
+										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 								}
 						})
 				})

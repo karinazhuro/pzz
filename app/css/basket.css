@@ -13,21 +13,23 @@ body {
     letter-spacing: -1px;
     margin: 20px 0;
     color: #000; }
-  body #wrapper #orderPizza {
-    margin: 0 20px;
+  body #wrapper #order > #orderPizza:not(:first-child) {
+    border-top: 1px solid #c3c3c3; }
+  body #wrapper #order #orderPizza {
     display: flex;
-    justify-content: space-between; }
-    body #wrapper #orderPizza #title #orderTitle {
+    justify-content: space-between;
+    padding: 12px 20px; }
+    body #wrapper #order #orderPizza #title #orderTitle {
       color: #ff5200;
       font: 28px/1.2 Malina, sans-serif;
       letter-spacing: -.5px; }
-    body #wrapper #orderPizza #title #orderSize {
+    body #wrapper #order #orderPizza #title #orderSize {
       font: 13px/1 Arial, Helvetica, sans-serif;
       color: #999;
       padding-top: 4px; }
-    body #wrapper #orderPizza #changeCount {
+    body #wrapper #order #orderPizza #changeCount {
       display: flex; }
-      body #wrapper #orderPizza #changeCount .orderMinus {
+      body #wrapper #order #orderPizza #changeCount .orderMinus {
         cursor: pointer;
         color: #fff;
         width: 30px;
@@ -38,14 +40,14 @@ body {
         border-radius: 50%;
         background-color: #277dff;
         margin: 0 10px; }
-      body #wrapper #orderPizza #changeCount #orderCounter {
+      body #wrapper #order #orderPizza #changeCount #orderCounter {
         color: #000;
         font-size: 21px;
         font-weight: 700;
         line-height: 30px;
         padding: 0 2px;
         font-family: Helvetica, Arial, sans-serif; }
-      body #wrapper #orderPizza #changeCount .orderPlus {
+      body #wrapper #order #orderPizza #changeCount .orderPlus {
         cursor: pointer;
         color: #fff;
         width: 30px;
@@ -56,7 +58,7 @@ body {
         border-radius: 50%;
         background-color: #277dff;
         margin: 0 10px; }
-    body #wrapper #orderPizza #orderPrice {
+    body #wrapper #order #orderPizza #orderPrice {
       font-size: 21px;
       font-weight: 700;
       font-family: Helvetica, Arial, sans-serif; }
@@ -93,9 +95,10 @@ body {
       font-size: 21px;
       padding: 4px 6px 4px 12px;
       margin: 2px 0;
-      width: 336px;
       color: #000;
       font-family: Helvetica, Arial, sans-serif; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataName #name {
+      width: 336px; }
     body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
       width: 75px;
       float: left;
@@ -110,10 +113,38 @@ body {
       line-height: 16px;
       padding: 2px 0 0 0; }
     body #wrapper #fullDeliveryAddress #privateData #privateDataAddress {
-      float: left;
       margin: 0 0 20px 0;
       display: flex; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper:not(:first-child) {
-        margin: 0 10px 0 10px; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper:not(:last-child) {
-        margin: 0 10px 0 10px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress > .privateDataWrapper:not(:first-child) {
+        margin: 0 10px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
+        color: #999; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
+        width: 71px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #streetWrapper {
+        margin: 0 10px 0 0; }
+        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #streetWrapper #street {
+          width: 356px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #houseWrapper #house {
+        width: 91px; }
+    body #wrapper #fullDeliveryAddress #privateData #privateDataComment #comment {
+      width: 100%; }
+  body #wrapper #fullDeliveryAddress #delivery {
+    margin: 40px 0 0 0; }
+    body #wrapper #fullDeliveryAddress #delivery #deliveryTitle {
+      color: #999;
+      font: 20px/1.1 Malina, sans-serif;
+      letter-spacing: -.5px;
+      margin: 0 0 20px 0; }
+    body #wrapper #fullDeliveryAddress #delivery #deliveryDesc {
+      background-color: #F6F6F6;
+      padding: 20px;
+      font: 17px/1.2 Helvetica, Arial, sans-serif;
+      width: 669px;
+      margin: 0 0 20px 0; }
+    body #wrapper #fullDeliveryAddress #delivery #contactDelivery {
+      background-color: #16bc00;
+      color: #fff;
+      cursor: pointer;
+      font: 17px/1 Malina, sans-serif;
+      letter-spacing: -.25px; }

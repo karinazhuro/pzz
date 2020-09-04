@@ -17,51 +17,58 @@ body {
       color: $colorSecondary;
     }
 
-    #orderPizza {
-      margin: 0 20px;
-      display: flex;
-      justify-content: space-between;
-
-      #title {
-        #orderTitle {
-          color: $colorPrimary;
-          font: 28px/1.2 Malina, sans-serif;
-          letter-spacing: -.5px;
-        }
-
-        #orderSize {
-          font: 13px/1 Arial, Helvetica, sans-serif;
-          color: $colorDesc;
-          padding-top: 4px;
-        }
+    #order {
+      & > #orderPizza:not(:first-child) {
+        border-top: 1px solid #c3c3c3;
       }
 
-      #changeCount {
+      #orderPizza {
         display: flex;
+        justify-content: space-between;
+        padding: 12px 20px;
 
-        .orderMinus {
-          @include buttonCount;
+        #title {
+          #orderTitle {
+            color: $colorPrimary;
+            font: 28px/1.2 Malina, sans-serif;
+            letter-spacing: -.5px;
+          }
+
+          #orderSize {
+            font: 13px/1 Arial, Helvetica, sans-serif;
+            color: $colorDesc;
+            padding-top: 4px;
+          }
         }
 
-        #orderCounter {
-          color: $colorSecondary;
+        #changeCount {
+          display: flex;
+
+          .orderMinus {
+            @include buttonCount;
+          }
+
+          #orderCounter {
+            color: $colorSecondary;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 30px;
+            padding: 0 2px;
+            font-family: Helvetica, Arial, sans-serif;
+          }
+
+          .orderPlus {
+            @include buttonCount;
+          }
+        }
+
+        #orderPrice {
           font-size: 21px;
           font-weight: 700;
-          line-height: 30px;
-          padding: 0 2px;
           font-family: Helvetica, Arial, sans-serif;
         }
-
-        .orderPlus {
-          @include buttonCount;
-        }
       }
 
-      #orderPrice {
-        font-size: 21px;
-        font-weight: 700;
-        font-family: Helvetica, Arial, sans-serif;
-      }
     }
 
     #totalPrice {
@@ -111,9 +118,14 @@ body {
           font-size: 21px;
           padding: 4px 6px 4px 12px;
           margin: 2px 0;
-          width: 336px;
           color: $colorSecondary;
           font-family: Helvetica, Arial, sans-serif;
+        }
+
+        #privateDataName {
+          #name {
+            width: 336px;
+          }
         }
 
         #privateDataPhone {
@@ -138,17 +150,73 @@ body {
         }
 
         #privateDataAddress {
-          float: left;
           margin: 0 0 20px 0;
           display: flex;
 
-          .privateDataWrapper:not(:first-child) {
-            margin: 0 10px 0 10px;
+          & > .privateDataWrapper:not(:first-child) {
+            margin: 0 10px;
           }
 
-          .privateDataWrapper:not(:last-child) {
-            margin: 0 10px 0 10px;
+          .privateDataWrapper {
+            .privateDataHouse {
+              color: $colorDesc;
+            }
+
+            .privateDataHouseTextArea {
+              width: 71px;
+            }
           }
+
+          #streetWrapper {
+            margin: 0 10px 0 0;
+
+            #street {
+              width: 356px;
+            }
+
+          }
+
+          #houseWrapper {
+            #house {
+              width: 91px;
+            }
+          }
+        }
+
+        #privateDataComment {
+          #comment {
+            width: 100%;
+          }
+        }
+      }
+
+      #delivery {
+        margin: 40px 0 0 0;
+
+        #deliveryTitle {
+          color: #999;
+          font: 20px/1.1 Malina, sans-serif;
+          letter-spacing: -.5px;
+          margin: 0 0 20px 0;
+        }
+
+        #deliveryDesc {
+          background-color: #F6F6F6;
+          padding: 20px;
+          font: 17px/1.2 Helvetica, Arial, sans-serif;
+          width: 669px;
+          margin: 0 0 20px 0;
+        }
+
+        #contactDelivery {
+          background-color: #16bc00;
+          color: #fff;
+          cursor: pointer;
+          font: 17px/1 Malina, sans-serif;
+          letter-spacing: -.25px;
+        }
+
+        #deliveryContact {
 
         }
       }
