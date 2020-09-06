@@ -71,13 +71,13 @@ body {
 
     }
 
-    #totalPrice {
+    .totalPrice {
       display: flex;
       justify-content: flex-end;
       align-items: baseline;
       margin: 50px 0;
 
-      #totalTitle {
+      .totalTitle {
         letter-spacing: -.5px;
         padding: 0 20px 0 0;
         color: #999;
@@ -142,7 +142,7 @@ body {
           }
 
           #example {
-            color: #999;
+            color: $colorDesc;
             font-size: 13px;
             line-height: 16px;
             padding: 2px 0 0 0;
@@ -194,7 +194,7 @@ body {
         margin: 40px 0 0 0;
 
         #deliveryTitle {
-          color: #999;
+          color: $colorDesc;
           font: 20px/1.1 Malina, sans-serif;
           letter-spacing: -.5px;
           margin: 0 0 20px 0;
@@ -205,19 +205,64 @@ body {
           padding: 20px;
           font: 17px/1.2 Helvetica, Arial, sans-serif;
           width: 669px;
-          margin: 0 0 20px 0;
+          margin: 0 0 40px 0;
         }
 
-        #contactDelivery {
-          background-color: #16bc00;
-          color: #fff;
+        .deliveryContactBtn {
           cursor: pointer;
+          color: #fff;
           font: 17px/1 Malina, sans-serif;
           letter-spacing: -.25px;
+          padding: 14px 20px;
+          background-color: $colorDesc;
+          border-radius: 10px;
+          margin: 0 10px 0 0;
+
+          .deliveryContact {
+            position: absolute;
+            clip: rect(0,0,0,0);
+            pointer-events: none;
+          }
+
+        }
+      }
+
+      #payment {
+        margin: 35px 0;
+
+        #paymentTitle {
+          color: $colorDesc;
+          font: 20px/1.1 Malina, sans-serif;
+          letter-spacing: -.5px;
+          margin: 15px 0 35px;
         }
 
-        #deliveryContact {
+        .paymentBtn {
+          cursor: pointer;
+          color: #fff;
+          font: 17px/1 Malina, sans-serif;
+          letter-spacing: -.25px;
+          padding: 14px 20px;
+          background-color: $colorDesc;
+          border-radius: 10px;
+          margin: 0 10px 0 0;
 
+          .paymentCheck {
+            position: absolute;
+            clip: rect(0,0,0,0);
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    .totalPrice {
+      .totalTitle {
+        #total {
+          font-size: 32px;
+          color: $colorSecondary;
+          font-family: Helvetica, Arial, sans-serif;
+          line-height: 42px;
         }
       }
     }

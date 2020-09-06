@@ -10,7 +10,8 @@ $(function (events, handler) {
 								const data = obj.response.data;
 								for (let i = 0; i < data.items.length; i++) {
 										const order = document.getElementById('order');
-										const total = document.getElementById('totalCost');
+										const totalCost = document.getElementById('totalCost');
+										const total = document.getElementById('total');
 										let size = '';
 
 										if (data.items[i].size === 'big') {
@@ -31,6 +32,7 @@ $(function (events, handler) {
                 </div>
                 <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
 															</div>`;
+										totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 								}
 						})
@@ -65,7 +67,8 @@ $(function (events, handler) {
 								order.innerHTML = '';
 
 								for (let i = 0; i < data.items.length; i++) {
-										const total = document.getElementById('totalCost');
+										const totalCost = document.getElementById('totalCost');
+										const total = document.getElementById('total');
 										let size = '';
 
 										if (data.items[i].size === 'big') {
@@ -86,6 +89,7 @@ $(function (events, handler) {
                 </div>
                 <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
 															</div>`;
+										totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 								}
 						})
@@ -115,7 +119,8 @@ $(function (events, handler) {
 								order.innerHTML = '';
 
 								for (let i = 0; i < data.items.length; i++) {
-										const total = document.getElementById('totalCost');
+										const totalCost = document.getElementById('totalCost');
+										const total = document.getElementById('total');
 										let size = '';
 
 										if (data.items[i].size === 'big') {
@@ -136,6 +141,7 @@ $(function (events, handler) {
                 </div>
                 <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
 															</div>`;
+										totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 								}
 						})

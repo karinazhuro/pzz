@@ -62,17 +62,17 @@ body {
       font-size: 21px;
       font-weight: 700;
       font-family: Helvetica, Arial, sans-serif; }
-  body #wrapper #totalPrice {
+  body #wrapper .totalPrice {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
     margin: 50px 0; }
-    body #wrapper #totalPrice #totalTitle {
+    body #wrapper .totalPrice .totalTitle {
       letter-spacing: -.5px;
       padding: 0 20px 0 0;
       color: #999;
       font: 20px/22px Malina, sans-serif; }
-    body #wrapper #totalPrice #totalCost {
+    body #wrapper .totalPrice #totalCost {
       font-size: 32px;
       color: #000;
       font-family: Helvetica, Arial, sans-serif;
@@ -141,10 +141,42 @@ body {
       padding: 20px;
       font: 17px/1.2 Helvetica, Arial, sans-serif;
       width: 669px;
-      margin: 0 0 20px 0; }
-    body #wrapper #fullDeliveryAddress #delivery #contactDelivery {
-      background-color: #16bc00;
-      color: #fff;
+      margin: 0 0 40px 0; }
+    body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn {
       cursor: pointer;
+      color: #fff;
       font: 17px/1 Malina, sans-serif;
-      letter-spacing: -.25px; }
+      letter-spacing: -.25px;
+      padding: 14px 20px;
+      background-color: #999;
+      border-radius: 10px;
+      margin: 0 10px 0 0; }
+      body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn .deliveryContact {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none; }
+  body #wrapper #fullDeliveryAddress #payment {
+    margin: 35px 0; }
+    body #wrapper #fullDeliveryAddress #payment #paymentTitle {
+      color: #999;
+      font: 20px/1.1 Malina, sans-serif;
+      letter-spacing: -.5px;
+      margin: 15px 0 35px; }
+    body #wrapper #fullDeliveryAddress #payment .paymentBtn {
+      cursor: pointer;
+      color: #fff;
+      font: 17px/1 Malina, sans-serif;
+      letter-spacing: -.25px;
+      padding: 14px 20px;
+      background-color: #999;
+      border-radius: 10px;
+      margin: 0 10px 0 0; }
+      body #wrapper #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none; }
+  body #wrapper .totalPrice .totalTitle #total {
+    font-size: 32px;
+    color: #000;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 42px; }

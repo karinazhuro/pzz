@@ -1,87 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Корзина</title>
-	<link rel="stylesheet" href="app/css/normalize.css">
-	<link rel="stylesheet" href="app/css/rules.css">
-	<link rel="stylesheet" href="app/css/basket.css">
+  <meta charset="UTF-8">
+  <title>Корзина</title>
+  <link rel="stylesheet" href="app/css/normalize.css">
+  <link rel="stylesheet" href="app/css/rules.css">
+  <link rel="stylesheet" href="app/css/basket.css">
 </head>
 <body>
 <div id="wrapper">
-	<h1 id="orderRegistration">Оформление заказа</h1>
-	<h2 id="ourOrder">Ваш заказ</h2>
-	<div id="order"></div>
-	<div id="totalPrice">
-		<h3 id="totalTitle">Итого: </h3>
-		<h3 id="totalCost"></h3>
+  <h1 id="orderRegistration">Оформление заказа</h1>
+  <h2 id="ourOrder">Ваш заказ</h2>
+  <div id="order"></div>
+  <div class="totalPrice">
+    <h3 class="totalTitle">Итого: </h3>
+    <h3 id="totalCost"></h3>
+  </div>
+  <h2 id="address">Адрес доставки</h2>
+  <form id="fullDeliveryAddress">
+    <ul id="privateData">
+      <li id="privateDataName"><label class="nameForTextarea" for="name">Ваше имя</label><br>
+        <input class="textarea" type="text" id="name">
+      </li>
+      <li id="privateDataPhone"><label class="nameForTextarea" for="phone">Ваш мобильный телефон</label><br>
+        <input class="textarea" type="tel" id="phoneCode" value="+375">
+        <input class="textarea" type="tel" id="phone">
+        <span id="example">Пример:<br>+375 297556655</span>
+      </li>
+      <li id="privateDataAddress">
+        <div class="privateDataWrapper" id="streetWrapper">
+          <label class="nameForTextarea" for="street">Улица</label><br>
+          <input class="textarea" type="text" id="street" list="datalistStreet">
+          <datalist id="datalistStreet"></datalist>
+        </div>
+        <div class="privateDataWrapper" id="houseWrapper">
+          <label class="nameForTextarea" for="house">Дом</label><br>
+          <input class="textarea" type="text" id="house" list="datalistHouse">
+          <datalist id="datalistHouse"></datalist>
+        </div>
+        <div class="privateDataWrapper" id="flatWrapper">
+          <label class="nameForTextarea privateDataHouse" for="flat">Квартира</label><br>
+          <input class="textarea privateDataHouseTextArea" type="text" id="flat">
+        </div>
+        <div class="privateDataWrapper" id="entranceWrapper">
+          <label class="nameForTextarea privateDataHouse" for="entrance">Подъезд</label><br>
+          <input class="textarea privateDataHouseTextArea" type="text" id="entrance">
+        </div>
+        <div class="privateDataWrapper" id="floorWrapper">
+          <label class="nameForTextarea privateDataHouse" for="floor">Этаж</label><br>
+          <input class="textarea privateDataHouseTextArea" type="text" id="floor"></div>
+        <div class="privateDataWrapper" id="intercomWrapper">
+          <label class="nameForTextarea privateDataHouse" for="intercom">Домофон</label><br>
+          <input class="textarea privateDataHouseTextArea" type="text" id="intercom">
+        </div>
+      </li>
+      <li id="privateDataComment">
+        <label class="nameForTextarea" for="comment">Комментарий к заказу</label><br>
+        <input class="textarea" type="text" id="comment">
+      </li>
+    </ul>
+    <div id="delivery">
+      <h3 id="deliveryTitle">Доставка без контакта с курьером</h3>
+      <p id="deliveryDesc">Бесконтактная доставка исключает необходимость контактировать с курьером
+        и доступна только при онлайн оплате заказа с доставкой.</p>
+      <label class="deliveryContactBtn" for="contactDelivery">
+        <input type="radio" class="deliveryContact" id="contactDelivery" name="no-contact-delivery" checked>Привезите
+        как обычно
+      </label>
+      <label class="deliveryContactBtn" for="noContactDelivery">
+        <input type="radio" class="deliveryContact" id="noContactDelivery" name="no-contact-delivery">Доставка без
+        контакта с курьером
+      </label>
+    </div>
+
+    <div id="payment">
+      <h3 id="paymentTitle">Способ оплаты</h3>
+      <label class="paymentBtn" for="cash">
+        <input class="paymentCheck" type="radio" id="cash" name="payment">Наличными
+      </label>
+      <label class="paymentBtn" for="charge">
+        <input class="paymentCheck" type="radio" id="charge" name="payment" checked>Картой
+      </label>
+      <label class="paymentBtn" for="online">
+        <input class="paymentCheck" type="radio" id="online" name="payment">Онлайн
+      </label>
+      <label class="paymentBtn" for="halva">
+        <input class="paymentCheck" type="radio" id="halva" name="payment">Халва
+      </label>
+    </div>
+  </form>
+
+<!--  <button id="saveOrder">Сохранить данные</button>-->
+	<div class="totalPrice">
+		<h3 class="totalTitle">Итого: </h3>
+		<h3 id="total"></h3>
 	</div>
-	<h2 id="address">Адрес доставки</h2>
-	<form id="fullDeliveryAddress">
-		<ul id="privateData">
-			<li id="privateDataName"><label class="nameForTextarea" for="name">Ваше имя</label><br>
-				<input class="textarea" type="text" id="name">
-			</li>
-			<li id="privateDataPhone"><label class="nameForTextarea" for="phone">Ваш мобильный телефон</label><br>
-				<input class="textarea" type="tel" id="phoneCode" value="+375">
-				<input class="textarea" type="tel" id="phone">
-				<span id="example">Пример:<br>+375 297556655</span>
-			</li>
-			<li id="privateDataAddress">
-				<div class="privateDataWrapper" id="streetWrapper">
-					<label class="nameForTextarea" for="street">Улица</label><br>
-					<input class="textarea" type="text" id="street" list="datalistStreet">
-					<datalist id="datalistStreet"></datalist>
-				</div>
-				<div class="privateDataWrapper" id="houseWrapper">
-					<label class="nameForTextarea" for="house">Дом</label><br>
-					<input class="textarea" type="text" id="house" list="datalistHouse">
-					<datalist id="datalistHouse"></datalist>
-				</div>
-				<div class="privateDataWrapper" id="flatWrapper">
-					<label class="nameForTextarea privateDataHouse" for="flat">Квартира</label><br>
-					<input class="textarea privateDataHouseTextArea" type="text" id="flat">
-				</div>
-				<div class="privateDataWrapper" id="entranceWrapper">
-					<label class="nameForTextarea privateDataHouse" for="entrance">Подъезд</label><br>
-					<input class="textarea privateDataHouseTextArea" type="text" id="entrance">
-				</div>
-				<div class="privateDataWrapper" id="floorWrapper">
-					<label class="nameForTextarea privateDataHouse" for="floor">Этаж</label><br>
-					<input class="textarea privateDataHouseTextArea" type="text" id="floor"></div>
-				<div class="privateDataWrapper" id="intercomWrapper">
-					<label class="nameForTextarea privateDataHouse" for="intercom">Домофон</label><br>
-					<input class="textarea privateDataHouseTextArea" type="text" id="intercom">
-				</div>
-			</li>
-			<li id="privateDataComment">
-				<label class="nameForTextarea" for="comment">Комментарий к заказу</label><br>
-				<input class="textarea" type="text" id="comment">
-			</li>
-		</ul>
-		<div id="delivery">
-			<h3 id="deliveryTitle">Доставка без контакта с курьером</h3>
-			<p id="deliveryDesc">Бесконтактная доставка исключает необходимость контактировать с курьером
-				и доступна только при онлайн оплате заказа с доставкой.</p>
-			<input type="radio" class="deliveryContact" id="contactDelivery" name="no-contact-delivery" checked>Привезите как
-			обычно
-			<input type="radio" class="deliveryContact" id="noContactDelivery" name="no-contact-delivery">Доставка без
-			контакта с
-			курьером
-		</div>
 
-		<div id="payment">
-			<h3 id="paymentTitle">Способ оплаты</h3>
-			<input type="radio" id="cash" name="payment">Наличными
-			<input type="radio" id="charge" name="payment" checked>Картой
-			<input type="radio" id="online" name="payment">Онлайн
-			<input type="radio" id="halva" name="payment">Халва
-		</div>
-	</form>
-
-	<button id="saveOrder">Сохранить данные</button>
-
-	<button id="sendOrder">Оформить заказ</button>
+  <button id="sendOrder">Оформить заказ</button>
 </div>
 
 <script src="app/js/common.js"></script>
