@@ -18,12 +18,12 @@ body #wrapper header #cart {
   color: #ff5200;
   margin: 5px 0;
 }
-body #wrapper header #open-modal {
+body #wrapper header #openModal {
   color: #277dff;
   text-decoration: none;
   margin: 5px 0;
 }
-body #wrapper header #open-modal:hover {
+body #wrapper header #openModal:hover {
   color: #16bc00;
 }
 body #wrapper header .modal {

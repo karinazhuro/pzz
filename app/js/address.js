@@ -12,7 +12,7 @@
 // }(window.Element.prototype);
 
 document.addEventListener('DOMContentLoaded', function () {
-		const modalButtons = document.getElementById('open-modal');
+		const modalButtons = document.getElementById('openModalLink');
 		const overlay = document.querySelector('.overlay-modal');
 		const closeButtons = document.querySelectorAll('.modal-close');
 

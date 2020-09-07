@@ -149,13 +149,13 @@ body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateData
 body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
   width: 71px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #streetWrapper {
+body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
   margin: 0 10px 0 0;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #streetWrapper #street {
+body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #street {
   width: 356px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #houseWrapper #house {
+body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #house {
   width: 91px;
 }
 body #wrapper #fullDeliveryAddress #privateData #privateDataComment #comment {

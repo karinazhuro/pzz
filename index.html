@@ -10,27 +10,35 @@
 <body>
 <div id="wrapper">
 	<header id="header">
-		<a id="cart" href="basket.html">Корзина</a>
 
-		<a href="#" id="open-modal" data-modal="1">Адрес доставки</a>
-		<div class="modal" data-modal="1">
-			<div class="modal__cross modal-close">
-				<p id="close">Закрыть</p>
+		<p id="cart"><a id="cartLink" href="basket.html">корзина</a></p>
+		<div id="windowForOrder">
+			<p id="openModal"><a id="openModalLink" href="#" data-modal="1">Адрес доставки</a></p>
+			<div class="modal" data-modal="1">
+				<div class="modalClose">
+					<p id="close">Закрыть</p>
+					<img src="app/img/close.svg">
+				</div>
+				<form role="form" id="address">
+					<p id="title">Пожалуйста, укажите адрес, куда доставить пиццу:</p>
+					<div id="addressWrapper">
+						<div class="addressWrapper" id="addressWrapperStreet">
+							<label class="addressText" for="street">Улица </label>
+							<input class="addressTextEnter" type="text" id="street" list="datalistStreet">
+							<datalist id="datalistStreet"></datalist>
+						</div>
+						<div class="addressWrapper" id="addressWrapperHouse">
+							<label class="addressText" for="house">Дом</label>
+							<input class="addressTextEnter" type="text" id="house" list="datalistHouse">
+							<datalist id="datalistHouse"></datalist>
+						</div>
+					</div>
+					<button id="sendAddress">Указать адрес</button>
+				</form>
 			</div>
-			<form role="form" id="address">
-				<p>Пожалуйста, укажите адрес, куда доставить пиццу:</p>
-				<div id="streetWrapper">
-					<label for="street">Улица</label><input type="text" id="street" list="datalistStreet">
-					<datalist id="datalistStreet"></datalist>
-				</div>
-				<div id="houseWrapper">
-					<label for="house">Дом</label><input type="text" id="house" list="datalistHouse">
-					<datalist id="datalistHouse"></datalist>
-				</div>
-				<button id="sendAddress">Указать адрес</button>
-			</form>
+			<div class="overlay overlay-modal"></div>
 		</div>
-		<div class="overlay overlay-modal"></div>
+
 	</header>
 	<div id="content"></div>
 </div>

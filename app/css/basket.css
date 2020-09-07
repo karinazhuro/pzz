@@ -81,102 +81,128 @@ body {
     font: 34px/1.1 Malina, sans-serif;
     letter-spacing: -1px;
     margin: 30px 0; }
-  body #wrapper #fullDeliveryAddress #privateData {
-    list-style: none; }
-    body #wrapper #fullDeliveryAddress #privateData > li {
-      margin: 20px 0; }
-    body #wrapper #fullDeliveryAddress #privateData .nameForTextarea {
-      font-size: 17px;
-      font: 17px/1.2 Helvetica, Arial, sans-serif;
-      color: #000;
-      margin: 2px 0; }
-    body #wrapper #fullDeliveryAddress #privateData .textarea {
-      border: 1px solid #c3c3c3;
-      font-size: 21px;
-      padding: 4px 6px 4px 12px;
-      margin: 2px 0;
-      color: #000;
-      font-family: Helvetica, Arial, sans-serif; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataName #name {
-      width: 336px; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
-      width: 75px;
-      float: left;
-      margin: 2px 5px 0 0; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phone {
-      width: 256px;
-      float: left;
-      margin: 2px 12px 2px 0; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #example {
-      color: #999;
-      font-size: 13px;
-      line-height: 16px;
-      padding: 2px 0 0 0; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataAddress {
-      margin: 0 0 20px 0;
-      display: flex; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress > .privateDataWrapper:not(:first-child) {
-        margin: 0 10px; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
-        color: #999; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
-        width: 71px; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #streetWrapper {
+  body #wrapper #fullDeliveryAddress {
+    margin: 10px 0; }
+    body #wrapper #fullDeliveryAddress #privateData {
+      list-style: none; }
+      body #wrapper #fullDeliveryAddress #privateData > li {
+        margin: 20px 0; }
+      body #wrapper #fullDeliveryAddress #privateData .nameForTextarea {
+        font-size: 17px;
+        font: 17px/1.2 Helvetica, Arial, sans-serif;
+        color: #000;
+        margin: 2px 0; }
+      body #wrapper #fullDeliveryAddress #privateData .textarea {
+        border: 1px solid #c3c3c3;
+        font-size: 21px;
+        padding: 4px 6px 4px 12px;
+        margin: 2px 0;
+        color: #000;
+        font-family: Helvetica, Arial, sans-serif; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataName #name {
+        width: 336px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
+        width: 75px;
+        float: left;
+        margin: 2px 5px 0 0; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phone {
+        width: 256px;
+        float: left;
+        margin: 2px 12px 2px 0; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #example {
+        color: #999;
+        font-size: 13px;
+        line-height: 16px;
+        padding: 2px 0 0 0; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress {
+        margin: 0 0 20px 0;
+        display: flex; }
+        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress > .privateDataWrapper:not(:first-child) {
+          margin: 0 10px; }
+        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
+          color: #999; }
+        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
+          width: 71px; }
+        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
+          margin: 0 10px 0 0; }
+          body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #street {
+            width: 356px; }
+        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #house {
+          width: 91px; }
+      body #wrapper #fullDeliveryAddress #privateData #privateDataComment #comment {
+        width: 100%; }
+    body #wrapper #fullDeliveryAddress #delivery {
+      margin: 40px 0 0 0; }
+      body #wrapper #fullDeliveryAddress #delivery #deliveryTitle {
+        color: #999;
+        font: 20px/1.1 Malina, sans-serif;
+        letter-spacing: -.5px;
+        margin: 0 0 20px 0; }
+      body #wrapper #fullDeliveryAddress #delivery #deliveryDesc {
+        background-color: #F6F6F6;
+        padding: 20px;
+        font: 17px/1.2 Helvetica, Arial, sans-serif;
+        width: 669px;
+        margin: 0 0 40px 0; }
+      body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn {
+        cursor: pointer;
+        color: #fff;
+        font: 17px/1 Malina, sans-serif;
+        letter-spacing: -.25px;
+        padding: 14px 20px;
+        background-color: #999;
+        border-radius: 10px;
         margin: 0 10px 0 0; }
-        body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #streetWrapper #street {
-          width: 356px; }
-      body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #houseWrapper #house {
-        width: 91px; }
-    body #wrapper #fullDeliveryAddress #privateData #privateDataComment #comment {
-      width: 100%; }
-  body #wrapper #fullDeliveryAddress #delivery {
-    margin: 40px 0 0 0; }
-    body #wrapper #fullDeliveryAddress #delivery #deliveryTitle {
+        body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn .deliveryContact {
+          position: absolute;
+          clip: rect(0, 0, 0, 0);
+          pointer-events: none; }
+    body #wrapper #fullDeliveryAddress #payment {
+      margin: 35px 0; }
+      body #wrapper #fullDeliveryAddress #payment #paymentTitle {
+        color: #999;
+        font: 20px/1.1 Malina, sans-serif;
+        letter-spacing: -.5px;
+        margin: 15px 0 35px; }
+      body #wrapper #fullDeliveryAddress #payment .paymentBtn {
+        cursor: pointer;
+        color: #fff;
+        font: 17px/1 Malina, sans-serif;
+        letter-spacing: -.25px;
+        padding: 14px 20px;
+        background-color: #999;
+        border-radius: 10px;
+        margin: 0 10px 0 0; }
+        body #wrapper #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
+          position: absolute;
+          clip: rect(0, 0, 0, 0);
+          pointer-events: none; }
+    body #wrapper #fullDeliveryAddress .totalPrice {
+      margin: 50px 0 0; }
+      body #wrapper #fullDeliveryAddress .totalPrice #total {
+        font-size: 32px;
+        color: #000;
+        font-family: Helvetica, Arial, sans-serif;
+        line-height: 42px; }
+    body #wrapper #fullDeliveryAddress #currency {
       color: #999;
-      font: 20px/1.1 Malina, sans-serif;
-      letter-spacing: -.5px;
-      margin: 0 0 20px 0; }
-    body #wrapper #fullDeliveryAddress #delivery #deliveryDesc {
-      background-color: #F6F6F6;
-      padding: 20px;
-      font: 17px/1.2 Helvetica, Arial, sans-serif;
-      width: 669px;
-      margin: 0 0 40px 0; }
-    body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn {
+      font-size: 15px;
+      line-height: 1.2;
+      font-family: Helvetica, Arial, sans-serif;
+      padding-right: 2.6em;
+      text-align: end; }
+  body #wrapper #btnSendOrder {
+    text-align: end;
+    margin: 30px 0; }
+    body #wrapper #btnSendOrder #sendOrder {
       cursor: pointer;
       color: #fff;
-      font: 17px/1 Malina, sans-serif;
-      letter-spacing: -.25px;
-      padding: 14px 20px;
-      background-color: #999;
+      font: 32px/1 Malina, sans-serif;
+      letter-spacing: -1px;
+      background-color: #ff5200;
       border-radius: 10px;
-      margin: 0 10px 0 0; }
-      body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn .deliveryContact {
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        pointer-events: none; }
-  body #wrapper #fullDeliveryAddress #payment {
-    margin: 35px 0; }
-    body #wrapper #fullDeliveryAddress #payment #paymentTitle {
-      color: #999;
-      font: 20px/1.1 Malina, sans-serif;
-      letter-spacing: -.5px;
-      margin: 15px 0 35px; }
-    body #wrapper #fullDeliveryAddress #payment .paymentBtn {
-      cursor: pointer;
-      color: #fff;
-      font: 17px/1 Malina, sans-serif;
-      letter-spacing: -.25px;
       padding: 14px 20px;
-      background-color: #999;
-      border-radius: 10px;
-      margin: 0 10px 0 0; }
-      body #wrapper #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        pointer-events: none; }
-  body #wrapper .totalPrice .totalTitle #total {
-    font-size: 32px;
-    color: #000;
-    font-family: Helvetica, Arial, sans-serif;
-    line-height: 42px; }
+      border: none;
+      min-width: 357px; }
+      body #wrapper #btnSendOrder #sendOrder:hover {
+        background-color: #16bc00; }

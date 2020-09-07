@@ -10,18 +10,22 @@ body {
     text-align: end; }
     body #wrapper header #cart {
       font-family: Malina, sans-serif;
-      font-size: 20px;
-      text-decoration: none;
+      font-size: 32px;
       letter-spacing: -.5px;
-      color: #ff5200;
       margin: 5px 0; }
-    body #wrapper header #open-modal {
-      color: #277dff;
-      text-decoration: none;
+      body #wrapper header #cart #cartLink {
+        text-decoration: none;
+        color: #ff5200; }
+        body #wrapper header #cart #cartLink:hover {
+          color: #16bc00; }
+    body #wrapper header #windowForOrder #openModal {
       margin: 5px 0; }
-      body #wrapper header #open-modal:hover {
-        color: #16bc00; }
-    body #wrapper header .modal {
+      body #wrapper header #windowForOrder #openModal #openModalLink {
+        color: #277dff;
+        text-decoration: none; }
+        body #wrapper header #windowForOrder #openModal #openModalLink:hover {
+          color: #16bc00; }
+    body #wrapper header #windowForOrder .modal {
       opacity: 0;
       visibility: hidden;
       width: 100%;
@@ -37,13 +41,26 @@ body {
       border-radius: 3px;
       background-color: #fff;
       transition: 0.3s all; }
-      body #wrapper header .modal.active {
+      body #wrapper header #windowForOrder .modal.active {
         opacity: 1;
         visibility: visible; }
-      body #wrapper header .modal .modal__cross {
+      body #wrapper header #windowForOrder .modal .modalClose {
         cursor: pointer;
-        background: url("../img/close.svg") 100% 0 no-repeat; }
-    body #wrapper header .overlay {
+        display: flex;
+        justify-content: flex-end;
+        color: #ff5200;
+        font: 13px/1.2 Helvetica, Arial, sans-serif; }
+        body #wrapper header #windowForOrder .modal .modalClose #close {
+          margin: 0 5px; }
+      body #wrapper header #windowForOrder .modal #address #title {
+        text-align: start;
+        margin: 10px 0; }
+      body #wrapper header #windowForOrder .modal #address #addressWrapper {
+        display: flex; }
+        body #wrapper header #windowForOrder .modal #address #addressWrapper .addressWrapper .addressText {
+          font: 17px/1.2 Helvetica, Arial, sans-serif;
+          display: flex; }
+    body #wrapper header #windowForOrder .overlay {
       opacity: 0;
       visibility: hidden;
       position: fixed;
@@ -54,7 +71,7 @@ body {
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 20;
       transition: .3s all; }
-      body #wrapper header .overlay.active {
+      body #wrapper header #windowForOrder .overlay.active {
         opacity: 1;
         visibility: visible; }
   body #wrapper #content {
