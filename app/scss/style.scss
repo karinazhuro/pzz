@@ -10,8 +10,7 @@ body {
       text-align: end;
 
       #cart {
-        font-family: Malina, sans-serif;
-        font-size: 32px;
+        font: 32px Malina, sans-serif;
         letter-spacing: -.5px;
         margin: 5px 0;
 
@@ -22,102 +21,6 @@ body {
           &:hover {
             color: $hover;
           }
-        }
-      }
-
-      #windowForOrder {
-        #openModal {
-          margin: 5px 0;
-
-          #openModalLink {
-            color: $primarySecond;
-            text-decoration: none;
-
-            &:hover {
-              color: $hover;
-            }
-          }
-        }
-
-        .modal {
-          opacity: 0;
-          visibility: hidden;
-          width: 100%;
-          max-width: 500px;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 30;
-          box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2);
-          text-align: center;
-          padding: 30px;
-          border-radius: 3px;
-          background-color: $primaryLight;
-          transition: 0.3s all;
-
-          &.active {
-            opacity: 1;
-            visibility: visible;
-          }
-
-          .modalClose {
-            cursor: pointer;
-            display: flex;
-            justify-content: flex-end;
-            color: $primaryFirst;
-            font: 13px/1.2 Helvetica, Arial, sans-serif;
-
-            #close {
-              margin: 0 5px;
-
-            }
-          }
-
-          #address {
-            #title {
-              text-align: start;
-              margin: 10px 0;
-            }
-
-            #addressWrapper {
-              display: flex;
-
-              .addressWrapper {
-
-                .addressText {
-                  font: 17px/1.2 Helvetica, Arial, sans-serif;
-                  display: flex;
-
-                }
-
-                .addressTextEnter {
-
-                }
-              }
-
-            }
-          }
-        }
-
-        .overlay {
-          opacity: 0;
-          visibility: hidden;
-
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 20;
-          transition: .3s all;
-
-          &.active {
-            opacity: 1;
-            visibility: visible;
-          }
-
         }
       }
     }
@@ -134,8 +37,7 @@ body {
         margin: 20px;
 
         #title {
-          font-family: Malina, sans-serif;
-          font-size: 24px;
+          font: 24px Malina, sans-serif;
           color: $primaryFirst;
           margin: 10px 0;
 
@@ -149,8 +51,7 @@ body {
           margin: 10px 0;
 
           .pizza {
-            font-family: Helvetica, Arial, sans-serif;
-            font-size: 15px;
+            font: 15px Helvetica, Arial, sans-serif;
             color: $secondarySecond;
           }
 
@@ -176,16 +77,24 @@ body {
             }
           }
 
+          #changeCount {
+            display: none;
+            justify-content: center;
+            position: relative;
+            top: -35px;
+            left: 20px;
+
+            @include changeCountBtn;
+          }
+
           .weight {
-            font-family: Helvetica, Arial, sans-serif;
-            font-size: 12px;
+            font: 12px Helvetica, Arial, sans-serif;
             color: $secondarySecond;
           }
         }
 
         .anonce {
-          font-family: Helvetica, Arial, sans-serif;
-          font-size: 15px;
+          font: 15px Helvetica, Arial, sans-serif;
           color: $secondarySecond;
         }
       }

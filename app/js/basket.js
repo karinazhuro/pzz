@@ -1,105 +1,74 @@
 'use strict';
 
 $(function (events, handler) {
-		async function basket() {
+		const order = document.getElementById('order');
+		const totalCost = document.getElementById('totalCost');
+		const total = document.getElementById('total');
+
+		async function getBasket() {
 				const basketUrl = 'https://pzz.by/api/v1/basket';
+
 				await fetch(basketUrl)
 				.then(function (response) {
 						response.json()
 						.then(function (obj) {
 								const data = obj.response.data;
-								for (let i = 0; i < data.items.length; i++) {
-										const order = document.getElementById('order');
-										const totalCost = document.getElementById('totalCost');
-										const total = document.getElementById('total');
-										let size = '';
-
-										if (data.items[i].size === 'big') {
-												size = 'Большая';
-										} else if (data.items[i].size === 'medium') {
-												size = 'Стандартная';
-										}
-
-										order.innerHTML += `<div id="orderPizza">
-															<div id="title">
-                 <h3 id="orderTitle">${data.items[i].title}</h3>
-                	<p id="orderSize">${size}</p>
-               </div>
-                <div id="changeCount">
-                		<button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-																		<div id="orderCounter">1</div>                	
-																		<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
-                </div>
-                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
-															</div>`;
-										totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-								}
+								showBasket(data)
 						})
 				})
 		}
 
-		basket();
+		getBasket();
+
+		function showBasket(data) {
+				for (let i = 0; i < data.items.length; i++) {
+						let size = '';
+
+						if (data.items[i].size === 'big') {
+								size = 'Большая';
+						} else if (data.items[i].size === 'medium') {
+								size = 'Стандартная';
+						}
+
+						order.innerHTML += `<div id="orderPizza">
+								<div id="title">
+          <h3 id="orderTitle">${data.items[i].title}</h3>
+          <p id="orderSize">${size}</p>
+        </div>
+        <div id="changeCount">
+          <button id="orderMinus" class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
+										<div id="orderCounter">1</div>                	
+										<button id="orderPlus" class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
+        </div>
+        <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
+						</div>`;
+
+						totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
+						total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
+				}
+		}
 
 		$(document).on('click', ".orderPlus", addToCart);
 		$(document).on('click', '.orderMinus', removeToCart);
+		$(document).on('click', '#saveOrder', saveOrder);
+		$(document).on('click', '#sendOrder', sendOrder);
 
 		async function addToCart(e) {
-				const addToCartUrl = 'https://pzz.by/api/v1/basket/add-item';
 				const id = e.target.dataset.id;
 				const size = e.target.dataset.size;
-				const formData = new FormData();
 
-				formData.append('type', 'pizza');
-				formData.append('id', id);
-				formData.append('size', size);
-				formData.append('dough', 'thin');
-
-				await fetch(addToCartUrl, {
-						method: 'POST',
-						body: formData,
-				})
-				.then(function (response) {
-						response.json()
-						.then(function (obj) {
-								const order = document.getElementById('order');
-								const data = obj.response.data;
-								order.innerHTML = '';
-
-								for (let i = 0; i < data.items.length; i++) {
-										const totalCost = document.getElementById('totalCost');
-										const total = document.getElementById('total');
-										let size = '';
-
-										if (data.items[i].size === 'big') {
-												size = 'Большая';
-										} else if (data.items[i].size === 'medium') {
-												size = 'Стандартная';
-										}
-
-										order.innerHTML += `<div id="orderPizza">
-															<div id="title">
-                 <h3 id="orderTitle">${data.items[i].title}</h3>
-                	<p id="orderSize">${size}</p>
-               </div>
-                <div id="changeCount">
-                		<button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-																		<div id="orderCounter">1</div>                	
-																		<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
-                </div>
-                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
-															</div>`;
-										totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-								}
-						})
-				})
+				await changeToCart(addToCartUrl, id, size);
 		}
 
 		async function removeToCart(e) {
 				const removeToCartUrl = 'https://pzz.by/api/v1/basket/remove-item';
 				const id = e.target.dataset.id;
 				const size = e.target.dataset.size;
+
+				await changeToCart(removeToCartUrl, id, size)
+		}
+
+		async function changeToCart(url, id, size) {
 				const formData = new FormData();
 
 				formData.append('type', 'pizza');
@@ -107,48 +76,23 @@ $(function (events, handler) {
 				formData.append('size', size);
 				formData.append('dough', 'thin');
 
-				await fetch(removeToCartUrl, {
+				await fetch(url, {
 						method: 'POST',
 						body: formData,
 				})
 				.then(function (response) {
 						response.json()
 						.then(function (obj) {
-								const order = document.getElementById('order');
 								const data = obj.response.data;
+
 								order.innerHTML = '';
+								totalCost.innerHTML = '';
+								total.innerHTML = '';
 
-								for (let i = 0; i < data.items.length; i++) {
-										const totalCost = document.getElementById('totalCost');
-										const total = document.getElementById('total');
-										let size = '';
-
-										if (data.items[i].size === 'big') {
-												size = 'Большая';
-										} else if (data.items[i].size === 'medium') {
-												size = 'Стандартная';
-										}
-
-										order.innerHTML += `<div id="orderPizza">
-															<div id="title">
-                 <h3 id="orderTitle">${data.items[i].title}</h3>
-                	<p id="orderSize">${size}</p>
-               </div>
-                <div id="changeCount">
-                		<button class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-																		<div id="orderCounter">1</div>                	
-																		<button class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
-                </div>
-                <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
-															</div>`;
-										totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-										total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-								}
+								showBasket(data)
 						})
 				})
 		}
-
-		$(document).on('click', '#saveOrder', saveOrder);
 
 		async function saveOrder(e) {
 				e.preventDefault();
@@ -179,8 +123,6 @@ $(function (events, handler) {
 				});
 		}
 
-		$(document).on('click', '#sendOrder', sendOrder);
-
 		async function sendOrder() {
 				const sendOrderUrl = `https://pzz.by/api/v1/basket/save`;
 
@@ -188,4 +130,4 @@ $(function (events, handler) {
 						method: 'POST',
 				});
 		}
-});
+})

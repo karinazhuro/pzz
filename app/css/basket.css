@@ -34,7 +34,7 @@ body {
         color: #fff;
         width: 30px;
         height: 30px;
-        font: 30px/1 Malina,sans-serif;
+        font: 30px/1 Malina, sans-serif;
         letter-spacing: -1px;
         border: none;
         border-radius: 50%;
@@ -52,7 +52,7 @@ body {
         color: #fff;
         width: 30px;
         height: 30px;
-        font: 30px/1 Malina,sans-serif;
+        font: 30px/1 Malina, sans-serif;
         letter-spacing: -1px;
         border: none;
         border-radius: 50%;
@@ -94,11 +94,10 @@ body {
         margin: 2px 0; }
       body #wrapper #fullDeliveryAddress #privateData .textarea {
         border: 1px solid #c3c3c3;
-        font-size: 21px;
         padding: 4px 6px 4px 12px;
         margin: 2px 0;
         color: #000;
-        font-family: Helvetica, Arial, sans-serif; }
+        font: 21px Helvetica, Arial, sans-serif; }
       body #wrapper #fullDeliveryAddress #privateData #privateDataName #name {
         width: 336px; }
       body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
@@ -186,9 +185,8 @@ body {
         line-height: 42px; }
     body #wrapper #fullDeliveryAddress #currency {
       color: #999;
-      font-size: 15px;
       line-height: 1.2;
-      font-family: Helvetica, Arial, sans-serif;
+      font: 15px Helvetica, Arial, sans-serif;
       padding-right: 2.6em;
       text-align: end; }
   body #wrapper #btnSendOrder {

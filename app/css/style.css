@@ -9,8 +9,7 @@ body {
     flex-direction: column;
     text-align: end; }
     body #wrapper header #cart {
-      font-family: Malina, sans-serif;
-      font-size: 32px;
+      font: 32px Malina, sans-serif;
       letter-spacing: -.5px;
       margin: 5px 0; }
       body #wrapper header #cart #cartLink {
@@ -18,62 +17,6 @@ body {
         color: #ff5200; }
         body #wrapper header #cart #cartLink:hover {
           color: #16bc00; }
-    body #wrapper header #windowForOrder #openModal {
-      margin: 5px 0; }
-      body #wrapper header #windowForOrder #openModal #openModalLink {
-        color: #277dff;
-        text-decoration: none; }
-        body #wrapper header #windowForOrder #openModal #openModalLink:hover {
-          color: #16bc00; }
-    body #wrapper header #windowForOrder .modal {
-      opacity: 0;
-      visibility: hidden;
-      width: 100%;
-      max-width: 500px;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 30;
-      box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      padding: 30px;
-      border-radius: 3px;
-      background-color: #fff;
-      transition: 0.3s all; }
-      body #wrapper header #windowForOrder .modal.active {
-        opacity: 1;
-        visibility: visible; }
-      body #wrapper header #windowForOrder .modal .modalClose {
-        cursor: pointer;
-        display: flex;
-        justify-content: flex-end;
-        color: #ff5200;
-        font: 13px/1.2 Helvetica, Arial, sans-serif; }
-        body #wrapper header #windowForOrder .modal .modalClose #close {
-          margin: 0 5px; }
-      body #wrapper header #windowForOrder .modal #address #title {
-        text-align: start;
-        margin: 10px 0; }
-      body #wrapper header #windowForOrder .modal #address #addressWrapper {
-        display: flex; }
-        body #wrapper header #windowForOrder .modal #address #addressWrapper .addressWrapper .addressText {
-          font: 17px/1.2 Helvetica, Arial, sans-serif;
-          display: flex; }
-    body #wrapper header #windowForOrder .overlay {
-      opacity: 0;
-      visibility: hidden;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 20;
-      transition: .3s all; }
-      body #wrapper header #windowForOrder .overlay.active {
-        opacity: 1;
-        visibility: visible; }
   body #wrapper #content {
     display: flex;
     flex-wrap: wrap;
@@ -84,8 +27,7 @@ body {
       width: 300px;
       margin: 20px; }
       body #wrapper #content .pizzas #title {
-        font-family: Malina, sans-serif;
-        font-size: 24px;
+        font: 24px Malina, sans-serif;
         color: #ff5200;
         margin: 10px 0; }
         body #wrapper #content .pizzas #title:hover {
@@ -94,8 +36,7 @@ body {
       body #wrapper #content .pizzas .size {
         margin: 10px 0; }
         body #wrapper #content .pizzas .size .pizza {
-          font-family: Helvetica, Arial, sans-serif;
-          font-size: 15px;
+          font: 15px Helvetica, Arial, sans-serif;
           color: #999; }
         body #wrapper #content .pizzas .size .price {
           font: 32px/1.1 Malina, sans-serif;
@@ -113,11 +54,44 @@ body {
               background: #16bc00;
               color: #fff;
               cursor: pointer; }
+        body #wrapper #content .pizzas .size #changeCount {
+          display: none;
+          justify-content: center;
+          position: relative;
+          top: -35px;
+          left: 20px; }
+          body #wrapper #content .pizzas .size #changeCount .orderMinus {
+            cursor: pointer;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            font: 30px/1 Malina, sans-serif;
+            letter-spacing: -1px;
+            border: none;
+            border-radius: 50%;
+            background-color: #277dff;
+            margin: 0 10px; }
+          body #wrapper #content .pizzas .size #changeCount #orderCounter {
+            color: #000;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 30px;
+            padding: 0 2px;
+            font-family: Helvetica, Arial, sans-serif; }
+          body #wrapper #content .pizzas .size #changeCount .orderPlus {
+            cursor: pointer;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            font: 30px/1 Malina, sans-serif;
+            letter-spacing: -1px;
+            border: none;
+            border-radius: 50%;
+            background-color: #277dff;
+            margin: 0 10px; }
         body #wrapper #content .pizzas .size .weight {
-          font-family: Helvetica, Arial, sans-serif;
-          font-size: 12px;
+          font: 12px Helvetica, Arial, sans-serif;
           color: #999; }
       body #wrapper #content .pizzas .anonce {
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 15px;
+        font: 15px Helvetica, Arial, sans-serif;
         color: #999; }

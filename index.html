@@ -10,35 +10,7 @@
 <body>
 <div id="wrapper">
 	<header id="header">
-
 		<p id="cart"><a id="cartLink" href="basket.html">корзина</a></p>
-		<div id="windowForOrder">
-			<p id="openModal"><a id="openModalLink" href="#" data-modal="1">Адрес доставки</a></p>
-			<div class="modal" data-modal="1">
-				<div class="modalClose">
-					<p id="close">Закрыть</p>
-					<img src="app/img/close.svg">
-				</div>
-				<form role="form" id="address">
-					<p id="title">Пожалуйста, укажите адрес, куда доставить пиццу:</p>
-					<div id="addressWrapper">
-						<div class="addressWrapper" id="addressWrapperStreet">
-							<label class="addressText" for="street">Улица </label>
-							<input class="addressTextEnter" type="text" id="street" list="datalistStreet">
-							<datalist id="datalistStreet"></datalist>
-						</div>
-						<div class="addressWrapper" id="addressWrapperHouse">
-							<label class="addressText" for="house">Дом</label>
-							<input class="addressTextEnter" type="text" id="house" list="datalistHouse">
-							<datalist id="datalistHouse"></datalist>
-						</div>
-					</div>
-					<button id="sendAddress">Указать адрес</button>
-				</form>
-			</div>
-			<div class="overlay overlay-modal"></div>
-		</div>
-
 	</header>
 	<div id="content"></div>
 </div>

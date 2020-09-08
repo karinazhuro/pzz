@@ -44,22 +44,7 @@ body {
         #changeCount {
           display: flex;
 
-          .orderMinus {
-            @include buttonCount;
-          }
-
-          #orderCounter {
-            color: $secondaryFirst;
-            font-size: 21px;
-            font-weight: 700;
-            line-height: 30px;
-            padding: 0 2px;
-            font-family: Helvetica, Arial, sans-serif;
-          }
-
-          .orderPlus {
-            @include buttonCount;
-          }
+          @include changeCountBtn;
         }
 
         #orderPrice {
@@ -114,11 +99,10 @@ body {
 
         .textarea {
           border: 1px solid $inputBorder;
-          font-size: 21px;
           padding: 4px 6px 4px 12px;
           margin: 2px 0;
           color: $secondaryFirst;
-          font-family: Helvetica, Arial, sans-serif;
+          font: 21px Helvetica, Arial, sans-serif;
         }
 
         #privateDataName {
@@ -264,9 +248,8 @@ body {
 
       #currency {
         color: $secondarySecond;
-        font-size: 15px;
         line-height: 1.2;
-        font-family: Helvetica, Arial, sans-serif;
+        font: 15px Helvetica, Arial, sans-serif;
         padding-right: 2.6em;
         text-align: end;
       }
