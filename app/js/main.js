@@ -75,12 +75,35 @@ $(function () {
 						body: formData,
 				})
 				.then(function (response) {
-						return response.json();
+						response.json()
+						.then(function (obj) {
+								const dataAddToCart = obj.response.data;
+						})
 				})
 		}
 
-		function checkBasket() {
+		getBasket();
 
+		async function getBasket() {
+				await fetch(basketUrl)
+				.then(function (response) {
+						response.json()
+						.then(function (obj) {
+								const dataBasket = obj.response.data;
+						})
+				})
 		}
-		checkBasket()
-});
+
+		// async function checkBasket(dataAddToCart, dataBasket) {
+		// 		// console.log(dataBasket.items)
+		//
+		// 		for (let i = 0; i < dataAddToCart.length; i++) {
+		// 				for (let i = 0; i < dataBasket.length; i++) {
+		// 						if (dataAddToCart.items[i].id === dataBasket.items[i].id) {
+		// 								console.log(true);
+		// 						}
+		// 				}
+		// 		}
+		// }
+
+})

@@ -5,20 +5,18 @@ $(function (events, handler) {
 		const totalCost = document.getElementById('totalCost');
 		const total = document.getElementById('total');
 
-		async function getBasket() {
-				const basketUrl = 'https://pzz.by/api/v1/basket';
+		// async function getBasket() {
+		// 		await fetch(basketUrl)
+		// 		.then(function (response) {
+		// 				response.json()
+		// 				.then(function (obj) {
+		// 						const data = obj.response.data;
+		// 						showBasket(data)
+		// 				})
+		// 		})
+		// }
 
-				await fetch(basketUrl)
-				.then(function (response) {
-						response.json()
-						.then(function (obj) {
-								const data = obj.response.data;
-								showBasket(data)
-						})
-				})
-		}
-
-		getBasket();
+		getBasket(showBasket);
 
 		function showBasket(data) {
 				for (let i = 0; i < data.items.length; i++) {
@@ -37,7 +35,7 @@ $(function (events, handler) {
         </div>
         <div id="changeCount">
           <button id="orderMinus" class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-										<div id="orderCounter">1</div>                	
+										<div id="orderCounter">1</div>
 										<button id="orderPlus" class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
         </div>
         <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
