@@ -1,5 +1,6 @@
-const addToCartUrl = 'https://pzz.by/api/v1/basket/add-item';
-const basketUrl = 'https://pzz.by/api/v1/basket';
+const prefix = 'https://cors-anywhere.herokuapp.com/';
+const addToCartUrl = `${prefix}https://pzz.by/api/v1/basket/add-item`;
+const basketUrl = `${prefix}https://pzz.by/api/v1/basket`;
 
 getBasket = async function(callback) {
 		await fetch(basketUrl)
