@@ -1,5 +1,11 @@
 'use strict';
 
+class Pizza {
+
+}
+
+const pizza = new Pizza();
+
 $(function () {
 	async function getListPizzas() {
 		const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
