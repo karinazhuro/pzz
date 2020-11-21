@@ -4,7 +4,7 @@ Pzz🍕
 ## Description 
 
 This is a client web application for ordering pizza delivery.
-The project is a parody of the site of a commercial pizzeria [_"Пицца Лисса"_](https://pzz.by/).
+The project is a parody of the site of a commercial pizzeria [_"Пицца Лисицца"_](https://pzz.by/).
 Also, as backend was used the **production** server of _"Пицца Лисса"_ (https://pzz.by/api/v1/)
 
 The project created exclusively for academic purposes, no commercial interest.
@@ -16,7 +16,7 @@ A live search of addresses.
 Also, real ordering in a pizzeria with delivery.
 
 ## Installation
-For run the project need
+If failed request follow next settings
 1. Clone project 
 2. In Terminal open " chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security 
 --disable-site-isolation-trials --disable-features=NetworkService,NetworkServiceInProcess "

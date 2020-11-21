@@ -1,28 +1,20 @@
 'use strict';
 
 class Pizza {
-
-}
-
-const pizza = new Pizza();
-
-$(function () {
-	async function getListPizzas() {
+	async getListPizzas() {
 		const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
 
 		await fetch(pizzasUrl)
-				.then(function (response) {
-					response.json()
-							.then(function (obj) {
-								const data = obj.response.data;
-								showListPizzas(data)
-							})
-				});
+			.then(function (response) {
+				response.json()
+					.then(function (obj) {
+						const data = obj.response.data;
+						pizza.showListPizzas(data)
+					})
+			});
 	}
 
-	getListPizzas();
-
-	function showListPizzas(data) {
+	showListPizzas(data) {
 		const content = document.getElementById('content');
 
 		for (let i = 0; i < data.length; i++) {
@@ -56,6 +48,61 @@ $(function () {
 		}
 	}
 
+}
+
+const pizza = new Pizza();
+pizza.getListPizzas();
+
+$(function () {
+	// async function getListPizzas() {
+	// 	const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
+	//
+	// 	await fetch(pizzasUrl)
+	// 		.then(function (response) {
+	// 			response.json()
+	// 				.then(function (obj) {
+	// 					const data = obj.response.data;
+	// 					showListPizzas(data)
+	// 				})
+	// 		});
+	// }
+
+	// getListPizzas();
+
+	// function showListPizzas(data) {
+	// 	const content = document.getElementById('content');
+	//
+	// 	for (let i = 0; i < data.length; i++) {
+	// 		content.innerHTML += `<div class="pizzas">
+  //     		<img class="imgPizza" src="${data[i].photo_small}">
+  //           <p id="title">${data[i].title}</p>
+  //           <div class="size">
+  //           <p class="pizza">Большая</p>
+  //           <p class="price">${(data[i].big_price / 10000).toFixed(2)}
+  //               <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button>
+  //           </p>
+  //         <div id="changeCount">
+  //         		<button id="orderMinus" class="orderMinus" >-</button>
+	// 											<div id="orderCounter">1</div>
+	// 											<button id="orderPlus" class="orderPlus">+</button>
+  //       		</div>
+	//
+  //
+  //         <p class="weight">${data[i].big_weight}</p>
+  //       </div>
+	//
+  //       <div class="size">
+  //         <p class="pizza">Стандартная</p>
+  //         <p class="price">${(data[i].medium_price / 10000).toFixed(2)}
+  //           <button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button>
+  //         </p>
+  //         <p class="weight">${data[i].medium_weight}</p>
+  //       </div>
+	//
+  //       <p class="anonce">${data[i].anonce}</p></div>`;
+	// 	}
+	// }
+
 	$(document).on('click', '.basket', addToCart);
 
 	async function addToCart(e) {
@@ -80,24 +127,24 @@ $(function () {
 			method: 'POST',
 			body: formData,
 		})
-				.then(function (response) {
-					response.json()
-							.then(function (obj) {
-								const dataAddToCart = obj.response.data;
-							})
-				})
+			.then(function (response) {
+				response.json()
+					.then(function (obj) {
+						const dataAddToCart = obj.response.data;
+					})
+			})
 	}
 
 	getBasket();
 
 	async function getBasket() {
 		await fetch(basketUrl)
-				.then(function (response) {
-					response.json()
-							.then(function (obj) {
-								const dataBasket = obj.response.data;
-							})
-				})
+			.then(function (response) {
+				response.json()
+					.then(function (obj) {
+						const dataBasket = obj.response.data;
+					})
+			})
 	}
 
 	// async function checkBasket(dataAddToCart, dataBasket) {
