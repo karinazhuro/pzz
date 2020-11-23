@@ -4,6 +4,7 @@ body {
   padding: 20px;
 
   #wrapper {
+
     header {
       display: flex;
       flex-direction: column;
@@ -25,18 +26,18 @@ body {
       }
     }
 
-    #content {
+    #pizzasList {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 
-      .pizzas {
+      .pizza {
         display: inherit;
         flex-direction: column;
         width: 300px;
         margin: 20px;
 
-        #title {
+        #pizzaTitle {
           font: 24px Malina, sans-serif;
           color: $primaryFirst;
           margin: 10px 0;
@@ -47,19 +48,19 @@ body {
           }
         }
 
-        .size {
+        .pizzaSize {
           margin: 10px 0;
 
-          .pizza {
+          .pizzaSizeTitle {
             font: 15px Helvetica, Arial, sans-serif;
             color: $secondarySecond;
           }
 
-          .price {
+          .pizzaSizePrice {
             font: 32px/1.1 Malina, sans-serif;
             color: $secondaryFirst;
 
-            .basket {
+            .pizzaSizeBasket {
               font: 20px/22px Malina, sans-serif;
               letter-spacing: -.5px;
               background: $backgroundBtnBasket;
@@ -87,7 +88,7 @@ body {
             @include changeCountBtn;
           }
 
-          .weight {
+          .pizzaWeight {
             font: 12px Helvetica, Arial, sans-serif;
             color: $secondarySecond;
           }

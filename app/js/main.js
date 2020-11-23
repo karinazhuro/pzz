@@ -15,36 +15,99 @@ class Pizza {
 	}
 
 	showListPizzas(data) {
-		const content = document.getElementById('content');
+		const pizzasList = document.getElementById('pizzasList');
 
 		for (let i = 0; i < data.length; i++) {
-			content.innerHTML += `<div class="pizzas">
-      		<img class="imgPizza" src="${data[i].photo_small}">
-            <p id="title">${data[i].title}</p>
-            <div class="size">
-            <p class="pizza">Большая</p>
-            <p class="price">${(data[i].big_price / 10000).toFixed(2)}
-                <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button>
-            </p>
-          <div id="changeCount">
-          		<button id="orderMinus" class="orderMinus" >-</button>
-												<div id="orderCounter">1</div>                	
-												<button id="orderPlus" class="orderPlus">+</button>
-        		</div>
+			const pizza = document.createElement("div");
+			const pizzaImg = document.createElement("img");
+			const pizzaTitle = document.createElement("p");
+			const pizzaSize = document.createElement("div");
+			const pizzaSizeTitle = document.createElement("p");
+			const pizzaSizePrice = document.createElement("p");
+			const pizzaSizeBasket = document.createElement("button");
+			const changeCount = document.createElement("div");
+			const orderMinus = document.createElement("button");
+			const orderCounter = document.createElement("div");
+			const orderPlus = document.createElement("button");
+			const pizzaWeight = document.createElement("p");
 
-          
-          <p class="weight">${data[i].big_weight}</p>
-        </div>
+			pizza.classList.add('pizza');
+			pizzasList.append(pizza);
 
-        <div class="size">
-          <p class="pizza">Стандартная</p>
-          <p class="price">${(data[i].medium_price / 10000).toFixed(2)}
-            <button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button>
-          </p>
-          <p class="weight">${data[i].medium_weight}</p>
-        </div>
+			pizzaImg.classList.add('pizzaImg');
+			pizzaImg.src = `${data[i].photo_small}`;
+			pizzaImg.alt = 'пицца';
+			pizza.append(pizzaImg);
 
-        <p class="anonce">${data[i].anonce}</p></div>`;
+			pizzaTitle.id = 'pizzaTitle';
+			pizzaTitle.textContent = `${data[i].title}`;
+			pizza.append(pizzaTitle);
+
+			if (data[i].is_big === 1 ) {
+				pizzaSize.classList.add('pizzaSize');
+				pizza.append(pizzaSize);
+
+				pizzaSizeTitle.classList.add('pizzaSizeTitle');
+				pizzaSizeTitle.textContent = 'Большая';
+				pizzaSize.append(pizzaSizeTitle);
+
+				pizzaSizePrice.classList.add('pizzaSizePrice');
+				pizzaSizePrice.textContent = `${(data[i].big_price / 10000).toFixed(2)}`;
+				pizzaSize.append(pizzaSizePrice);
+
+				pizzaSizeBasket.classList.add('pizzaSizeBasket');
+				pizzaSizeBasket.dataset.id = `${data[i].id}`;
+				pizzaSizeBasket.dataset.sizebig = `${data[i].is_big}`;
+				pizzaSizeBasket.textContent = 'В корзину';
+				pizzaSizePrice.append(pizzaSizeBasket);
+
+				changeCount.id = 'changeCount';
+				pizzaSize.append(changeCount);
+
+				orderMinus.id = 'orderMinus';
+				orderMinus.classList.add('orderMinus');
+				orderMinus.textContent = '-';
+				changeCount.append(orderMinus);
+
+				orderCounter.id = 'orderCounter';
+				orderCounter.textContent = '1';
+				changeCount.append(orderCounter);
+
+				orderPlus.id = 'orderPlus';
+				orderPlus.classList.add('orderPlus');
+				orderPlus.textContent = '+';
+				changeCount.append(orderPlus);
+
+				pizzaWeight.classList.add('pizzaWeight');
+				pizzaWeight.textContent = `${data[i].big_weight}`;
+				pizzaSize.append(pizzaWeight);
+			}
+
+			// pizzasList.innerHTML += `<div class="pizzas">
+			//   		<img class="pizzaImg" src="${data[i].photo_small}" alt="пицца">
+			//         <p id="title">${data[i].title}</p>
+			//
+			//         <div class="pizzaSize">
+			//         	<p class="pizza">Большая</p>
+			//         	<p class="price">${(data[i].big_price / 10000).toFixed(2)}
+			//             <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button>
+			//         	</p>
+			//       		<div id="changeCount">
+			//       			<button id="orderMinus" class="orderMinus" >-</button>
+			// 						<div id="orderCounter">1</div>
+			// 						<button id="orderPlus" class="orderPlus">+</button>
+			//     			</div>
+			//       		<p class="weight">${data[i].big_weight}</p>
+			//     		</div>
+			//
+			//     			<div class="pizzaSize">
+			//       			<p class="pizza">Стандартная</p>
+			//       			<p class="price">${(data[i].medium_price / 10000).toFixed(2)}
+			//        	 		<button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button>
+			//       			</p>
+			//       			<p class="weight">${data[i].medium_weight}</p>
+			//     			</div>
+			//     			<p class="anonce">${data[i].anonce}</p></div>`;
 		}
 	}
 
@@ -70,36 +133,36 @@ $(function () {
 	// getListPizzas();
 
 	// function showListPizzas(data) {
-	// 	const content = document.getElementById('content');
+	// 	const pizzasList = document.getElementById('pizzasList');
 	//
 	// 	for (let i = 0; i < data.length; i++) {
-	// 		content.innerHTML += `<div class="pizzas">
-  //     		<img class="imgPizza" src="${data[i].photo_small}">
-  //           <p id="title">${data[i].title}</p>
-  //           <div class="size">
-  //           <p class="pizza">Большая</p>
-  //           <p class="price">${(data[i].big_price / 10000).toFixed(2)}
-  //               <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button>
-  //           </p>
-  //         <div id="changeCount">
-  //         		<button id="orderMinus" class="orderMinus" >-</button>
+	// 		pizzasList.innerHTML += `<div class="pizza">
+	//     		<img class="pizzaImg" src="${data[i].photo_small}">
+	//           <p id="pizzaTitle">${data[i].title}</p>
+	//           <div class="pizzaSize">
+	//           <p class="pizzaSizeTitle">Большая</p>
+	//           <p class="pizzaSizePrice">${(data[i].big_price / 10000).toFixed(2)}
+	//               <button class="pizzaSizeBasket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button>
+	//           </p>
+	//         <div id="changeCount">
+	//         		<button id="orderMinus" class="orderMinus" >-</button>
 	// 											<div id="orderCounter">1</div>
 	// 											<button id="orderPlus" class="orderPlus">+</button>
-  //       		</div>
+	//       		</div>
 	//
-  //
-  //         <p class="weight">${data[i].big_weight}</p>
-  //       </div>
 	//
-  //       <div class="size">
-  //         <p class="pizza">Стандартная</p>
-  //         <p class="price">${(data[i].medium_price / 10000).toFixed(2)}
-  //           <button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button>
-  //         </p>
-  //         <p class="weight">${data[i].medium_weight}</p>
-  //       </div>
+	//         <p class="weight">${data[i].big_weight}</p>
+	//       </div>
 	//
-  //       <p class="anonce">${data[i].anonce}</p></div>`;
+	//       <div class="size">
+	//         <p class="pizza">Стандартная</p>
+	//         <p class="price">${(data[i].medium_price / 10000).toFixed(2)}
+	//           <button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button>
+	//         </p>
+	//         <p class="weight">${data[i].medium_weight}</p>
+	//       </div>
+	//
+	//       <p class="anonce">${data[i].anonce}</p></div>`;
 	// 	}
 	// }
 
