@@ -2,7 +2,8 @@
 
 class Pizza {
 	async getListPizzas() {
-		const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
+		const pizzasUrl = `https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
+		// const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
 
 		await fetch(pizzasUrl)
 			.then(function (response) {
@@ -18,77 +19,164 @@ class Pizza {
 		const pizzasList = document.getElementById('pizzasList');
 
 		for (let i = 0; i < data.length; i++) {
-			const pizza = document.createElement("div");
+			const pizzaItem = document.createElement("div");
 			const pizzaImg = document.createElement("img");
 			const pizzaTitle = document.createElement("p");
-			const pizzaSize = document.createElement("div");
-			const pizzaSizeTitle = document.createElement("p");
-			const pizzaSizePrice = document.createElement("p");
+			const pizzaSizes = document.createElement("div");
+
+			const pizzaSizeBig = document.createElement("div");
+			const pizzaSizeMedium = document.createElement("div");
+			const pizzaSizeThin = document.createElement("div");
+
+			const pizzaSizeBigTitle = document.createElement("p");
+			const pizzaSizeMediumTitle = document.createElement("p");
+			const pizzaSizeThinTitle = document.createElement("p");
+
+			const pizzaSizeBigPrice = document.createElement("p");
+			const pizzaSizeMediumPrice = document.createElement("p");
+			const pizzaSizeThinPrice = document.createElement("p");
+
+			const pizzaSizeBigWeight = document.createElement("p");
+			const pizzaSizeMediumWeight = document.createElement("p");
+			const pizzaSizeThinWeight = document.createElement("p");
+
 			const pizzaSizeBasket = document.createElement("button");
+
 			const changeCount = document.createElement("div");
 			const orderMinus = document.createElement("button");
 			const orderCounter = document.createElement("div");
 			const orderPlus = document.createElement("button");
-			const pizzaWeight = document.createElement("p");
+			const pizzaSizeContent = document.createElement("p");
+			const pizzaPriceContent = document.createElement("p");
+			let pizzaSizeBasketDatasetSize = '';
+			const pizzaWeightContent = document.createElement("p");
 
-			pizza.classList.add('pizza');
-			pizzasList.append(pizza);
+			function addListSize() {
+				const pizzaSizeTitleClass = 'pizzaSizeTitleClass';
+				const pizzaSizePriceClass = 'pizzaSizePriceClass';
+				const pizzaSizeWeightClass = 'pizzaSizeWeightClass';
+
+				pizzaSizeBigTitle.classList.add(`${pizzaSizeTitleClass}`);
+				pizzaSizeMediumTitle.classList.add(`${pizzaSizeTitleClass}`);
+				pizzaSizeThinTitle.classList.add(`${pizzaSizeTitleClass}`);
+
+				pizzaSizeBigPrice.classList.add(`${pizzaSizePriceClass}`);
+				pizzaSizeMediumPrice.classList.add(`${pizzaSizePriceClass}`);
+				pizzaSizeThinPrice.classList.add(`${pizzaSizePriceClass}`);
+
+				pizzaSizeBigWeight.classList.add(`${pizzaSizeWeightClass}`);
+				pizzaSizeMediumWeight.classList.add(`${pizzaSizeWeightClass}`);
+				pizzaSizeThinWeight.classList.add(`${pizzaSizeWeightClass}`);
+
+
+			}
+
+			pizzaItem.classList.add('pizzaItem');
+			pizzasList.append(pizzaItem);
 
 			pizzaImg.classList.add('pizzaImg');
 			pizzaImg.src = `${data[i].photo_small}`;
 			pizzaImg.alt = 'пицца';
-			pizza.append(pizzaImg);
+			pizzaItem.append(pizzaImg);
 
 			pizzaTitle.id = 'pizzaTitle';
 			pizzaTitle.textContent = `${data[i].title}`;
-			pizza.append(pizzaTitle);
+			pizzaItem.append(pizzaTitle);
 
-			if (data[i].is_big === 1 ) {
-				pizzaSize.classList.add('pizzaSize');
-				pizza.append(pizzaSize);
+			pizzaSizes.classList.add('pizzaSizes');
+			pizzaItem.append(pizzaSizes);
 
-				pizzaSizeTitle.classList.add('pizzaSizeTitle');
-				pizzaSizeTitle.textContent = 'Большая';
-				pizzaSize.append(pizzaSizeTitle);
+			if (data[i].is_big === 1) {
+				addListSize();
 
-				pizzaSizePrice.classList.add('pizzaSizePrice');
-				pizzaSizePrice.textContent = `${(data[i].big_price / 10000).toFixed(2)}`;
-				pizzaSize.append(pizzaSizePrice);
+				pizzaSizeBig.classList.add('pizzaSizeBig');
+				pizzaSizes.append(pizzaSizeBig);
+
+				// pizzaSizeBigTitle.classList.add('pizzaSizeTitle');
+				pizzaSizeBigTitle.textContent = 'Большая';
+				pizzaSizeBig.append(pizzaSizeBigTitle);
+
+				// pizzaSizeBigPrice.classList.add('pizzaSizePrice');
+				pizzaSizeBigPrice.textContent = `${(data[i].big_price / 10000).toFixed(2)}`;
+				pizzaSizeBig.append(pizzaSizeBigPrice);
+
+				// pizzaSizeBigWeight.classList.add('pizzaSizeWeight');
+				pizzaSizeBigWeight.textContent = `${data[i].big_weight}`;
+				pizzaSizeBig.append(pizzaSizeBigWeight);
 
 				pizzaSizeBasket.classList.add('pizzaSizeBasket');
 				pizzaSizeBasket.dataset.id = `${data[i].id}`;
-				pizzaSizeBasket.dataset.sizebig = `${data[i].is_big}`;
+				pizzaSizeBasket.dataset.sizebig = data[i].is_big;
 				pizzaSizeBasket.textContent = 'В корзину';
-				pizzaSizePrice.append(pizzaSizeBasket);
+				pizzaSizeBig.append(pizzaSizeBasket);
 
-				changeCount.id = 'changeCount';
-				pizzaSize.append(changeCount);
-
-				orderMinus.id = 'orderMinus';
-				orderMinus.classList.add('orderMinus');
-				orderMinus.textContent = '-';
-				changeCount.append(orderMinus);
-
-				orderCounter.id = 'orderCounter';
-				orderCounter.textContent = '1';
-				changeCount.append(orderCounter);
-
-				orderPlus.id = 'orderPlus';
-				orderPlus.classList.add('orderPlus');
-				orderPlus.textContent = '+';
-				changeCount.append(orderPlus);
-
-				pizzaWeight.classList.add('pizzaWeight');
-				pizzaWeight.textContent = `${data[i].big_weight}`;
-				pizzaSize.append(pizzaWeight);
 			}
+
+			if (data[i].is_medium === 1) {
+				addListSize();
+
+				pizzaSizeMedium.classList.add('pizzaSizeMedium');
+				pizzaSizes.append(pizzaSizeMedium);
+
+				// pizzaSizeMediumTitle.classList.add('pizzaSizeTitle');
+				pizzaSizeMediumTitle.textContent = 'Стандартная';
+				pizzaSizeMedium.append(pizzaSizeMediumTitle);
+
+				// pizzaSizeMediumPrice.classList.add('pizzaSizePrice');
+				pizzaSizeMediumPrice.textContent = `${(data[i].medium_price / 10000).toFixed(2)}`;
+				pizzaSizeMedium.append(pizzaSizeMediumPrice);
+
+				// pizzaSizeMediumWeight.classList.add('pizzaSizeWeight');
+				pizzaSizeMediumWeight.textContent = `${data[i].medium_weight}`;
+				pizzaSizeMedium.append(pizzaSizeMediumWeight);
+
+			}
+
+			if (data[i].is_thin === 1) {
+				addListSize();
+
+				pizzaSizeThin.classList.add('pizzaSizeThin');
+				pizzaSizes.append(pizzaSizeThin);
+
+				// pizzaSizeThinTitle.classList.add('pizzaSizeTitle');
+				pizzaSizeThinTitle.textContent = 'Тонкое тесто 36 см';
+				pizzaSizeThin.append(pizzaSizeThinTitle);
+
+				// pizzaSizeThinPrice.classList.add('pizzaSizePrice');
+				pizzaSizeThinPrice.textContent = `${(data[i].medium_price / 10000).toFixed(2)}`;
+				pizzaSizeThin.append(pizzaSizeThinPrice);
+
+				// pizzaSizeThinWeight.classList.add('pizzaSizeWeight');
+				pizzaSizeThinWeight.textContent = `${data[i].thin_weight}`;
+				pizzaSizeThin.append(pizzaSizeThinWeight);
+
+			}
+
+			//
+			// changeCount.id = 'changeCount';
+			// pizzaSizes.append(changeCount);
+			//
+			// orderMinus.id = 'orderMinus';
+			// orderMinus.classList.add('orderMinus');
+			// orderMinus.textContent = '-';
+			// changeCount.append(orderMinus);
+			//
+			// orderCounter.id = 'orderCounter';
+			// orderCounter.textContent = '1';
+			// changeCount.append(orderCounter);
+			//
+			// orderPlus.id = 'orderPlus';
+			// orderPlus.classList.add('orderPlus');
+			// orderPlus.textContent = '+';
+			// changeCount.append(orderPlus);
+
 
 			// pizzasList.innerHTML += `<div class="pizzas">
 			//   		<img class="pizzaImg" src="${data[i].photo_small}" alt="пицца">
 			//         <p id="title">${data[i].title}</p>
 			//
-			//         <div class="pizzaSize">
-			//         	<p class="pizza">Большая</p>
+			//         <div class="pizzaSizes">
+			//         	<p class="pizzaItem">Большая</p>
 			//         	<p class="price">${(data[i].big_price / 10000).toFixed(2)}
 			//             <button class="basket" data-id="${data[i].id}" data-sizebig="${data[i].is_big}">В корзину</button>
 			//         	</p>
@@ -100,8 +188,8 @@ class Pizza {
 			//       		<p class="weight">${data[i].big_weight}</p>
 			//     		</div>
 			//
-			//     			<div class="pizzaSize">
-			//       			<p class="pizza">Стандартная</p>
+			//     			<div class="pizzaSizes">
+			//       			<p class="pizzaItem">Стандартная</p>
 			//       			<p class="price">${(data[i].medium_price / 10000).toFixed(2)}
 			//        	 		<button class="basket" data-id="${data[i].id}" data-sizemedium="${data[i].is_medium}">В корзину</button>
 			//       			</p>

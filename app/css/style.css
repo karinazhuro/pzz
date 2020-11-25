@@ -21,27 +21,33 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; }
-    body #wrapper #pizzasList .pizza {
+    body #wrapper #pizzasList .pizzaItem {
       display: inherit;
       flex-direction: column;
       width: 300px;
       margin: 20px; }
-      body #wrapper #pizzasList .pizza #pizzaTitle {
+      body #wrapper #pizzasList .pizzaItem #pizzaTitle {
         font: 24px Malina, sans-serif;
         color: #ff5200;
         margin: 10px 0; }
-        body #wrapper #pizzasList .pizza #pizzaTitle:hover {
+        body #wrapper #pizzasList .pizzaItem #pizzaTitle:hover {
           color: #16bc00;
           cursor: pointer; }
-      body #wrapper #pizzasList .pizza .pizzaSize {
+      body #wrapper #pizzasList .pizzaItem .pizzaSizes {
         margin: 10px 0; }
-        body #wrapper #pizzasList .pizza .pizzaSize .pizzaSizeTitle {
-          font: 15px Helvetica, Arial, sans-serif;
-          color: #999; }
-        body #wrapper #pizzasList .pizza .pizzaSize .pizzaSizePrice {
-          font: 32px/1.1 Malina, sans-serif;
-          color: #000; }
-          body #wrapper #pizzasList .pizza .pizzaSize .pizzaSizePrice .pizzaSizeBasket {
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig {
+          display: inline-grid;
+          grid-template-columns: 1fr 1fr; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeTitleClass {
+            font: 15px Helvetica, Arial, sans-serif;
+            color: #999; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizePriceClass {
+            font: 32px/1.1 Malina, sans-serif;
+            color: #000; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeWeightClass {
+            font: 12px Helvetica, Arial, sans-serif;
+            color: #999; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeBasket {
             font: 20px/22px Malina, sans-serif;
             letter-spacing: -.5px;
             background: #e9e9e9;
@@ -50,17 +56,35 @@ body {
             border-radius: 11px;
             padding: 7px 12px 8px;
             margin: 0 0 0 20px; }
-            body #wrapper #pizzasList .pizza .pizzaSize .pizzaSizePrice .pizzaSizeBasket:hover {
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeBasket:hover {
               background: #16bc00;
               color: #fff;
               cursor: pointer; }
-        body #wrapper #pizzasList .pizza .pizzaSize #changeCount {
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeTitleClass {
+          font: 15px Helvetica, Arial, sans-serif;
+          color: #999; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizePriceClass {
+          font: 32px/1.1 Malina, sans-serif;
+          color: #000; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeWeightClass {
+          font: 12px Helvetica, Arial, sans-serif;
+          color: #999; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeTitleClass {
+          font: 15px Helvetica, Arial, sans-serif;
+          color: #999; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizePriceClass {
+          font: 32px/1.1 Malina, sans-serif;
+          color: #000; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeWeightClass {
+          font: 12px Helvetica, Arial, sans-serif;
+          color: #999; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount {
           display: none;
           justify-content: center;
           position: relative;
           top: -35px;
           left: 20px; }
-          body #wrapper #pizzasList .pizza .pizzaSize #changeCount .orderMinus {
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount .orderMinus {
             cursor: pointer;
             color: #fff;
             width: 30px;
@@ -71,14 +95,14 @@ body {
             border-radius: 50%;
             background-color: #277dff;
             margin: 0 10px; }
-          body #wrapper #pizzasList .pizza .pizzaSize #changeCount #orderCounter {
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount #orderCounter {
             color: #000;
             font-size: 21px;
             font-weight: 700;
             line-height: 30px;
             padding: 0 2px;
             font-family: Helvetica, Arial, sans-serif; }
-          body #wrapper #pizzasList .pizza .pizzaSize #changeCount .orderPlus {
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount .orderPlus {
             cursor: pointer;
             color: #fff;
             width: 30px;
@@ -89,9 +113,6 @@ body {
             border-radius: 50%;
             background-color: #277dff;
             margin: 0 10px; }
-        body #wrapper #pizzasList .pizza .pizzaSize .pizzaWeight {
-          font: 12px Helvetica, Arial, sans-serif;
-          color: #999; }
-      body #wrapper #pizzasList .pizza .anonce {
+      body #wrapper #pizzasList .pizzaItem .anonce {
         font: 15px Helvetica, Arial, sans-serif;
         color: #999; }

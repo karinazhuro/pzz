@@ -51,3 +51,18 @@ $backgroundDeliveryDesc: #F6F6F6;
     @include buttonCount;
   }
 }
+
+@mixin pizzaSizeTitleClass {
+  font: 15px Helvetica, Arial, sans-serif;
+  color: $secondarySecond;
+}
+
+@mixin pizzaSizePriceClass {
+  font: 32px/1.1 Malina, sans-serif;
+  color: $secondaryFirst;
+}
+
+@mixin pizzaSizeWeightClass {
+  font: 12px Helvetica, Arial, sans-serif;
+  color: $secondarySecond;
+}
