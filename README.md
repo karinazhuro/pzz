@@ -23,6 +23,7 @@ If failed request follow next settings
 3. Open chrome://flags/
 4. Unplug: Disable site isolation, SameSite by default cookies, Enable removing SameSite=None cookies, Cookies
  without SameSite must be secure
+5. Send request without a variable prefix in URL
 
 #### TODO 
 
