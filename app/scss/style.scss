@@ -36,41 +36,49 @@ body {
         display: inherit;
         flex-direction: column;
         width: 300px;
-        margin: 20px 40px;
+        margin: 40px;
 
-        #pizzaTitle {
-          font: 24px Malina, sans-serif;
-          color: $primaryFirst;
-          margin: 10px 0;
+        .pizzaDesc {
+          padding: 10px;
 
-          &:hover {
-            color: $hover;
-            cursor: pointer;
-          }
-        }
+          #pizzaTitle {
+            font: 24px Malina, sans-serif;
+            color: $primaryFirst;
+            margin: 10px 0;
+            //padding: 0 10px;
+            display: contents;
 
-        .pizzaSizes {
-          margin: 10px 0;
-          padding: 0 10px;
-
-          .pizzaSizeBig {
-            @include markingForPizzaSize;
+            &:hover {
+              color: $hover;
+              cursor: pointer;
+            }
           }
 
-          .pizzaSizeMedium {
-            @include markingForPizzaSize;
+          .pizzaSizes {
+            margin: 10px 0;
+            //padding: 0 10px;
+
+            .pizzaSizeBig {
+              @include markingForPizzaSize;
+            }
+
+            .pizzaSizeMedium {
+              @include markingForPizzaSize;
+            }
+
+            .pizzaSizeThin {
+              @include markingForPizzaSize;
+            }
           }
 
-          .pizzaSizeThin {
-            @include markingForPizzaSize;
+          .anonce {
+            font: 15px Helvetica, Arial, sans-serif;
+            color: $secondarySecond;
+            //padding: 0 10px;
           }
-        }
-
-        .anonce {
-          font: 15px Helvetica, Arial, sans-serif;
-          color: $secondarySecond;
         }
       }
+
     }
   }
 }
