@@ -13,7 +13,95 @@ $backgroundDeliveryDesc: #F6F6F6;
   src: url("../fonts/malina_webfont.ttf") format("truetype");
 }
 
-@mixin buttonCount {
+@mixin markingForPizzaSize {
+  margin: 0 0 15px 0;
+  display: flex;
+  justify-content: space-between;
+
+  .pizzaSizesContent {
+
+    .pizzaSizeTitle {
+      @include pizzaSizeTitle;
+    }
+
+    .pizzaSizePrice {
+      @include pizzaSizePrice;
+    }
+
+    .pizzaSizeWeight {
+      @include pizzaSizeWeight;
+    }
+  }
+
+  .pizzaSizeBasket {
+    @include pizzaSizeBasket;
+  }
+
+  .pizzaSizeCount {
+    @include pizzaSizeCount;
+  }
+}
+
+@mixin pizzaSizeTitle {
+  font: 15px Helvetica, Arial, sans-serif;
+  color: $secondarySecond;
+}
+
+@mixin pizzaSizePrice {
+  font: 32px/1.1 Malina, sans-serif;
+  color: $secondaryFirst;
+}
+
+@mixin pizzaSizeWeight {
+  font: 12px Helvetica, Arial, sans-serif;
+  color: $secondarySecond;
+}
+
+@mixin pizzaSizeBasket {
+  display: flex;
+  font: 20px/22px Malina, sans-serif;
+  letter-spacing: -.5px;
+  background: $backgroundBtnBasket;
+  color: $primaryFirst;
+  border-width: 0;
+  border-radius: 11px;
+  padding: 7px 12px 8px;
+  height: 40px;
+  margin: auto 0;
+  align-items: center;
+
+  &:hover {
+    background: $hover;
+    color: $primaryLight;
+    cursor: pointer;
+  }
+}
+
+@mixin pizzaSizeCount {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: auto 16px;
+
+  .pizzaSizeOrderMinus {
+    @include buttonCountMinusPlus;
+  }
+
+  .pizzaSizeOrderCounter {
+    color: $secondaryFirst;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 2px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .pizzaSizeOrderPlus {
+    @include buttonCountMinusPlus;
+  }
+}
+
+@mixin buttonCountMinusPlus {
   cursor: pointer;
   color: $primaryLight;
   width: 30px;
@@ -31,38 +119,4 @@ $backgroundDeliveryDesc: #F6F6F6;
   color: $secondaryFirst;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 42px;
-}
-
-@mixin changeCountBtn {
-  .orderMinus {
-    @include buttonCount;
-  }
-
-  #orderCounter {
-    color: $secondaryFirst;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 30px;
-    padding: 0 2px;
-    font-family: Helvetica, Arial, sans-serif;
-  }
-
-  .orderPlus {
-    @include buttonCount;
-  }
-}
-
-@mixin pizzaSizeTitleClass {
-  font: 15px Helvetica, Arial, sans-serif;
-  color: $secondarySecond;
-}
-
-@mixin pizzaSizePriceClass {
-  font: 32px/1.1 Malina, sans-serif;
-  color: $secondaryFirst;
-}
-
-@mixin pizzaSizeWeightClass {
-  font: 12px Helvetica, Arial, sans-serif;
-  color: $secondarySecond;
 }

@@ -7,7 +7,8 @@ body {
   body #wrapper header {
     display: flex;
     flex-direction: column;
-    text-align: end; }
+    text-align: end;
+    margin: 0 0 30px 0; }
     body #wrapper header #cart {
       font: 32px Malina, sans-serif;
       letter-spacing: -.5px;
@@ -25,7 +26,7 @@ body {
       display: inherit;
       flex-direction: column;
       width: 300px;
-      margin: 20px; }
+      margin: 20px 40px; }
       body #wrapper #pizzasList .pizzaItem #pizzaTitle {
         font: 24px Malina, sans-serif;
         color: #ff5200;
@@ -34,20 +35,23 @@ body {
           color: #16bc00;
           cursor: pointer; }
       body #wrapper #pizzasList .pizzaItem .pizzaSizes {
-        margin: 10px 0; }
+        margin: 10px 0;
+        padding: 0 10px; }
         body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig {
-          display: inline-grid;
-          grid-template-columns: 1fr 1fr; }
-          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeTitleClass {
+          margin: 0 0 15px 0;
+          display: flex;
+          justify-content: space-between; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizesContent .pizzaSizeTitle {
             font: 15px Helvetica, Arial, sans-serif;
             color: #999; }
-          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizePriceClass {
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizesContent .pizzaSizePrice {
             font: 32px/1.1 Malina, sans-serif;
             color: #000; }
-          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeWeightClass {
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizesContent .pizzaSizeWeight {
             font: 12px Helvetica, Arial, sans-serif;
             color: #999; }
           body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeBasket {
+            display: flex;
             font: 20px/22px Malina, sans-serif;
             letter-spacing: -.5px;
             background: #e9e9e9;
@@ -55,64 +59,173 @@ body {
             border-width: 0;
             border-radius: 11px;
             padding: 7px 12px 8px;
-            margin: 0 0 0 20px; }
+            height: 40px;
+            margin: auto 0;
+            align-items: center; }
             body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeBasket:hover {
               background: #16bc00;
               color: #fff;
               cursor: pointer; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeTitleClass {
-          font: 15px Helvetica, Arial, sans-serif;
-          color: #999; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizePriceClass {
-          font: 32px/1.1 Malina, sans-serif;
-          color: #000; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeWeightClass {
-          font: 12px Helvetica, Arial, sans-serif;
-          color: #999; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeTitleClass {
-          font: 15px Helvetica, Arial, sans-serif;
-          color: #999; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizePriceClass {
-          font: 32px/1.1 Malina, sans-serif;
-          color: #000; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeWeightClass {
-          font: 12px Helvetica, Arial, sans-serif;
-          color: #999; }
-        body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount {
-          display: none;
-          justify-content: center;
-          position: relative;
-          top: -35px;
-          left: 20px; }
-          body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount .orderMinus {
-            cursor: pointer;
-            color: #fff;
-            width: 30px;
-            height: 30px;
-            font: 30px/1 Malina, sans-serif;
-            letter-spacing: -1px;
-            border: none;
-            border-radius: 50%;
-            background-color: #277dff;
-            margin: 0 10px; }
-          body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount #orderCounter {
-            color: #000;
-            font-size: 21px;
-            font-weight: 700;
-            line-height: 30px;
-            padding: 0 2px;
-            font-family: Helvetica, Arial, sans-serif; }
-          body #wrapper #pizzasList .pizzaItem .pizzaSizes #changeCount .orderPlus {
-            cursor: pointer;
-            color: #fff;
-            width: 30px;
-            height: 30px;
-            font: 30px/1 Malina, sans-serif;
-            letter-spacing: -1px;
-            border: none;
-            border-radius: 50%;
-            background-color: #277dff;
-            margin: 0 10px; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeCount {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: auto 16px; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeCount .pizzaSizeOrderMinus {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeCount .pizzaSizeOrderCounter {
+              color: #000;
+              font-size: 21px;
+              font-weight: 700;
+              line-height: 30px;
+              padding: 0 2px;
+              font-family: Helvetica, Arial, sans-serif; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeBig .pizzaSizeCount .pizzaSizeOrderPlus {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium {
+          margin: 0 0 15px 0;
+          display: flex;
+          justify-content: space-between; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizesContent .pizzaSizeTitle {
+            font: 15px Helvetica, Arial, sans-serif;
+            color: #999; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizesContent .pizzaSizePrice {
+            font: 32px/1.1 Malina, sans-serif;
+            color: #000; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizesContent .pizzaSizeWeight {
+            font: 12px Helvetica, Arial, sans-serif;
+            color: #999; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeBasket {
+            display: flex;
+            font: 20px/22px Malina, sans-serif;
+            letter-spacing: -.5px;
+            background: #e9e9e9;
+            color: #ff5200;
+            border-width: 0;
+            border-radius: 11px;
+            padding: 7px 12px 8px;
+            height: 40px;
+            margin: auto 0;
+            align-items: center; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeBasket:hover {
+              background: #16bc00;
+              color: #fff;
+              cursor: pointer; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeCount {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: auto 16px; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeCount .pizzaSizeOrderMinus {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeCount .pizzaSizeOrderCounter {
+              color: #000;
+              font-size: 21px;
+              font-weight: 700;
+              line-height: 30px;
+              padding: 0 2px;
+              font-family: Helvetica, Arial, sans-serif; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeMedium .pizzaSizeCount .pizzaSizeOrderPlus {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px; }
+        body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin {
+          margin: 0 0 15px 0;
+          display: flex;
+          justify-content: space-between; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizesContent .pizzaSizeTitle {
+            font: 15px Helvetica, Arial, sans-serif;
+            color: #999; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizesContent .pizzaSizePrice {
+            font: 32px/1.1 Malina, sans-serif;
+            color: #000; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizesContent .pizzaSizeWeight {
+            font: 12px Helvetica, Arial, sans-serif;
+            color: #999; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeBasket {
+            display: flex;
+            font: 20px/22px Malina, sans-serif;
+            letter-spacing: -.5px;
+            background: #e9e9e9;
+            color: #ff5200;
+            border-width: 0;
+            border-radius: 11px;
+            padding: 7px 12px 8px;
+            height: 40px;
+            margin: auto 0;
+            align-items: center; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeBasket:hover {
+              background: #16bc00;
+              color: #fff;
+              cursor: pointer; }
+          body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeCount {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: auto 16px; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeCount .pizzaSizeOrderMinus {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeCount .pizzaSizeOrderCounter {
+              color: #000;
+              font-size: 21px;
+              font-weight: 700;
+              line-height: 30px;
+              padding: 0 2px;
+              font-family: Helvetica, Arial, sans-serif; }
+            body #wrapper #pizzasList .pizzaItem .pizzaSizes .pizzaSizeThin .pizzaSizeCount .pizzaSizeOrderPlus {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px; }
       body #wrapper #pizzasList .pizzaItem .anonce {
         font: 15px Helvetica, Arial, sans-serif;
         color: #999; }

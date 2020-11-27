@@ -9,6 +9,7 @@ body {
       display: flex;
       flex-direction: column;
       text-align: end;
+      margin: 0 0 30px 0;
 
       #cart {
         font: 32px Malina, sans-serif;
@@ -35,7 +36,7 @@ body {
         display: inherit;
         flex-direction: column;
         width: 300px;
-        margin: 20px;
+        margin: 20px 40px;
 
         #pizzaTitle {
           font: 24px Malina, sans-serif;
@@ -50,78 +51,18 @@ body {
 
         .pizzaSizes {
           margin: 10px 0;
+          padding: 0 10px;
 
           .pizzaSizeBig {
-            display: inline-grid;
-            grid-template-columns: 1fr 1fr;
-
-            .pizzaSizeTitleClass {
-              @include pizzaSizeTitleClass;
-            }
-
-            .pizzaSizePriceClass {
-              @include pizzaSizePriceClass;
-            }
-
-            .pizzaSizeWeightClass {
-              @include pizzaSizeWeightClass;
-            }
-
-            .pizzaSizeBasket {
-              font: 20px/22px Malina, sans-serif;
-              letter-spacing: -.5px;
-              background: $backgroundBtnBasket;
-              color: $primaryFirst;
-              border-width: 0;
-              border-radius: 11px;
-              padding: 7px 12px 8px;
-              margin: 0 0 0 20px;
-
-              &:hover {
-                background: $hover;
-                color: $primaryLight;
-                cursor: pointer;
-              }
-            }
-
+            @include markingForPizzaSize;
           }
 
           .pizzaSizeMedium {
-            .pizzaSizeTitleClass {
-              @include pizzaSizeTitleClass;
-            }
-
-            .pizzaSizePriceClass {
-              @include pizzaSizePriceClass;
-            }
-
-            .pizzaSizeWeightClass {
-              @include pizzaSizeWeightClass;
-            }
+            @include markingForPizzaSize;
           }
 
           .pizzaSizeThin {
-            .pizzaSizeTitleClass {
-              @include pizzaSizeTitleClass;
-            }
-
-            .pizzaSizePriceClass {
-              @include pizzaSizePriceClass;
-            }
-
-            .pizzaSizeWeightClass {
-              @include pizzaSizeWeightClass;
-            }
-          }
-
-          #changeCount {
-            display: none;
-            justify-content: center;
-            position: relative;
-            top: -35px;
-            left: 20px;
-
-            @include changeCountBtn;
+            @include markingForPizzaSize;
           }
         }
 
@@ -132,5 +73,4 @@ body {
       }
     }
   }
-
 }

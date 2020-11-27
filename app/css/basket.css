@@ -29,35 +29,6 @@ body {
       padding-top: 4px; }
     body #wrapper #order #orderPizza #changeCount {
       display: flex; }
-      body #wrapper #order #orderPizza #changeCount .orderMinus {
-        cursor: pointer;
-        color: #fff;
-        width: 30px;
-        height: 30px;
-        font: 30px/1 Malina, sans-serif;
-        letter-spacing: -1px;
-        border: none;
-        border-radius: 50%;
-        background-color: #277dff;
-        margin: 0 10px; }
-      body #wrapper #order #orderPizza #changeCount #orderCounter {
-        color: #000;
-        font-size: 21px;
-        font-weight: 700;
-        line-height: 30px;
-        padding: 0 2px;
-        font-family: Helvetica, Arial, sans-serif; }
-      body #wrapper #order #orderPizza #changeCount .orderPlus {
-        cursor: pointer;
-        color: #fff;
-        width: 30px;
-        height: 30px;
-        font: 30px/1 Malina, sans-serif;
-        letter-spacing: -1px;
-        border: none;
-        border-radius: 50%;
-        background-color: #277dff;
-        margin: 0 10px; }
     body #wrapper #order #orderPizza #orderPrice {
       font-size: 21px;
       font-weight: 700;

@@ -44,7 +44,7 @@ body {
         #changeCount {
           display: flex;
 
-          @include changeCountBtn;
+          //@include changeCountBtn;
         }
 
         #orderPrice {
