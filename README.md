@@ -9,6 +9,8 @@ Also, as backend was used the **production** server of _"Пицца Лисса"_
 
 The project created exclusively for academic purposes, no commercial interest.
 
+Deploy project https://karinazhuro.github.io/pzz/.
+
 #### Features
 
 Implemented functionality for displaying the pizza menu, displaying the basket, a form for filling in personal data for delivery. 
