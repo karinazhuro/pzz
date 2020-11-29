@@ -45,7 +45,6 @@ body {
             font: 24px Malina, sans-serif;
             color: $primaryFirst;
             margin: 10px 0;
-            //padding: 0 10px;
             display: contents;
 
             &:hover {
@@ -56,7 +55,6 @@ body {
 
           .pizzaSizes {
             margin: 10px 0;
-            //padding: 0 10px;
 
             .pizzaSizeBig {
               @include markingForPizzaSize;
@@ -74,7 +72,6 @@ body {
           .anonce {
             font: 15px Helvetica, Arial, sans-serif;
             color: $secondarySecond;
-            //padding: 0 10px;
           }
         }
       }
