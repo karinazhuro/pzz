@@ -6,18 +6,25 @@ body {
   padding: 20px; }
   body #wrapper header {
     display: flex;
-    flex-direction: column;
-    text-align: end;
-    margin: 0 0 30px 0; }
-    body #wrapper header #cart {
-      font: 32px Malina, sans-serif;
+    justify-content: space-between;
+    margin: 0 0 30px 0;
+    font-family: Malina, sans-serif; }
+    body #wrapper header #logo {
+      color: #ff5200;
+      font-size: 19px;
+      line-height: 19px;
+      text-decoration: none;
+      margin: auto 0; }
+      body #wrapper header #logo:hover {
+        color: #16bc00; }
+    body #wrapper header #cartLink {
+      text-decoration: none;
+      color: #ff5200;
+      font-size: 32px;
       letter-spacing: -.5px;
       margin: 5px 0; }
-      body #wrapper header #cart #cartLink {
-        text-decoration: none;
-        color: #ff5200; }
-        body #wrapper header #cart #cartLink:hover {
-          color: #16bc00; }
+      body #wrapper header #cartLink:hover {
+        color: #16bc00; }
   body #wrapper #pizzasList {
     display: flex;
     flex-wrap: wrap;
@@ -64,11 +71,14 @@ body {
               height: 40px;
               margin: auto 0;
               align-items: center;
-              outline: none; }
+              outline: none;
+              transition: background 400ms; }
               body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeBig .pizzaSizeAddToCart:hover {
                 background: #16bc00;
                 color: #fff;
                 cursor: pointer; }
+              body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeBig .pizzaSizeAddToCart:active {
+                background: #2b4e27; }
             body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeBig .pizzaSizeCount {
               display: none;
               justify-content: center;
@@ -130,11 +140,14 @@ body {
               height: 40px;
               margin: auto 0;
               align-items: center;
-              outline: none; }
+              outline: none;
+              transition: background 400ms; }
               body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeMedium .pizzaSizeAddToCart:hover {
                 background: #16bc00;
                 color: #fff;
                 cursor: pointer; }
+              body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeMedium .pizzaSizeAddToCart:active {
+                background: #2b4e27; }
             body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeMedium .pizzaSizeCount {
               display: none;
               justify-content: center;
@@ -196,11 +209,14 @@ body {
               height: 40px;
               margin: auto 0;
               align-items: center;
-              outline: none; }
+              outline: none;
+              transition: background 400ms; }
               body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeThin .pizzaSizeAddToCart:hover {
                 background: #16bc00;
                 color: #fff;
                 cursor: pointer; }
+              body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeThin .pizzaSizeAddToCart:active {
+                background: #2b4e27; }
             body #wrapper #pizzasList .pizzaItem .pizzaDesc .pizzaSizes .pizzaSizeThin .pizzaSizeCount {
               display: none;
               justify-content: center;

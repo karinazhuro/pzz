@@ -7,22 +7,31 @@ body {
 
     header {
       display: flex;
-      flex-direction: column;
-      text-align: end;
+      justify-content: space-between;
       margin: 0 0 30px 0;
+      font-family: Malina, sans-serif;
 
-      #cart {
-        font: 32px Malina, sans-serif;
+      #logo {
+        color: $primaryFirst;
+        font-size: 19px;
+        line-height: 19px;
+        text-decoration: none;
+        margin: auto 0;
+
+        &:hover {
+          color: $hover;
+        }
+      }
+
+      #cartLink {
+        text-decoration: none;
+        color: $primaryFirst;
+        font-size: 32px;
         letter-spacing: -.5px;
         margin: 5px 0;
 
-        #cartLink {
-          text-decoration: none;
-          color: $primaryFirst;
-
-          &:hover {
-            color: $hover;
-          }
+        &:hover {
+          color: $hover;
         }
       }
     }
