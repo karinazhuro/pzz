@@ -2,8 +2,10 @@
 
 class Pizza {
 	async getListPizzas() {
-		const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
+		const pizzasUrl = `https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
+		// const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
 
+		// TODO: error handling
 		await fetch(pizzasUrl)
 			.then(function (response) {
 				response.json()
@@ -162,7 +164,7 @@ class Pizza {
 				pizzaSizesBigContent.append(pizzaSizeBigWeight);
 
 				pizzaSizeBigAddToCart.dataset.id = `${data[i].id}`;
-				pizzaSizeBigAddToCart.dataset.sizebig = data[i].is_big;
+				pizzaSizeBigAddToCart.dataset.size = 'big';
 				pizzaSizeBigAddToCart.textContent = 'В корзину';
 				pizzaSizeBig.append(pizzaSizeBigAddToCart);
 
@@ -189,7 +191,7 @@ class Pizza {
 				pizzaSizesMediumContent.append(pizzaSizeMediumWeight);
 
 				pizzaSizeMediumAddToCart.dataset.id = `${data[i].id}`;
-				pizzaSizeMediumAddToCart.dataset.sizemedium = data[i].is_medium;
+				pizzaSizeMediumAddToCart.dataset.size = 'medium';
 				pizzaSizeMediumAddToCart.textContent = 'В корзину';
 				pizzaSizeMedium.append(pizzaSizeMediumAddToCart);
 
@@ -213,14 +215,14 @@ class Pizza {
 				pizzaSizeThinTitle.textContent = 'Тонкое тесто 36 см';
 				pizzaSizesThinContent.append(pizzaSizeThinTitle);
 
-				pizzaSizeThinPrice.textContent = `${(data[i].medium_price / 10000).toFixed(2)}`;
+				pizzaSizeThinPrice.textContent = `${(data[i].thin_price / 10000).toFixed(2)}`;
 				pizzaSizesThinContent.append(pizzaSizeThinPrice);
 
 				pizzaSizeThinWeight.textContent = `${data[i].thin_weight}`;
 				pizzaSizesThinContent.append(pizzaSizeThinWeight);
 
 				pizzaSizeThinAddToCart.dataset.id = `${data[i].id}`;
-				pizzaSizeThinAddToCart.dataset.sizethin = data[i].is_medium;
+				pizzaSizeThinAddToCart.dataset.size = 'thin';
 				pizzaSizeThinAddToCart.textContent = 'В корзину';
 				pizzaSizeThin.append(pizzaSizeThinAddToCart);
 
@@ -236,64 +238,55 @@ class Pizza {
 		}
 	}
 
-	// async getCart() {
-	// 	await fetch(basketUrl)
-	// 		.then(function (response) {
-	// 			response.json()
-	// 				.then(function (obj) {
-	// 					const dataBasket = obj.response.data;
-	// 				})
-	// 		})
-	//
-	// }
-
 	async addToCart(date) {
 		const id = date.id;
-		const sizeBig = date.sizebig;
-		const sizeMedium = date.sizemedium;
+		const size = date.size;
 		const formData = new FormData();
-		let size = '';
-
-		if (sizeBig) {
-			size = 'big';
-		} else if (sizeMedium) {
-			size = 'medium';
-		} else {
-			size = 'thin';
-		}
+		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
+		const btnCount = document.getElementsByClassName('pizzaSizeCount');
+		const contentCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
 		formData.append('type', 'pizza');
 		formData.append('id', id);
 		formData.append('size', size);
 		formData.append('dough', 'thin');
 
+		// TODO: error handling
 		await fetch(addToCartUrl, {
 			method: 'POST',
 			body: formData,
 		})
+			.then(function (response) {
+				response.json()
+					.then(function (obj) {
+						const dataAddToCart = obj.response.data;
+					})
+			})
 
-		// .then(function (response) {
-		// 	response.json()
-		// 		.then(function (obj) {
-		// 			const dataAddToCart = obj.response.data;
-		// 		})
-		// })
+		for (let i = 0; i < btnAddToCart.length; i++) {
+			if (btnAddToCart[i].getAttribute('data-id') === id &&
+				btnAddToCart[i].getAttribute('data-size') === size) {
+				btnAddToCart[i].style.display = 'none';
+				btnCount[i].style.display = 'flex';
+				// contentCounter[i].textContent = '1';
+			}
+		}
 
 	}
 }
 
 const pizza = new Pizza();
-window.addEventListener('DOMContentLoaded', function () {
-	pizza.getListPizzas();
-	// pizza.getCart();
-	window.globalFunc.getCart;
-})
+pizza.getListPizzas();
+window.getCart();
 $(document).on('click', '.pizzaSizeAddToCart', (event) => {
 	pizza.addToCart(event.target.dataset);
 });
 
-// $(function () {
+// TODO: after click to button .pizzaSizeAddToCart shape cart and
+//  add buttons add and remove pizza
 
+
+// $(function () {
 // 	async function getListPizzas() {
 // 		const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
 //

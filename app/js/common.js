@@ -1,18 +1,17 @@
 const prefix = 'https://cors-anywhere.herokuapp.com/';
-const basketUrl = `${prefix}https://pzz.by/api/v1/basket`;
-const addToCartUrl = `${prefix}https://pzz.by/api/v1/basket/add-item`;
+const basketUrl = `https://pzz.by/api/v1/basket`;
+// const basketUrl = `${prefix}https://pzz.by/api/v1/basket`;
+// const addToCartUrl = `${prefix}https://pzz.by/api/v1/basket/add-item`;
+const addToCartUrl = `https://pzz.by/api/v1/basket/add-item`;
 
-var getCart = async function (callback) {
+// TODO: error handling
+getCart = async function (callback) {
 	await fetch(basketUrl)
-		// .then(function (response) {
-		// 	response.json()
-		// 		.then(function (obj) {
-		// 			const data = obj.response.data
-		// 			callback(data);
-		// 		})
-		// })
-}
-
-window.globalFunc = {
-	getCart,
+		.then(function (response) {
+			response.json()
+				.then(function (obj) {
+					const data = obj.response.data
+					callback(data);
+				})
+		})
 }
