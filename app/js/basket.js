@@ -16,7 +16,7 @@ $(function (events, handler) {
 		// 		})
 		// }
 
-		getBasket(showBasket);
+	getCart(showBasket);
 
 		function showBasket(data) {
 				for (let i = 0; i < data.items.length; i++) {
