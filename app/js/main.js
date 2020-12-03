@@ -69,6 +69,8 @@ class Pizza {
 				const btnPizzaSizeOrderPlus = document.getElementsByClassName('pizzaSizeOrderPlus');
 
 				let addToCartBig = [pizzaSizeBigAddToCart, pizzaSizeBigOrderPlus];
+				let addToCartMedium = [pizzaSizeMediumAddToCart, pizzaSizeMediumOrderPlus];
+				let addToCartThin = [pizzaSizeThinAddToCart, pizzaSizeThinOrderPlus];
 
 				pizzaSizeBigTitle.classList.add(`${pizzaSizeTitle}`);
 				pizzaSizeMediumTitle.classList.add(`${pizzaSizeTitle}`);
@@ -113,6 +115,16 @@ class Pizza {
 				addToCartBig.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
 					item.dataset.size = 'big';
+				})
+
+				addToCartMedium.forEach((item) => {
+					item.dataset.id = `${data[i].id}`;
+					item.dataset.size = 'medium';
+				})
+
+				addToCartThin.forEach((item) => {
+					item.dataset.id = `${data[i].id}`;
+					item.dataset.size = 'thin';
 				})
 
 				pizzaSizesBigContent.classList.add(`${pizzaSizesContent}`);
@@ -231,24 +243,26 @@ class Pizza {
 		}
 	}
 
-	makeProductFormData(e) {
+	makeProductFormData(date) {
 		const formData = new FormData();
-		const id = e.target.dataset.id;
-		const size = e.target.dataset.size;
+		const id = date.id;
+		const size = date.size;
 
 		formData.append('type', 'pizza');
 		formData.append('id', id);
 		formData.append('size', size);
 		formData.append('dough', 'thin');
+
+		pzzNetService.addProductToBasket(formData);
 	}
 
-	async addToCart(date) {
+	async changeButton(date) {
 		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
 		const btnCount = document.getElementsByClassName('pizzaSizeCount');
 
 		for (let i = 0; i < btnAddToCart.length; i++) {
-			if (btnAddToCart[i].getAttribute('data-id') === id &&
-				btnAddToCart[i].getAttribute('data-size') === size) {
+			if (btnAddToCart[i].getAttribute('data-id') === date.id &&
+				btnAddToCart[i].getAttribute('data-size') === date.size) {
 				btnAddToCart[i].style.display = 'none';
 				btnCount[i].style.display = 'flex';
 			}
@@ -257,20 +271,19 @@ class Pizza {
 
 	countPizzas() {
 	}
-
 	pizzas = {}
 }
 
-export const pizza = new Pizza();
+const pizza = new Pizza();
 
-pzzNetService.getListPizzas((data) => pizza.showListPizzas(data));
-pzzNetService.addProductToBasket();
+let promise = pzzNetService.getListPizzas();
+promise.then(pizza.showListPizzas);
 
-// window.getCart();
-$(document).on('click', '.pizzaSizeAddToCart', pizza.makeProductFormData);
-// $(document).on('click', '.pizzaSizeAddToCart', (event) => {
-// 	pizza.makeProductFormData(event.target.dataset);
-// });
+pzzNetService.getCart();
+$(document).on('click', '.pizzaSizeAddToCart', (event) => {
+	pizza.makeProductFormData(event.target.dataset);
+	pizza.changeButton(event.target.dataset);
+});
 $(document).on('click', '.pizzaSizeOrderPlus', (event) => {
 	pizza.makeProductFormData(event.target.dataset);
 });
