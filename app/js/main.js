@@ -1,56 +1,8 @@
 'use strict';
 
+import {pzzNetService} from './pzzNetService.js';
+
 class Pizza {
-	async getListPizzas() {
-		// const pizzasUrl = `https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
-		const pizzasUrl = `${prefix}https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
-
-		// TODO: error handling
-		await fetch(pizzasUrl)
-			.then(function (response) {
-				response.json()
-					.then(function (obj) {
-						const data = obj.response.data;
-						pizza.showListPizzas(data)
-					})
-			});
-	}
-
-	async addToCart(date) {
-		const id = date.id;
-		const size = date.size;
-		const formData = new FormData();
-		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
-		const btnCount = document.getElementsByClassName('pizzaSizeCount');
-		// const contentCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
-
-		formData.append('type', 'pizza');
-		formData.append('id', id);
-		formData.append('size', size);
-		formData.append('dough', 'thin');
-
-		// TODO: error handling
-		await fetch(addToCartUrl, {
-			method: 'POST',
-			body: formData,
-		})
-			.then(function (response) {
-				response.json()
-					.then(function (obj) {
-						const dataAddToCart = obj.response.data;
-					})
-			})
-
-		for (let i = 0; i < btnAddToCart.length; i++) {
-			if (btnAddToCart[i].getAttribute('data-id') === id &&
-				btnAddToCart[i].getAttribute('data-size') === size) {
-				btnAddToCart[i].style.display = 'none';
-				btnCount[i].style.display = 'flex';
-				// contentCounter[i].textContent = '1';
-			}
-		}
-	}
-
 	showListPizzas(data) {
 		const pizzasList = document.getElementById('pizzasList');
 
@@ -279,21 +231,48 @@ class Pizza {
 		}
 	}
 
-	countPizzas() {
+	makeProductFormData(e) {
+		const formData = new FormData();
+		const id = e.target.dataset.id;
+		const size = e.target.dataset.size;
 
+		formData.append('type', 'pizza');
+		formData.append('id', id);
+		formData.append('size', size);
+		formData.append('dough', 'thin');
+	}
+
+	async addToCart(date) {
+		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
+		const btnCount = document.getElementsByClassName('pizzaSizeCount');
+
+		for (let i = 0; i < btnAddToCart.length; i++) {
+			if (btnAddToCart[i].getAttribute('data-id') === id &&
+				btnAddToCart[i].getAttribute('data-size') === size) {
+				btnAddToCart[i].style.display = 'none';
+				btnCount[i].style.display = 'flex';
+			}
+		}
+	}
+
+	countPizzas() {
 	}
 
 	pizzas = {}
 }
 
-const pizza = new Pizza();
-pizza.getListPizzas();
-window.getCart();
-$(document).on('click', '.pizzaSizeAddToCart', (event) => {
-	pizza.addToCart(event.target.dataset);
-});
+export const pizza = new Pizza();
+
+pzzNetService.getListPizzas((data) => pizza.showListPizzas(data));
+pzzNetService.addProductToBasket();
+
+// window.getCart();
+$(document).on('click', '.pizzaSizeAddToCart', pizza.makeProductFormData);
+// $(document).on('click', '.pizzaSizeAddToCart', (event) => {
+// 	pizza.makeProductFormData(event.target.dataset);
+// });
 $(document).on('click', '.pizzaSizeOrderPlus', (event) => {
-	pizza.addToCart(event.target.dataset);
+	pizza.makeProductFormData(event.target.dataset);
 });
 
 // $(function () {
