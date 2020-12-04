@@ -253,7 +253,7 @@ class Pizza {
 		formData.append('size', size);
 		formData.append('dough', 'thin');
 
-		pzzNetService.addProductToBasket(formData);
+		return pzzNetService.addProductToBasket(formData);
 	}
 
 	async changeButton(date) {
@@ -268,20 +268,18 @@ class Pizza {
 			}
 		}
 	}
-
 	countPizzas() {
 	}
 	pizzas = {}
 }
 
-const pizza = new Pizza();
-
+export const pizza = new Pizza();
 let promise = pzzNetService.getListPizzas();
 promise.then(pizza.showListPizzas);
 
 pzzNetService.getCart();
 $(document).on('click', '.pizzaSizeAddToCart', (event) => {
-	pizza.makeProductFormData(event.target.dataset);
+	pizza.makeProductFormData(event.target.dataset)
 	pizza.changeButton(event.target.dataset);
 });
 $(document).on('click', '.pizzaSizeOrderPlus', (event) => {
