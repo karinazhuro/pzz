@@ -20,8 +20,8 @@ Also, real ordering in a pizzeria with delivery.
 ## Installation
 If failed request follow next settings
 1. Clone project 
-2. In Terminal open " chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security 
---disable-site-isolation-trials --disable-features=NetworkService,NetworkServiceInProcess "
+2. In Terminal open chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security 
+--disable-site-isolation-trials --disable-features=NetworkService,NetworkServiceInProcess
 3. Open chrome://flags/
 4. Unplug: Disable site isolation, SameSite by default cookies, Enable removing SameSite=None cookies, Cookies
  without SameSite must be secure

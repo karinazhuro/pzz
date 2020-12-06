@@ -3,6 +3,7 @@
 import {pzzNetService} from './pzzNetService.js';
 
 class Pizza {
+
 	showListPizzas(data) {
 		const pizzasList = document.getElementById('pizzasList');
 
@@ -104,6 +105,7 @@ class Pizza {
 				pizzaSizeMediumOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 				pizzaSizeThinOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 
+
 				pizzaSizeBigOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
 				pizzaSizeMediumOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
 				pizzaSizeThinOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
@@ -114,7 +116,9 @@ class Pizza {
 
 				addToCartBig.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
+					pizzaSizeBigOrderCounter.dataset.id = `${data[i].id}`;
 					item.dataset.size = 'big';
+					pizzaSizeBigOrderCounter.dataset.size = 'big';
 				})
 
 				addToCartMedium.forEach((item) => {
@@ -136,7 +140,7 @@ class Pizza {
 			pizzasList.append(pizzaItem);
 
 			pizzaImg.classList.add('pizzaImg');
-			pizzaImg.src = `${data[i].photo_small}`;
+			pizzaImg.src = `${data[i]["photo_small"]}`;
 			pizzaImg.alt = 'пицца';
 			pizzaItem.append(pizzaImg);
 
@@ -151,10 +155,10 @@ class Pizza {
 			pizzaDesc.append(pizzaSizes);
 
 			anonce.classList.add('anonce');
-			anonce.textContent = `${data[i].anonce}`;
+			anonce.textContent = `${data[i]["anonce"]}`;
 			pizzaDesc.append(anonce);
 
-			if (data[i].is_big === 1) {
+			if (data[i]["is_big"] === 1) {
 				addListSize();
 				pizzaSizeBig.classList.add('pizzaSizeBig');
 				pizzaSizes.append(pizzaSizeBig);
@@ -163,10 +167,10 @@ class Pizza {
 				pizzaSizeBigTitle.textContent = 'Большая';
 				pizzaSizesBigContent.append(pizzaSizeBigTitle);
 
-				pizzaSizeBigPrice.textContent = `${(data[i].big_price / 10000).toFixed(2)}`;
+				pizzaSizeBigPrice.textContent = `${(data[i]["big_price"] / 10000).toFixed(2)}`;
 				pizzaSizesBigContent.append(pizzaSizeBigPrice);
 
-				pizzaSizeBigWeight.textContent = `${data[i].big_weight}`;
+				pizzaSizeBigWeight.textContent = `${data[i]["big_weight"]}`;
 				pizzaSizesBigContent.append(pizzaSizeBigWeight);
 
 				pizzaSizeBigAddToCart.textContent = 'В корзину';
@@ -174,13 +178,12 @@ class Pizza {
 
 				pizzaSizeBig.append(pizzaSizeBigCount);
 
-
 				pizzaSizeBigCount.append(pizzaSizeBigOrderMinus);
 				pizzaSizeBigCount.append(pizzaSizeBigOrderCounter);
 				pizzaSizeBigCount.append(pizzaSizeBigOrderPlus);
 			}
 
-			if (data[i].is_medium === 1) {
+			if (data[i]["is_medium"] === 1) {
 				addListSize();
 				pizzaSizeMedium.classList.add('pizzaSizeMedium');
 				pizzaSizes.append(pizzaSizeMedium);
@@ -189,15 +192,13 @@ class Pizza {
 				pizzaSizeMediumTitle.textContent = 'Стандартная';
 				pizzaSizesMediumContent.append(pizzaSizeMediumTitle);
 
-				pizzaSizeMediumPrice.textContent = `${(data[i].medium_price / 10000).toFixed(2)}`;
+				pizzaSizeMediumPrice.textContent = `${(data[i]["medium_price"] / 10000).toFixed(2)}`;
 				pizzaSizesMediumContent.append(pizzaSizeMediumPrice);
 
-				pizzaSizeMediumWeight.textContent = `${data[i].medium_weight}`;
+				pizzaSizeMediumWeight.textContent = `${data[i]["medium_weight"]}`;
 				pizzaSizesMediumContent.append(pizzaSizeMediumWeight);
 
-				pizzaSizeMediumAddToCart.dataset.id = `${data[i].id}`;
-				pizzaSizeMediumAddToCart.dataset.size = 'medium';
-				pizzaSizeMediumAddToCart.textContent = 'В корзину';
+ 				pizzaSizeMediumAddToCart.textContent = 'В корзину';
 				pizzaSizeMedium.append(pizzaSizeMediumAddToCart);
 
 				pizzaSizeMedium.append(pizzaSizeMediumCount);
@@ -210,7 +211,7 @@ class Pizza {
 				pizzaSizeMediumCount.append(pizzaSizeMediumOrderPlus);
 			}
 
-			if (data[i].is_thin === 1) {
+			if (data[i]["is_thin"] === 1) {
 				addListSize();
 
 				pizzaSizeThin.classList.add('pizzaSizeThin');
@@ -220,14 +221,12 @@ class Pizza {
 				pizzaSizeThinTitle.textContent = 'Тонкое тесто 36 см';
 				pizzaSizesThinContent.append(pizzaSizeThinTitle);
 
-				pizzaSizeThinPrice.textContent = `${(data[i].thin_price / 10000).toFixed(2)}`;
+				pizzaSizeThinPrice.textContent = `${(data[i]["thin_price"] / 10000).toFixed(2)}`;
 				pizzaSizesThinContent.append(pizzaSizeThinPrice);
 
-				pizzaSizeThinWeight.textContent = `${data[i].thin_weight}`;
+				pizzaSizeThinWeight.textContent = `${data[i]["thin_weight"]}`;
 				pizzaSizesThinContent.append(pizzaSizeThinWeight);
 
-				pizzaSizeThinAddToCart.dataset.id = `${data[i].id}`;
-				pizzaSizeThinAddToCart.dataset.size = 'thin';
 				pizzaSizeThinAddToCart.textContent = 'В корзину';
 				pizzaSizeThin.append(pizzaSizeThinAddToCart);
 
@@ -253,7 +252,24 @@ class Pizza {
 		formData.append('size', size);
 		formData.append('dough', 'thin');
 
-		return pzzNetService.addProductToBasket(formData);
+		return formData;
+	}
+
+	countPizzas(data) {
+		const pizzas = {};
+		// const pizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
+
+		if (pizzas[data.items[0].title] === undefined) {
+			pizzas[data.items[0].title] = {
+				'id': data.items[0].id,
+				'size': data.items[0].size,
+				'quantity': 1,
+			};
+
+		} else {
+
+		}
+		console.log(pizzas)
 	}
 
 	async changeButton(date) {
@@ -268,32 +284,23 @@ class Pizza {
 			}
 		}
 	}
-	countPizzas() {
-	}
-	pizzas = {}
 }
 
 export const pizza = new Pizza();
+
 let promise = pzzNetService.getListPizzas();
 promise.then(pizza.showListPizzas);
 
 pzzNetService.getCart();
+
 $(document).on('click', '.pizzaSizeAddToCart', (event) => {
-	pizza.makeProductFormData(event.target.dataset)
+	pzzNetService.addProductToBasket(pizza.makeProductFormData(event.target.dataset))
+		.then(pizza.countPizzas);
 	pizza.changeButton(event.target.dataset);
 });
-$(document).on('click', '.pizzaSizeOrderPlus', (event) => {
-	pizza.makeProductFormData(event.target.dataset);
-});
 
-// $(function () {
-// async function checkBasket(dataAddToCart, dataBasket) {
-// 		for (let i = 0; i < dataAddToCart.length; i++) {
-// 				for (let i = 0; i < dataBasket.length; i++) {
-// 						if (dataAddToCart.items[i].id === dataBasket.items[i].id) {
-// 								console.log(true);
-// 						}
-// 				}
-// 		}
-// }
-// })
+$(document).on('click', '.pizzaSizeOrderPlus', (event) => {
+	pzzNetService.addProductToBasket(pizza.makeProductFormData(event.target.dataset))
+		.then(pizza.countPizzas);
+	pizza.changeButton(event.target.dataset);
+});
