@@ -2,6 +2,7 @@
 
 import {pzzNetService} from './pzzNetService.js';
 
+// noinspection JSUnfilteredForInLoop
 class Pizza {
 
 	showListPizzas(data) {
@@ -198,7 +199,7 @@ class Pizza {
 				pizzaSizeMediumWeight.textContent = `${data[i]["medium_weight"]}`;
 				pizzaSizesMediumContent.append(pizzaSizeMediumWeight);
 
- 				pizzaSizeMediumAddToCart.textContent = 'В корзину';
+				pizzaSizeMediumAddToCart.textContent = 'В корзину';
 				pizzaSizeMedium.append(pizzaSizeMediumAddToCart);
 
 				pizzaSizeMedium.append(pizzaSizeMediumCount);
@@ -257,18 +258,17 @@ class Pizza {
 
 	countPizzas(data) {
 		const pizzas = {};
-		// const pizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
-
-		if (pizzas[data.items[0].title] === undefined) {
-			pizzas[data.items[0].title] = {
-				'id': data.items[0].id,
-				'size': data.items[0].size,
-				'quantity': 1,
-			};
-
-		} else {
+		for (let key in data.items) {
 
 		}
+		// for (let key in data.items) {
+		// 	let keyPizza = data.items[key]['title'];
+		// 	for (let pizza in pizzas) {
+		// 		if (keyPizza !== pizzas[keyPizza]) {
+		// 			pizzas.user = {}
+		// 		}
+		// 	}
+		// }
 		console.log(pizzas)
 	}
 
@@ -302,5 +302,4 @@ $(document).on('click', '.pizzaSizeAddToCart', (event) => {
 $(document).on('click', '.pizzaSizeOrderPlus', (event) => {
 	pzzNetService.addProductToBasket(pizza.makeProductFormData(event.target.dataset))
 		.then(pizza.countPizzas);
-	pizza.changeButton(event.target.dataset);
 });
