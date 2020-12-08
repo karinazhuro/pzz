@@ -1,7 +1,5 @@
 'use strict';
 
-// import {pizza} from "./main.js";
-
 class PzzNetService {
 	prefix = 'https://cors-anywhere.herokuapp.com/';
 	pizzasUrl = `https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;

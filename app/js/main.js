@@ -2,7 +2,6 @@
 
 import {pzzNetService} from './pzzNetService.js';
 
-// noinspection JSUnfilteredForInLoop
 class Pizza {
 
 	showListPizzas(data) {
@@ -69,6 +68,7 @@ class Pizza {
 
 				const btnPizzaSizeOrderMinus = document.getElementsByClassName('pizzaSizeOrderMinus');
 				const btnPizzaSizeOrderPlus = document.getElementsByClassName('pizzaSizeOrderPlus');
+				const btnPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
 				let addToCartBig = [pizzaSizeBigAddToCart, pizzaSizeBigOrderPlus];
 				let addToCartMedium = [pizzaSizeMediumAddToCart, pizzaSizeMediumOrderPlus];
@@ -106,6 +106,9 @@ class Pizza {
 				pizzaSizeMediumOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 				pizzaSizeThinOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 
+				Array.prototype.forEach.call(btnPizzaSizeOrderCounter, element => {
+					element.textContent = '0';
+				});
 
 				pizzaSizeBigOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
 				pizzaSizeMediumOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
@@ -243,6 +246,27 @@ class Pizza {
 		}
 	}
 
+	updateUI(data) {
+		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
+		const btnCount = document.getElementsByClassName('pizzaSizeCount');
+		const pizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
+
+		for (let i = 0; i < data.items.length; i++) {
+			for (let j = 0; j < btnAddToCart.length; j++) {
+				if (data.items[i].id === btnAddToCart[j].getAttribute('data-id') &&
+					data.items[i].size === btnAddToCart[j].getAttribute('data-size')) {
+					btnAddToCart[j].style.display = 'none';
+					btnCount[j].style.display = 'flex';
+				}
+
+				for (let k = 0; k < pizzaSizeOrderCounter.length; k++) {
+					let countContent = Number(pizzaSizeOrderCounter[k].textContent);
+					countContent++;
+				}
+			}
+		}
+	}
+
 	makeProductFormData(date) {
 		const formData = new FormData();
 		const id = date.id;
@@ -255,51 +279,19 @@ class Pizza {
 
 		return formData;
 	}
-
-	countPizzas(data) {
-		const pizzas = {};
-		for (let key in data.items) {
-
-		}
-		// for (let key in data.items) {
-		// 	let keyPizza = data.items[key]['title'];
-		// 	for (let pizza in pizzas) {
-		// 		if (keyPizza !== pizzas[keyPizza]) {
-		// 			pizzas.user = {}
-		// 		}
-		// 	}
-		// }
-		console.log(pizzas)
-	}
-
-	async changeButton(date) {
-		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
-		const btnCount = document.getElementsByClassName('pizzaSizeCount');
-
-		for (let i = 0; i < btnAddToCart.length; i++) {
-			if (btnAddToCart[i].getAttribute('data-id') === date.id &&
-				btnAddToCart[i].getAttribute('data-size') === date.size) {
-				btnAddToCart[i].style.display = 'none';
-				btnCount[i].style.display = 'flex';
-			}
-		}
-	}
 }
 
 export const pizza = new Pizza();
 
-let promise = pzzNetService.getListPizzas();
-promise.then(pizza.showListPizzas);
-
-pzzNetService.getCart();
+pzzNetService.getListPizzas().then(pizza.showListPizzas);
+pzzNetService.getCart().then(pizza.updateUI);
 
 $(document).on('click', '.pizzaSizeAddToCart', (event) => {
 	pzzNetService.addProductToBasket(pizza.makeProductFormData(event.target.dataset))
-		.then(pizza.countPizzas);
-	pizza.changeButton(event.target.dataset);
+		.then(pizza.updateUI);
 });
 
 $(document).on('click', '.pizzaSizeOrderPlus', (event) => {
 	pzzNetService.addProductToBasket(pizza.makeProductFormData(event.target.dataset))
-		.then(pizza.countPizzas);
+		.then(pizza.updateUI);
 });
