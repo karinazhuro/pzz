@@ -257,11 +257,8 @@ class Pizza {
 					data.items[i].size === btnAddToCart[j].getAttribute('data-size')) {
 					btnAddToCart[j].style.display = 'none';
 					btnCount[j].style.display = 'flex';
-				}
-
-				for (let k = 0; k < pizzaSizeOrderCounter.length; k++) {
-					let countContent = Number(pizzaSizeOrderCounter[k].textContent);
-					countContent++;
+					+pizzaSizeOrderCounter[j].textContent++;
+					console.log(j);
 				}
 			}
 		}
