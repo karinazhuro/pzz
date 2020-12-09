@@ -255,10 +255,11 @@ class Pizza {
 			for (let j = 0; j < btnAddToCart.length; j++) {
 				if (data.items[i].id === btnAddToCart[j].getAttribute('data-id') &&
 					data.items[i].size === btnAddToCart[j].getAttribute('data-size')) {
+					let countContent = +pizzaSizeOrderCounter[j].textContent;
 					btnAddToCart[j].style.display = 'none';
 					btnCount[j].style.display = 'flex';
-					+pizzaSizeOrderCounter[j].textContent++;
-					console.log(j);
+					countContent = countContent + 1;
+					console.log();
 				}
 			}
 		}
@@ -277,7 +278,6 @@ class Pizza {
 		return formData;
 	}
 }
-
 export const pizza = new Pizza();
 
 pzzNetService.getListPizzas().then(pizza.showListPizzas);
