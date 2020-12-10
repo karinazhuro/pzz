@@ -5,6 +5,7 @@ class PzzNetService {
 	pizzasUrl = `https://pzz.by/api/v1/pizzas?load=ingredients,filters&filter=meal_only:0&order=position:asc`;
 	basketUrl = `https://pzz.by/api/v1/basket`;
 	addToCartUrl = `https://pzz.by/api/v1/basket/add-item`;
+	removeToCartUrl = `https://pzz.by/api/v1/basket/remove-item`;
 
 	async getListPizzas() {
 		let response = await fetch(this.pizzasUrl);
@@ -23,6 +24,16 @@ class PzzNetService {
 	async addProductToBasket(formData) {
 		let response = await fetch(this.addToCartUrl, {
 		// let response = await fetch(this.prefix + this.addToCartUrl, {
+			method: 'POST',
+			body: formData,
+		});
+		let json = await response.json();
+		return json.response.data;
+	}
+
+	async removeProductToBasket(formData) {
+		let response = await fetch(this.removeToCartUrl, {
+		// let response = await fetch(this.prefix + this.removeToCartUrl, {
 			method: 'POST',
 			body: formData,
 		});

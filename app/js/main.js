@@ -70,9 +70,9 @@ class Pizza {
 				const btnPizzaSizeOrderPlus = document.getElementsByClassName('pizzaSizeOrderPlus');
 				const btnPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
-				let addToCartBig = [pizzaSizeBigAddToCart, pizzaSizeBigOrderPlus];
-				let addToCartMedium = [pizzaSizeMediumAddToCart, pizzaSizeMediumOrderPlus];
-				let addToCartThin = [pizzaSizeThinAddToCart, pizzaSizeThinOrderPlus];
+				const addToCartBig = [pizzaSizeBigAddToCart, pizzaSizeBigOrderPlus];
+				const addToCartMedium = [pizzaSizeMediumAddToCart, pizzaSizeMediumOrderPlus];
+				const addToCartThin = [pizzaSizeThinAddToCart, pizzaSizeThinOrderPlus];
 
 				pizzaSizeBigTitle.classList.add(`${pizzaSizeTitle}`);
 				pizzaSizeMediumTitle.classList.add(`${pizzaSizeTitle}`);
@@ -120,19 +120,30 @@ class Pizza {
 
 				addToCartBig.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
-					pizzaSizeBigOrderCounter.dataset.id = `${data[i].id}`;
 					item.dataset.size = 'big';
+					pizzaSizeBigOrderCounter.dataset.id = `${data[i].id}`;
 					pizzaSizeBigOrderCounter.dataset.size = 'big';
+					pizzaSizeBigOrderMinus.dataset.id = `${data[i].id}`;
+					pizzaSizeBigOrderMinus.dataset.size = 'big';
+
 				})
 
 				addToCartMedium.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
 					item.dataset.size = 'medium';
+					pizzaSizeMediumOrderCounter.dataset.id = `${data[i].id}`;
+					pizzaSizeMediumOrderCounter.dataset.size = 'medium';
+					pizzaSizeMediumOrderMinus.dataset.id = `${data[i].id}`;
+					pizzaSizeMediumOrderMinus.dataset.size = 'medium';
 				})
 
 				addToCartThin.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
 					item.dataset.size = 'thin';
+					pizzaSizeThinOrderCounter.dataset.id = `${data[i].id}`;
+					pizzaSizeThinOrderCounter.dataset.size = 'thin';
+					pizzaSizeThinOrderMinus.dataset.id = `${data[i].id}`;
+					pizzaSizeThinOrderMinus.dataset.size = 'thin';
 				})
 
 				pizzaSizesBigContent.classList.add(`${pizzaSizesContent}`);
@@ -251,16 +262,21 @@ class Pizza {
 		const btnCount = document.getElementsByClassName('pizzaSizeCount');
 		const pizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
-		for (let i = 0; i < data.items.length; i++) {
-			for (let j = 0; j < btnAddToCart.length; j++) {
+		for (let j = 0; j < btnAddToCart.length; j++) {
+			pizzaSizeOrderCounter[j].textContent = '0';
+
+			for (let i = 0; i < data.items.length; i++) {
 				if (data.items[i].id === btnAddToCart[j].getAttribute('data-id') &&
 					data.items[i].size === btnAddToCart[j].getAttribute('data-size')) {
-					let countContent = +pizzaSizeOrderCounter[j].textContent;
 					btnAddToCart[j].style.display = 'none';
 					btnCount[j].style.display = 'flex';
-					countContent = countContent + 1;
-					console.log();
+					pizzaSizeOrderCounter[j].textContent = String(Number(pizzaSizeOrderCounter[j].textContent) + 1);
 				}
+			}
+
+			if (pizzaSizeOrderCounter[j].textContent === '0') {
+				btnAddToCart[j].style.display = 'flex';
+				btnCount[j].style.display = 'none';
 			}
 		}
 	}
@@ -278,6 +294,7 @@ class Pizza {
 		return formData;
 	}
 }
+
 export const pizza = new Pizza();
 
 pzzNetService.getListPizzas().then(pizza.showListPizzas);
@@ -290,5 +307,10 @@ $(document).on('click', '.pizzaSizeAddToCart', (event) => {
 
 $(document).on('click', '.pizzaSizeOrderPlus', (event) => {
 	pzzNetService.addProductToBasket(pizza.makeProductFormData(event.target.dataset))
+		.then(pizza.updateUI);
+});
+
+$(document).on('click', '.pizzaSizeOrderMinus', (event) => {
+	pzzNetService.removeProductToBasket(pizza.makeProductFormData(event.target.dataset))
 		.then(pizza.updateUI);
 });
