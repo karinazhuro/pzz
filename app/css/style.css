@@ -10,20 +10,25 @@ body {
     margin: 0 0 30px 0;
     font-family: Malina, sans-serif; }
     body #wrapper header #logo {
-      color: #ff5200;
-      font-size: 19px;
-      line-height: 19px;
+      display: flex; }
+      body #wrapper header #logo #logoImg {
+        height: 45px;
+        margin: 0 10px 0 0; }
+      body #wrapper header #logo #title {
+        color: #ff5200;
+        font-size: 22px;
+        line-height: 22px;
+        text-decoration: none;
+        margin: auto 0; }
+        body #wrapper header #logo #title:hover {
+          color: #16bc00; }
+    body #wrapper header #cart {
       text-decoration: none;
-      margin: auto 0; }
-      body #wrapper header #logo:hover {
-        color: #16bc00; }
-    body #wrapper header #cartLink {
-      text-decoration: none;
       color: #ff5200;
-      font-size: 32px;
       letter-spacing: -.5px;
-      margin: 5px 0; }
-      body #wrapper header #cartLink:hover {
+      margin: 5px 0;
+      font-size: 32px; }
+      body #wrapper header #cart:hover {
         color: #16bc00; }
   body #wrapper #pizzasList {
     display: flex;

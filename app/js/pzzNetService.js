@@ -8,36 +8,36 @@ class PzzNetService {
 	removeToCartUrl = `https://pzz.by/api/v1/basket/remove-item`;
 
 	async getListPizzas() {
-		let response = await fetch(this.pizzasUrl);
-		// let response = await fetch(this.prefix + this.pizzasUrl);
-		let json = await response.json();
+		const response = await fetch(this.pizzasUrl);
+		// const response = await fetch(this.prefix + this.pizzasUrl);
+		const json = await response.json();
 		return json.response.data;
 	}
 
 	async getCart() {
-		let response = await fetch(this.basketUrl);
-		// let response = await fetch(this.prefix + this.basketUrl);
-		let json = await response.json();
+		const response = await fetch(this.basketUrl);
+		// const response = await fetch(this.prefix + this.basketUrl);
+		const json = await response.json();
 		return json.response.data;
 	}
 
 	async addProductToBasket(formData) {
-		let response = await fetch(this.addToCartUrl, {
-		// let response = await fetch(this.prefix + this.addToCartUrl, {
+		const response = await fetch(this.addToCartUrl, {
+		// const response = await fetch(this.prefix + this.addToCartUrl, {
 			method: 'POST',
 			body: formData,
 		});
-		let json = await response.json();
+		const json = await response.json();
 		return json.response.data;
 	}
 
 	async removeProductToBasket(formData) {
-		let response = await fetch(this.removeToCartUrl, {
-		// let response = await fetch(this.prefix + this.removeToCartUrl, {
+		const response = await fetch(this.removeToCartUrl, {
+		// const response = await fetch(this.prefix + this.removeToCartUrl, {
 			method: 'POST',
 			body: formData,
 		});
-		let json = await response.json();
+		const json = await response.json();
 		return json.response.data;
 	}
 }

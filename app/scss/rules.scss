@@ -13,6 +13,34 @@ $backgroundDeliveryDesc: #F6F6F6;
   src: url("../fonts/malina_webfont.ttf") format("truetype");
 }
 
+@mixin header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 30px 0;
+  font-family: Malina, sans-serif;
+
+  #logo {
+    display: flex;
+
+    #logoImg {
+      height: 45px;
+      margin: 0 10px 0 0;
+    }
+
+    #title {
+      color: $primaryFirst;
+      font-size: 22px;
+      line-height: 22px;
+      text-decoration: none;
+      margin: auto 0;
+
+      &:hover {
+        color: $hover;
+      }
+    }
+  }
+}
+
 @mixin markingForPizzaSize {
   margin: 0 0 15px 0;
   display: flex;

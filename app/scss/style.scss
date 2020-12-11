@@ -4,31 +4,15 @@ body {
   padding: 20px;
 
   #wrapper {
-
     header {
-      display: flex;
-      justify-content: space-between;
-      margin: 0 0 30px 0;
-      font-family: Malina, sans-serif;
+      @include header;
 
-      #logo {
-        color: $primaryFirst;
-        font-size: 19px;
-        line-height: 19px;
-        text-decoration: none;
-        margin: auto 0;
-
-        &:hover {
-          color: $hover;
-        }
-      }
-
-      #cartLink {
+      #cart {
         text-decoration: none;
         color: $primaryFirst;
-        font-size: 32px;
         letter-spacing: -.5px;
         margin: 5px 0;
+        font-size: 32px;
 
         &:hover {
           color: $hover;

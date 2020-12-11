@@ -1,277 +1,294 @@
 @import 'rules.scss';
 
 body {
-  display: grid;
-  padding: 20px 90px;
+  padding: 30px 90px;
 
   #wrapper {
-    #orderRegistration {
+    header {
+      @include header;
+    }
+
+    #content {
       font-family: Malina, sans-serif;
-      color: $secondaryFirst;
-    }
 
-    #ourOrder {
-      font: 34px/1.1 Malina, sans-serif;
-      letter-spacing: -1px;
-      margin: 20px 0;
-      color: $secondaryFirst;
-    }
+      #notice {
+        display: none;
+        flex-direction: column;
 
-    #order {
-      & > #orderPizza:not(:first-child) {
-        border-top: 1px solid #c3c3c3;
-      }
-
-      #orderPizza {
-        display: flex;
-        justify-content: space-between;
-        padding: 12px 20px;
-
-        #title {
-          #orderTitle {
-            color: $primaryFirst;
-            font: 28px/1.2 Malina, sans-serif;
-            letter-spacing: -.5px;
-          }
-
-          #orderSize {
-            font: 13px/1 Arial, Helvetica, sans-serif;
-            color: $secondarySecond;
-            padding-top: 4px;
-          }
-        }
-
-        #changeCount {
-          display: flex;
-
-          //@include changeCountBtn;
-        }
-
-        #orderPrice {
-          font-size: 21px;
-          font-weight: 700;
-          font-family: Helvetica, Arial, sans-serif;
+        #imgPzz {
+          margin: 100px auto;
         }
       }
 
-    }
+      #orderRegistration {
+        display: none;
+        font-family: Malina, sans-serif;
+        color: $secondaryFirst;
 
-    .totalPrice {
-      display: flex;
-      justify-content: flex-end;
-      align-items: baseline;
-      margin: 50px 0;
-
-      .totalTitle {
-        letter-spacing: -.5px;
-        padding: 0 20px 0 0;
-        color: $secondarySecond;
-        font: 20px/22px Malina, sans-serif;
-      }
-
-      #totalCost {
-        @include totalCost;
-      }
-    }
-
-    #address {
-      font: 34px/1.1 Malina, sans-serif;
-      letter-spacing: -1px;
-      margin: 30px 0;
-    }
-
-    #fullDeliveryAddress {
-      margin: 10px 0;
-
-      #privateData {
-        list-style: none;
-
-        & > li {
-          margin: 20px 0;
-        }
-
-        .nameForTextarea {
-          font-size: 17px;
-          font: 17px/1.2 Helvetica, Arial, sans-serif;
-          color: $secondaryFirst;
-          margin: 2px 0;
-        }
-
-        .textarea {
-          border: 1px solid $inputBorder;
-          padding: 4px 6px 4px 12px;
-          margin: 2px 0;
-          color: $secondaryFirst;
-          font: 21px Helvetica, Arial, sans-serif;
-        }
-
-        #privateDataName {
-          #name {
-            width: 336px;
-          }
-        }
-
-        #privateDataPhone {
-          #phoneCode {
-            width: 75px;
-            float: left;
-            margin: 2px 5px 0 0;
+        #ourOrder {
+          #caption {
+            font: 34px/1.1 Malina, sans-serif;
+            letter-spacing: -1px;
+            margin: 20px 0;
+            color: $secondaryFirst;
           }
 
-          #phone {
-            width: 256px;
-            float: left;
-            margin: 2px 12px 2px 0;
-          }
+          #order {
+            & > #orderPizza:not(:first-child) {
+              border-top: 1px solid #c3c3c3;
+            }
 
-          #example {
-            color: $secondarySecond;
-            font-size: 13px;
-            line-height: 16px;
-            padding: 2px 0 0 0;
-          }
-        }
+            .pizza {
+              display: flex;
+              justify-content: space-between;
+              padding: 12px 20px;
 
-        #privateDataAddress {
-          margin: 0 0 20px 0;
-          display: flex;
+              .title {
+                color: $primaryFirst;
+                font: 28px/1.2 Malina, sans-serif;
+                letter-spacing: -.5px;
+              }
+            }
 
-          & > .privateDataWrapper:not(:first-child) {
-            margin: 0 10px;
-          }
-
-          .privateDataWrapper {
-            .privateDataHouse {
+            #orderSize {
+              font: 13px/1 Arial, Helvetica, sans-serif;
               color: $secondarySecond;
+              padding-top: 4px;
             }
 
-            .privateDataHouseTextArea {
-              width: 71px;
+            #changeCount {
+              display: flex;
+
+              //@include changeCountBtn;
+            }
+
+            #orderPrice {
+              font-size: 21px;
+              font-weight: 700;
+              font-family: Helvetica, Arial, sans-serif;
+            }
+
+          }
+
+          .totalPrice {
+            display: flex;
+            justify-content: flex-end;
+            align-items: baseline;
+            margin: 50px 0;
+
+            .totalTitle {
+              letter-spacing: -.5px;
+              padding: 0 20px 0 0;
+              color: $secondarySecond;
+              font: 20px/22px Malina, sans-serif;
+            }
+
+            #totalCost {
+              @include totalCost;
             }
           }
 
-          #addressWrapperStreet {
-            margin: 0 10px 0 0;
+          #address {
+            font: 34px/1.1 Malina, sans-serif;
+            letter-spacing: -1px;
+            margin: 30px 0;
+          }
 
-            #street {
-              width: 356px;
+          #fullDeliveryAddress {
+            margin: 10px 0;
+
+            #privateData {
+              list-style: none;
+
+              & > li {
+                margin: 20px 0;
+              }
+
+              .nameForTextarea {
+                font-size: 17px;
+                font: 17px/1.2 Helvetica, Arial, sans-serif;
+                color: $secondaryFirst;
+                margin: 2px 0;
+              }
+
+              .textarea {
+                border: 1px solid $inputBorder;
+                padding: 4px 6px 4px 12px;
+                margin: 2px 0;
+                color: $secondaryFirst;
+                font: 21px Helvetica, Arial, sans-serif;
+              }
+
+              #privateDataName {
+                #name {
+                  width: 336px;
+                }
+              }
+
+              #privateDataPhone {
+                #phoneCode {
+                  width: 75px;
+                  float: left;
+                  margin: 2px 5px 0 0;
+                }
+
+                #phone {
+                  width: 256px;
+                  float: left;
+                  margin: 2px 12px 2px 0;
+                }
+
+                #example {
+                  color: $secondarySecond;
+                  font-size: 13px;
+                  line-height: 16px;
+                  padding: 2px 0 0 0;
+                }
+              }
+
+              #privateDataAddress {
+                margin: 0 0 20px 0;
+                display: flex;
+
+                & > .privateDataWrapper:not(:first-child) {
+                  margin: 0 10px;
+                }
+
+                .privateDataWrapper {
+                  .privateDataHouse {
+                    color: $secondarySecond;
+                  }
+
+                  .privateDataHouseTextArea {
+                    width: 71px;
+                  }
+                }
+
+                #addressWrapperStreet {
+                  margin: 0 10px 0 0;
+
+                  #street {
+                    width: 356px;
+                  }
+
+                }
+
+                #addressWrapperHouse {
+                  #house {
+                    width: 91px;
+                  }
+                }
+              }
+
+              #privateDataComment {
+                #comment {
+                  width: 100%;
+                }
+              }
             }
 
-          }
+            #delivery {
+              margin: 40px 0 0 0;
 
-          #addressWrapperHouse {
-            #house {
-              width: 91px;
+              #deliveryTitle {
+                color: $secondarySecond;
+                font: 20px/1.1 Malina, sans-serif;
+                letter-spacing: -.5px;
+                margin: 0 0 20px 0;
+              }
+
+              #deliveryDesc {
+                background-color: $backgroundDeliveryDesc;
+                padding: 20px;
+                font: 17px/1.2 Helvetica, Arial, sans-serif;
+                width: 669px;
+                margin: 0 0 40px 0;
+              }
+
+              .deliveryContactBtn {
+                cursor: pointer;
+                color: $primaryLight;
+                font: 17px/1 Malina, sans-serif;
+                letter-spacing: -.25px;
+                padding: 14px 20px;
+                background-color: $secondarySecond;
+                border-radius: 10px;
+                margin: 0 10px 0 0;
+
+                .deliveryContact {
+                  position: absolute;
+                  clip: rect(0, 0, 0, 0);
+                  pointer-events: none;
+                }
+
+              }
+            }
+
+            #payment {
+              margin: 35px 0;
+
+              #paymentTitle {
+                color: $secondarySecond;
+                font: 20px/1.1 Malina, sans-serif;
+                letter-spacing: -.5px;
+                margin: 15px 0 35px;
+              }
+
+              .paymentBtn {
+                cursor: pointer;
+                color: $primaryLight;
+                font: 17px/1 Malina, sans-serif;
+                letter-spacing: -.25px;
+                padding: 14px 20px;
+                background-color: $secondarySecond;
+                border-radius: 10px;
+                margin: 0 10px 0 0;
+
+                .paymentCheck {
+                  position: absolute;
+                  clip: rect(0, 0, 0, 0);
+                  pointer-events: none;
+                }
+              }
+            }
+
+            .totalPrice {
+              margin: 50px 0 0;
+
+              #total {
+                @include totalCost;
+              }
+            }
+
+            #currency {
+              color: $secondarySecond;
+              line-height: 1.2;
+              font: 15px Helvetica, Arial, sans-serif;
+              padding-right: 2.6em;
+              text-align: end;
             }
           }
-        }
 
-        #privateDataComment {
-          #comment {
-            width: 100%;
+          #btnSendOrder {
+            text-align: end;
+            margin: 30px 0;
+
+            #sendOrder {
+              cursor: pointer;
+              color: $primaryLight;
+              font: 32px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              background-color: $primaryFirst;
+              border-radius: 10px;
+              padding: 14px 20px;
+              border: none;
+              min-width: 357px;
+
+              &:hover {
+                background-color: $hover;
+              }
+            }
           }
-        }
-      }
-
-      #delivery {
-        margin: 40px 0 0 0;
-
-        #deliveryTitle {
-          color: $secondarySecond;
-          font: 20px/1.1 Malina, sans-serif;
-          letter-spacing: -.5px;
-          margin: 0 0 20px 0;
-        }
-
-        #deliveryDesc {
-          background-color: $backgroundDeliveryDesc;
-          padding: 20px;
-          font: 17px/1.2 Helvetica, Arial, sans-serif;
-          width: 669px;
-          margin: 0 0 40px 0;
-        }
-
-        .deliveryContactBtn {
-          cursor: pointer;
-          color: $primaryLight;
-          font: 17px/1 Malina, sans-serif;
-          letter-spacing: -.25px;
-          padding: 14px 20px;
-          background-color: $secondarySecond;
-          border-radius: 10px;
-          margin: 0 10px 0 0;
-
-          .deliveryContact {
-            position: absolute;
-            clip: rect(0, 0, 0, 0);
-            pointer-events: none;
-          }
-
-        }
-      }
-
-      #payment {
-        margin: 35px 0;
-
-        #paymentTitle {
-          color: $secondarySecond;
-          font: 20px/1.1 Malina, sans-serif;
-          letter-spacing: -.5px;
-          margin: 15px 0 35px;
-        }
-
-        .paymentBtn {
-          cursor: pointer;
-          color: $primaryLight;
-          font: 17px/1 Malina, sans-serif;
-          letter-spacing: -.25px;
-          padding: 14px 20px;
-          background-color: $secondarySecond;
-          border-radius: 10px;
-          margin: 0 10px 0 0;
-
-          .paymentCheck {
-            position: absolute;
-            clip: rect(0, 0, 0, 0);
-            pointer-events: none;
-          }
-        }
-      }
-
-      .totalPrice {
-        margin: 50px 0 0;
-
-        #total {
-          @include totalCost;
-        }
-      }
-
-      #currency {
-        color: $secondarySecond;
-        line-height: 1.2;
-        font: 15px Helvetica, Arial, sans-serif;
-        padding-right: 2.6em;
-        text-align: end;
-      }
-    }
-
-    #btnSendOrder {
-      text-align: end;
-      margin: 30px 0;
-
-      #sendOrder {
-        cursor: pointer;
-        color: $primaryLight;
-        font: 32px/1 Malina, sans-serif;
-        letter-spacing: -1px;
-        background-color: $primaryFirst;
-        border-radius: 10px;
-        padding: 14px 20px;
-        border: none;
-        min-width: 357px;
-
-        &:hover {
-          background-color: $hover;
         }
       }
     }

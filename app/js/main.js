@@ -3,7 +3,6 @@
 import {pzzNetService} from './pzzNetService.js';
 
 class Pizza {
-
 	showListPizzas(data) {
 		const pizzasList = document.getElementById('pizzasList');
 
