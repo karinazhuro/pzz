@@ -67,7 +67,7 @@ class Pizza {
 
 				const btnPizzaSizeOrderMinus = document.getElementsByClassName('pizzaSizeOrderMinus');
 				const btnPizzaSizeOrderPlus = document.getElementsByClassName('pizzaSizeOrderPlus');
-				const btnPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
+				const contentPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
 				const addToCartBig = [pizzaSizeBigAddToCart, pizzaSizeBigOrderPlus];
 				const addToCartMedium = [pizzaSizeMediumAddToCart, pizzaSizeMediumOrderPlus];
@@ -105,7 +105,7 @@ class Pizza {
 				pizzaSizeMediumOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 				pizzaSizeThinOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 
-				Array.prototype.forEach.call(btnPizzaSizeOrderCounter, element => {
+				Array.prototype.forEach.call(contentPizzaSizeOrderCounter, element => {
 					element.textContent = '0';
 				});
 
@@ -124,8 +124,7 @@ class Pizza {
 					pizzaSizeBigOrderCounter.dataset.size = 'big';
 					pizzaSizeBigOrderMinus.dataset.id = `${data[i].id}`;
 					pizzaSizeBigOrderMinus.dataset.size = 'big';
-
-				})
+				});
 
 				addToCartMedium.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
@@ -134,7 +133,7 @@ class Pizza {
 					pizzaSizeMediumOrderCounter.dataset.size = 'medium';
 					pizzaSizeMediumOrderMinus.dataset.id = `${data[i].id}`;
 					pizzaSizeMediumOrderMinus.dataset.size = 'medium';
-				})
+				});
 
 				addToCartThin.forEach((item) => {
 					item.dataset.id = `${data[i].id}`;
@@ -143,7 +142,7 @@ class Pizza {
 					pizzaSizeThinOrderCounter.dataset.size = 'thin';
 					pizzaSizeThinOrderMinus.dataset.id = `${data[i].id}`;
 					pizzaSizeThinOrderMinus.dataset.size = 'thin';
-				})
+				});
 
 				pizzaSizesBigContent.classList.add(`${pizzaSizesContent}`);
 				pizzaSizesMediumContent.classList.add(`${pizzaSizesContent}`);
@@ -212,6 +211,8 @@ class Pizza {
 				pizzaSizeMediumWeight.textContent = `${data[i]["medium_weight"]}`;
 				pizzaSizesMediumContent.append(pizzaSizeMediumWeight);
 
+				pizzaSizeMediumAddToCart.dataset.id = `${data[i].id}`;
+				pizzaSizeMediumAddToCart.dataset.size = 'medium';
 				pizzaSizeMediumAddToCart.textContent = 'В корзину';
 				pizzaSizeMedium.append(pizzaSizeMediumAddToCart);
 

@@ -3,151 +3,204 @@
   src: url("../fonts/malina_webfont.ttf") format("truetype");
 }
 body {
-  display: grid;
-  padding: 20px 90px;
+  padding: 30px 90px;
 }
-body #wrapper #orderRegistration {
+body #wrapper header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 30px 0;
+  font-family: Malina, sans-serif;
+}
+body #wrapper header #logo {
+  display: flex;
+}
+body #wrapper header #logo #logoImg {
+  height: 45px;
+  margin: 0 10px 0 0;
+}
+body #wrapper header #logo #title {
+  color: #ff5201;
+  font-size: 22px;
+  line-height: 22px;
+  text-decoration: none;
+  margin: auto 0;
+}
+body #wrapper header #logo #title:hover {
+  color: #16bc00;
+}
+body #wrapper #content {
+  font-family: Malina, sans-serif;
+}
+body #wrapper #content #notice {
+  display: none;
+  flex-direction: column;
+}
+body #wrapper #content #notice #imgPzz {
+  margin: 100px auto;
+}
+body #wrapper #content #orderRegistration {
+  display: none;
   font-family: Malina, sans-serif;
   color: #000;
 }
-body #wrapper #ourOrder {
+body #wrapper #content #orderRegistration #ourOrder #caption {
   font: 34px/1.1 Malina, sans-serif;
   letter-spacing: -1px;
   margin: 20px 0;
   color: #000;
 }
-body #wrapper #order > #orderPizza:not(:first-child) {
+body #wrapper #content #orderRegistration #ourOrder #order > #orderPizza:not(:first-child) {
   border-top: 1px solid #c3c3c3;
 }
-body #wrapper #order #orderPizza {
-  display: flex;
-  justify-content: space-between;
+body #wrapper #content #orderRegistration #ourOrder #order .pizza {
   padding: 12px 20px;
 }
-body #wrapper #order #orderPizza #title #orderTitle {
-  color: #ff5200;
+body #wrapper #content #orderRegistration #ourOrder #order .pizza .title {
+  color: #ff5201;
   font: 28px/1.2 Malina, sans-serif;
   letter-spacing: -0.5px;
+  margin: 15px 0;
 }
-body #wrapper #order #orderPizza #title #orderSize {
+body #wrapper #content #orderRegistration #ourOrder #order .pizza .size {
   font: 13px/1 Arial, Helvetica, sans-serif;
   color: #999;
-  padding-top: 4px;
 }
-body #wrapper #order #orderPizza #changeCount {
+body #wrapper #content #orderRegistration #ourOrder #order .pizza .count {
   display: flex;
+  margin: 10px 0;
 }
-body #wrapper #order #orderPizza #orderPrice {
+body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .minus {
+  cursor: pointer;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Malina, sans-serif;
+  letter-spacing: -1px;
+  border: none;
+  border-radius: 50%;
+  background-color: #277dff;
+  margin: 0 10px;
+  outline: none;
+  margin: 0;
+}
+body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .minus:hover {
+  background-color: #16bc00;
+}
+body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .countContent {
+  color: #000;
   font-size: 21px;
   font-weight: 700;
+  line-height: 30px;
+  min-width: 35px;
+  text-align: center;
   font-family: Helvetica, Arial, sans-serif;
 }
-body #wrapper .totalPrice {
+body #wrapper #content #orderRegistration #ourOrder .totalPrice {
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
   margin: 50px 0;
 }
-body #wrapper .totalPrice .totalTitle {
+body #wrapper #content #orderRegistration #ourOrder .totalPrice .totalTitle {
   letter-spacing: -0.5px;
   padding: 0 20px 0 0;
   color: #999;
   font: 20px/22px Malina, sans-serif;
 }
-body #wrapper .totalPrice #totalCost {
+body #wrapper #content #orderRegistration #ourOrder .totalPrice #totalCost {
   font-size: 32px;
   color: #000;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 42px;
 }
-body #wrapper #address {
+body #wrapper #content #orderRegistration #ourOrder #address {
   font: 34px/1.1 Malina, sans-serif;
   letter-spacing: -1px;
   margin: 30px 0;
 }
-body #wrapper #fullDeliveryAddress {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress {
   margin: 10px 0;
 }
-body #wrapper #fullDeliveryAddress #privateData {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData {
   list-style: none;
 }
-body #wrapper #fullDeliveryAddress #privateData > li {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData > li {
   margin: 20px 0;
 }
-body #wrapper #fullDeliveryAddress #privateData .nameForTextarea {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .nameForTextarea {
   font-size: 17px;
   font: 17px/1.2 Helvetica, Arial, sans-serif;
   color: #000;
   margin: 2px 0;
 }
-body #wrapper #fullDeliveryAddress #privateData .textarea {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .textarea {
   border: 1px solid #c3c3c3;
   padding: 4px 6px 4px 12px;
   margin: 2px 0;
   color: #000;
   font: 21px Helvetica, Arial, sans-serif;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataName #name {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataName #name {
   width: 336px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
   width: 75px;
   float: left;
   margin: 2px 5px 0 0;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #phone {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #phone {
   width: 256px;
   float: left;
   margin: 2px 12px 2px 0;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataPhone #example {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #example {
   color: #999;
   font-size: 13px;
   line-height: 16px;
   padding: 2px 0 0 0;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress {
   margin: 0 0 20px 0;
   display: flex;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress > .privateDataWrapper:not(:first-child) {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress > .privateDataWrapper:not(:first-child) {
   margin: 0 10px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
   color: #999;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
   width: 71px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
   margin: 0 10px 0 0;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #street {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #street {
   width: 356px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #house {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #house {
   width: 91px;
 }
-body #wrapper #fullDeliveryAddress #privateData #privateDataComment #comment {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataComment #comment {
   width: 100%;
 }
-body #wrapper #fullDeliveryAddress #delivery {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery {
   margin: 40px 0 0 0;
 }
-body #wrapper #fullDeliveryAddress #delivery #deliveryTitle {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery #deliveryTitle {
   color: #999;
   font: 20px/1.1 Malina, sans-serif;
   letter-spacing: -0.5px;
   margin: 0 0 20px 0;
 }
-body #wrapper #fullDeliveryAddress #delivery #deliveryDesc {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery #deliveryDesc {
   background-color: #F6F6F6;
   padding: 20px;
   font: 17px/1.2 Helvetica, Arial, sans-serif;
   width: 669px;
   margin: 0 0 40px 0;
 }
-body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn {
   cursor: pointer;
   color: #fff;
   font: 17px/1 Malina, sans-serif;
@@ -157,21 +210,21 @@ body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn {
   border-radius: 10px;
   margin: 0 10px 0 0;
 }
-body #wrapper #fullDeliveryAddress #delivery .deliveryContactBtn .deliveryContact {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn .deliveryContact {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-body #wrapper #fullDeliveryAddress #payment {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment {
   margin: 35px 0;
 }
-body #wrapper #fullDeliveryAddress #payment #paymentTitle {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentTitle {
   color: #999;
   font: 20px/1.1 Malina, sans-serif;
   letter-spacing: -0.5px;
   margin: 15px 0 35px;
 }
-body #wrapper #fullDeliveryAddress #payment .paymentBtn {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn {
   cursor: pointer;
   color: #fff;
   font: 17px/1 Malina, sans-serif;
@@ -181,43 +234,43 @@ body #wrapper #fullDeliveryAddress #payment .paymentBtn {
   border-radius: 10px;
   margin: 0 10px 0 0;
 }
-body #wrapper #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-body #wrapper #fullDeliveryAddress .totalPrice {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice {
   margin: 50px 0 0;
 }
-body #wrapper #fullDeliveryAddress .totalPrice #total {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice #total {
   font-size: 32px;
   color: #000;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 42px;
 }
-body #wrapper #fullDeliveryAddress #currency {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #currency {
   color: #999;
   line-height: 1.2;
   font: 15px Helvetica, Arial, sans-serif;
   padding-right: 2.6em;
   text-align: end;
 }
-body #wrapper #btnSendOrder {
+body #wrapper #content #orderRegistration #ourOrder #btnSendOrder {
   text-align: end;
   margin: 30px 0;
 }
-body #wrapper #btnSendOrder #sendOrder {
+body #wrapper #content #orderRegistration #ourOrder #btnSendOrder #sendOrder {
   cursor: pointer;
   color: #fff;
   font: 32px/1 Malina, sans-serif;
   letter-spacing: -1px;
-  background-color: #ff5200;
+  background-color: #ff5201;
   border-radius: 10px;
   padding: 14px 20px;
   border: none;
   min-width: 357px;
 }
-body #wrapper #btnSendOrder #sendOrder:hover {
+body #wrapper #content #orderRegistration #ourOrder #btnSendOrder #sendOrder:hover {
   background-color: #16bc00;
 }
 

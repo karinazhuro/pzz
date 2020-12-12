@@ -4,60 +4,78 @@ import {pzzNetService} from './pzzNetService.js';
 
 class Cart {
 
-	showBasket(data) {
-		const notice = document.getElementById('notice');
-		const orderRegistration = document.getElementById('orderRegistration');
+  showBasket(data) {
+    const notice = document.getElementById('notice');
+    const orderRegistration = document.getElementById('orderRegistration');
 
-		if (data.items.length === 0) {
+    if (data.items.length === 0) {
 
-			notice.style.display = 'flex';
-		} else {
-			notice.style.display = 'none';
-			orderRegistration.style.display = 'grid';
+      notice.style.display = 'flex';
+    } else {
+      notice.style.display = 'none';
+      orderRegistration.style.display = 'grid';
 
-			for (let i = 0; i < data.items.length; i++) {
-				// let size = '';
-				// if (data.items[i].size === 'big') {
-				// 	size = 'Большая';
-				// } else if (data.items[i].size === 'medium') {
-				// 	size = 'Стандартная';
-				// }
-				const order = document.getElementById('order');
+      const order = document.getElementById('order');
 
-				const pizza = document.createElement('div');
-				const title = document.createElement('h3');
+      const pizza = document.createElement('div');
+      const title = document.createElement('h3');
+      const size = document.createElement('h6');
+      const count = document.createElement('div');
+      const minus = document.createElement('button');
+      const countContent = document.createElement('p');
+      const plus = document.createElement('button');
+      let sizeCondition = '';
 
-				pizza.classList.add('pizza');
-				order.append(pizza);
+      for (let i = 0; i < data.items.length; i++) {
+        if (data.items[i].size === 'big') {
+          sizeCondition = 'Большая';
+        } else if (data.items[i].size === 'medium') {
+          sizeCondition = 'Стандартная';
+        }
 
-				title.classList.add('title');
-				title.textContent = `${data.items[i].title}`;
-				pizza.append(title);
+        pizza.classList.add('pizza');
+        title.classList.add('title');
+        size.classList.add('size');
+        count.classList.add('count');
+        minus.classList.add('minus');
+        countContent.classList.add('countContent');
 
-				// order.innerHTML += `<div id="orderPizza">
-				// 				<div id="title">
+        title.textContent = `${data.items[i].title}`;
+        size.textContent = `${sizeCondition}`;
+        minus.textContent = `-`;
+        countContent.textContent = `1`;
+
+        order.append(pizza);
+        pizza.append(title);
+        pizza.append(size);
+        pizza.append(count);
+        count.append(minus);
+        count.append(countContent);
+
+        // order.innerHTML += `<div id="orderPizza">
+        // 				<div id="title">
         //   <h3 id="orderTitle">${data.items[i].title}</h3>
         //   <p id="orderSize">${size}</p>
         // </div>
         // <div id="changeCount">
         //   <button id="orderMinus" class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-				// 						<div id="orderCounter">1</div>
-				// 						<button id="orderPlus" class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
+        // 						<div id="orderCounter">1</div>
+        // 						<button id="orderPlus" class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
         // </div>
         // <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
-				// 		</div>`;
+        // 		</div>`;
 
-				// totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-				// total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-			}
-		}
-
-	}
+        // totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
+        // total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
+      }
+    }
+  }
 }
 
 const cart = new Cart();
 
 pzzNetService.getCart().then(cart.showBasket);
+
 // $(function (events, handler) {
 // 		const order = document.getElementById('order');
 // 		const totalCost = document.getElementById('totalCost');

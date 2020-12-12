@@ -39,35 +39,43 @@ body {
             }
 
             .pizza {
-              display: flex;
-              justify-content: space-between;
+              //display: flex;
+              //justify-content: space-between;
               padding: 12px 20px;
 
               .title {
                 color: $primaryFirst;
                 font: 28px/1.2 Malina, sans-serif;
                 letter-spacing: -.5px;
+                margin: 15px 0;
+              }
+
+              .size {
+                font: 13px/1 Arial, Helvetica, sans-serif;
+                color: #999;
+                //margin: 10px 0;
+              }
+
+              .count {
+                display: flex;
+                margin: 10px 0;
+
+                .minus {
+                  @include buttonCountMinusPlus;
+                  margin: 0;
+                }
+
+                .countContent {
+                  color: #000;
+                  font-size: 21px;
+                  font-weight: 700;
+                  line-height: 30px;
+                  min-width: 35px;
+                  text-align: center;
+                  font-family: Helvetica, Arial, sans-serif;
+                }
               }
             }
-
-            #orderSize {
-              font: 13px/1 Arial, Helvetica, sans-serif;
-              color: $secondarySecond;
-              padding-top: 4px;
-            }
-
-            #changeCount {
-              display: flex;
-
-              //@include changeCountBtn;
-            }
-
-            #orderPrice {
-              font-size: 21px;
-              font-weight: 700;
-              font-family: Helvetica, Arial, sans-serif;
-            }
-
           }
 
           .totalPrice {
