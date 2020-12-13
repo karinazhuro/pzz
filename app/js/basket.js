@@ -12,21 +12,21 @@ class Cart {
 
       notice.style.display = 'flex';
     } else {
-      notice.style.display = 'none';
-      orderRegistration.style.display = 'grid';
-
       const order = document.getElementById('order');
 
-      const pizza = document.createElement('div');
-      const title = document.createElement('h3');
-      const size = document.createElement('h6');
-      const count = document.createElement('div');
-      const minus = document.createElement('button');
-      const countContent = document.createElement('p');
-      const plus = document.createElement('button');
-      let sizeCondition = '';
-
+      notice.style.display = 'none';
+      orderRegistration.style.display = 'grid';
+      
       for (let i = 0; i < data.items.length; i++) {
+        const pizza = document.createElement('div');
+        const title = document.createElement('h3');
+        const size = document.createElement('h6');
+        const count = document.createElement('div');
+        const minus = document.createElement('button');
+        const countContent = document.createElement('p');
+        const plus = document.createElement('button');
+        let sizeCondition = '';
+
         if (data.items[i].size === 'big') {
           sizeCondition = 'Большая';
         } else if (data.items[i].size === 'medium') {
@@ -39,11 +39,13 @@ class Cart {
         count.classList.add('count');
         minus.classList.add('minus');
         countContent.classList.add('countContent');
+        plus.classList.add('plus');
 
         title.textContent = `${data.items[i].title}`;
         size.textContent = `${sizeCondition}`;
         minus.textContent = `-`;
         countContent.textContent = `1`;
+        plus.textContent = `+`;
 
         order.append(pizza);
         pizza.append(title);
@@ -51,6 +53,7 @@ class Cart {
         pizza.append(count);
         count.append(minus);
         count.append(countContent);
+        count.append(plus);
 
         // order.innerHTML += `<div id="orderPizza">
         // 				<div id="title">

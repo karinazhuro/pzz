@@ -76,6 +76,21 @@ body {
             min-width: 35px;
             text-align: center;
             font-family: Helvetica, Arial, sans-serif; }
+          body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .plus {
+            cursor: pointer;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            font: 30px/1 Malina, sans-serif;
+            letter-spacing: -1px;
+            border: none;
+            border-radius: 50%;
+            background-color: #277dff;
+            margin: 0 10px;
+            outline: none;
+            margin: 0; }
+            body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .plus:hover {
+              background-color: #16bc00; }
       body #wrapper #content #orderRegistration #ourOrder .totalPrice {
         display: flex;
         justify-content: flex-end;
