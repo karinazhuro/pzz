@@ -24,6 +24,7 @@ body {
         display: none;
         font-family: Malina, sans-serif;
         color: $secondaryFirst;
+        flex-direction: column;
 
         #ourOrder {
           #caption {
@@ -38,34 +39,38 @@ body {
               border-top: 1px solid #c3c3c3;
             }
 
-            .pizza {
-              //display: flex;
-              //justify-content: space-between;
+            .pizzaItem {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
               padding: 12px 20px;
+              max-width: 800px;
 
-              .title {
-                color: $primaryFirst;
-                font: 28px/1.2 Malina, sans-serif;
-                letter-spacing: -.5px;
-                margin: 15px 0;
+              .pizzaDesc {
+
+                .pizzaTitle {
+                  color: $primaryFirst;
+                  font: 28px/1.2 Malina, sans-serif;
+                  letter-spacing: -.5px;
+                  margin: 0 0 5px 0;
+                }
+
+                .pizzaSize {
+                  font: 13px/1 Arial, Helvetica, sans-serif;
+                  color: #999;
+                }
               }
 
-              .size {
-                font: 13px/1 Arial, Helvetica, sans-serif;
-                color: #999;
-                //margin: 10px 0;
-              }
-
-              .count {
+              .pizzaSizeCount {
                 display: flex;
                 margin: 10px 0;
 
-                .minus {
+                .pizzaRemove {
                   @include buttonCountMinusPlus;
                   margin: 0;
                 }
 
-                .countContent {
+                .pizzaSizeOrderCounter {
                   color: #000;
                   font-size: 21px;
                   font-weight: 700;
@@ -75,10 +80,16 @@ body {
                   font-family: Helvetica, Arial, sans-serif;
                 }
 
-                .plus {
+                .pizzaAdd {
                   @include buttonCountMinusPlus;
                   margin: 0;
                 }
+              }
+
+              .pizzaSum {
+                font-weight: 700;
+                font-size: 21px;
+                font-family: Helvetica, Arial, sans-serif;
               }
             }
           }

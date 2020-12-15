@@ -4,122 +4,94 @@ import {pzzNetService} from './pzzNetService.js';
 
 class Cart {
 
-  showBasket(data) {
-    const notice = document.getElementById('notice');
-    const orderRegistration = document.getElementById('orderRegistration');
+	showBasket(data) {
+		const notice = document.getElementById('notice');
+		const orderRegistration = document.getElementById('orderRegistration');
 
-    if (data.items.length === 0) {
+		if (data.items.length === 0) {
+			notice.style.display = 'flex';
+		} else {
+			const order = document.getElementById('order');
 
-      notice.style.display = 'flex';
-    } else {
-      const order = document.getElementById('order');
+			notice.style.display = 'none';
+			orderRegistration.style.display = 'flex';
 
-      notice.style.display = 'none';
-      orderRegistration.style.display = 'grid';
-      
-      for (let i = 0; i < data.items.length; i++) {
-        const pizza = document.createElement('div');
-        const title = document.createElement('h3');
-        const size = document.createElement('h6');
-        const count = document.createElement('div');
-        const minus = document.createElement('button');
-        const countContent = document.createElement('p');
-        const plus = document.createElement('button');
-        let sizeCondition = '';
+			for (let i = 0; i < data.items.length; i++) {
+				const pizzaItem = document.createElement('div');
+				const pizzaDesc = document.createElement('div');
+				const pizzaTitle = document.createElement('h3');
+				const pizzaSize = document.createElement('h6');
+				const pizzaSizeCount = document.createElement('div');
+				const pizzaRemove = document.createElement('button');
+				const pizzaSizeOrderCounter = document.createElement('p');
+				const pizzaAdd = document.createElement('button');
+				const pizzaSum = document.createElement('p');
 
-        if (data.items[i].size === 'big') {
-          sizeCondition = 'Большая';
-        } else if (data.items[i].size === 'medium') {
-          sizeCondition = 'Стандартная';
-        }
+				let sizeCondition = '';
+				const {title, price, size, id} = data.items[i];
 
-        pizza.classList.add('pizza');
-        title.classList.add('title');
-        size.classList.add('size');
-        count.classList.add('count');
-        minus.classList.add('minus');
-        countContent.classList.add('countContent');
-        plus.classList.add('plus');
+				if (size === 'big') {
+					sizeCondition = 'Большая';
+				} else if (size === 'medium') {
+					sizeCondition = 'Стандартная';
+				}
 
-        title.textContent = `${data.items[i].title}`;
-        size.textContent = `${sizeCondition}`;
-        minus.textContent = `-`;
-        countContent.textContent = `1`;
-        plus.textContent = `+`;
+				pizzaItem.classList.add('pizzaItem');
+				pizzaDesc.classList.add('pizzaDesc');
+				pizzaTitle.classList.add('pizzaTitle');
+				pizzaSize.classList.add('pizzaSize');
+				pizzaSizeCount.classList.add('pizzaSizeCount');
+				pizzaRemove.classList.add('pizzaRemove');
+				pizzaSizeOrderCounter.classList.add('pizzaSizeOrderCounter');
+				pizzaAdd.classList.add('pizzaAdd');
+				pizzaSum.classList.add('pizzaSum');
 
-        order.append(pizza);
-        pizza.append(title);
-        pizza.append(size);
-        pizza.append(count);
-        count.append(minus);
-        count.append(countContent);
-        count.append(plus);
+				pizzaRemove.dataset.id = `${id}`;
+				pizzaRemove.dataset.size = `${size}`;
 
-        // order.innerHTML += `<div id="orderPizza">
-        // 				<div id="title">
-        //   <h3 id="orderTitle">${data.items[i].title}</h3>
-        //   <p id="orderSize">${size}</p>
-        // </div>
-        // <div id="changeCount">
-        //   <button id="orderMinus" class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-        // 						<div id="orderCounter">1</div>
-        // 						<button id="orderPlus" class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
-        // </div>
-        // <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
-        // 		</div>`;
+				pizzaAdd.dataset.id = `${id}`;
+				pizzaAdd.dataset.size = `${size}`;
 
-        // totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-        // total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-      }
-    }
-  }
+				pizzaTitle.textContent = `${title}`;
+				pizzaSize.textContent = `${sizeCondition}`;
+				pizzaRemove.textContent = `-`;
+				// pizzaSizeOrderCounter.textContent = `0`;
+				pizzaAdd.textContent = `+`;
+				pizzaSum.textContent = `${(price / 10000).toFixed(2)}`;
+
+				order.append(pizzaItem);
+				pizzaItem.append(pizzaDesc);
+				pizzaDesc.append(pizzaTitle)
+				pizzaDesc.append(pizzaSize);
+				pizzaItem.append(pizzaSizeCount);
+				pizzaSizeCount.append(pizzaRemove);
+				pizzaSizeCount.append(pizzaSizeOrderCounter);
+				pizzaSizeCount.append(pizzaAdd);
+				pizzaItem.append(pizzaSum);
+			}
+		}
+	}
 }
 
 const cart = new Cart();
 
-pzzNetService.getCart().then(cart.showBasket);
+pzzNetService.getCart().then(cart.showBasket).then(pzzNetService.updateUI);
+
+$(document).on('click', '.pizzaAdd', event => {
+	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
+		.then(pzzNetService.updateUI);
+})
+$(document).on('click', '.pizzaRemove', event => {
+	pzzNetService.removeProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
+		.then(pzzNetService.updateUI);
+})
 
 // $(function (events, handler) {
-// 		const order = document.getElementById('order');
 // 		const totalCost = document.getElementById('totalCost');
 // 		const total = document.getElementById('total');
 //
-// 		async function getBasket() {
-// 				await fetch(basketUrl)
-// 				.then(function (response) {
-// 						response.json()
-// 						.then(function (obj) {
-// 								const data = obj.response.data;
-// 								showBasket(data)
-// 						})
-// 				})
-// 		}
-//
-// 	getBasket(showBasket);
-//
 // 		function showBasket(data) {
 // 				for (let i = 0; i < data.items.length; i++) {
-// 						let size = '';
-//
-// 						if (data.items[i].size === 'big') {
-// 								size = 'Большая';
-// 						} else if (data.items[i].size === 'medium') {
-// 								size = 'Стандартная';
-// 						}
-//
-// 						order.innerHTML += `<div id="orderPizza">
-// 								<div id="title">
-//           <h3 id="orderTitle">${data.items[i].title}</h3>
-//           <p id="orderSize">${size}</p>
-//         </div>
-//         <div id="changeCount">
-//           <button id="orderMinus" class="orderMinus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">-</button>
-// 										<div id="orderCounter">1</div>
-// 										<button id="orderPlus" class="orderPlus" data-id="${data.items[i].id}" data-size="${data.items[i].size}">+</button>
-//         </div>
-//         <p id="orderPrice">${(data.items[i].price / 10000).toFixed(2)}</p>
-// 						</div>`;
-//
 // 						totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 // 						total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
 // 				}

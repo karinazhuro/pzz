@@ -32,7 +32,8 @@ body {
     body #wrapper #content #orderRegistration {
       display: none;
       font-family: Malina, sans-serif;
-      color: #000; }
+      color: #000;
+      flex-direction: column; }
       body #wrapper #content #orderRegistration #ourOrder #caption {
         font: 34px/1.1 Malina, sans-serif;
         letter-spacing: -1px;
@@ -40,20 +41,24 @@ body {
         color: #000; }
       body #wrapper #content #orderRegistration #ourOrder #order > #orderPizza:not(:first-child) {
         border-top: 1px solid #c3c3c3; }
-      body #wrapper #content #orderRegistration #ourOrder #order .pizza {
-        padding: 12px 20px; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizza .title {
+      body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        max-width: 800px; }
+        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc .pizzaTitle {
           color: #ff5201;
           font: 28px/1.2 Malina, sans-serif;
           letter-spacing: -.5px;
-          margin: 15px 0; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizza .size {
+          margin: 0 0 5px 0; }
+        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc .pizzaSize {
           font: 13px/1 Arial, Helvetica, sans-serif;
           color: #999; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizza .count {
+        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount {
           display: flex;
           margin: 10px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .minus {
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaRemove {
             cursor: pointer;
             color: #fff;
             width: 30px;
@@ -66,9 +71,9 @@ body {
             margin: 0 10px;
             outline: none;
             margin: 0; }
-            body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .minus:hover {
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaRemove:hover {
               background-color: #16bc00; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .countContent {
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaSizeOrderCounter {
             color: #000;
             font-size: 21px;
             font-weight: 700;
@@ -76,7 +81,7 @@ body {
             min-width: 35px;
             text-align: center;
             font-family: Helvetica, Arial, sans-serif; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .plus {
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaAdd {
             cursor: pointer;
             color: #fff;
             width: 30px;
@@ -89,8 +94,12 @@ body {
             margin: 0 10px;
             outline: none;
             margin: 0; }
-            body #wrapper #content #orderRegistration #ourOrder #order .pizza .count .plus:hover {
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaAdd:hover {
               background-color: #16bc00; }
+        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSum {
+          font-weight: 700;
+          font-size: 21px;
+          font-family: Helvetica, Arial, sans-serif; }
       body #wrapper #content #orderRegistration #ourOrder .totalPrice {
         display: flex;
         justify-content: flex-end;
