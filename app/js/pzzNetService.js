@@ -54,29 +54,6 @@ class PzzNetService {
 		return formData;
 	}
 
-	updateUI(data) {
-		const btnAddToCart = document.getElementsByClassName('pizzaSizeAddToCart');
-		const btnCount = document.getElementsByClassName('pizzaSizeCount');
-		const pizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
-
-		for (let j = 0; j < pizzaSizeOrderCounter.length; j++) {
-			pizzaSizeOrderCounter[j].textContent = '0';
-
-			for (let i = 0; i < data.items.length; i++) {
-				if (data.items[i].id === btnAddToCart[j].getAttribute('data-id') &&
-					data.items[i].size === btnAddToCart[j].getAttribute('data-size')) {
-					btnAddToCart[j].style.display = 'none';
-					btnCount[j].style.display = 'flex';
-					pizzaSizeOrderCounter[j].textContent = String(Number(pizzaSizeOrderCounter[j].textContent) + 1);
-				}
-			}
-
-			if (pizzaSizeOrderCounter[j].textContent === '0') {
-				btnAddToCart[j].style.display = 'flex';
-				btnCount[j].style.display = 'none';
-			}
-		}
-	}
 }
 
 export const pzzNetService = new PzzNetService();
