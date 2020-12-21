@@ -11,74 +11,89 @@ class Cart {
 			notice.style.display = 'flex';
 		} else {
 			const order = document.getElementById('order');
-			const getPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
 			notice.style.display = 'none';
 			orderRegistration.style.display = 'flex';
 
-			for (let i = 0; i < data.items.length; i++) {
-				// if (!getPizzaSizeOrderCounter[i].getAttribute('data-id')) {
-					const pizzaItem = document.createElement('div');
-					const pizzaDesc = document.createElement('div');
-					const pizzaTitle = document.createElement('h3');
-					const pizzaSize = document.createElement('h6');
-					const pizzaSizeCount = document.createElement('div');
-					const pizzaRemove = document.createElement('button');
-					const pizzaSizeOrderCounter = document.createElement('p');
-					const pizzaAdd = document.createElement('button');
-					const pizzaSum = document.createElement('p');
+			cart.updateUICart(data, order);
+		}
+	}
 
-					const {title, price, size, id} = data.items[i];
-					let sizeCondition = '';
+	updateUICart(data, order) {
+		const getPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
-					if (size === 'big') {
-						sizeCondition = 'Большая';
-					} else if (size === 'medium') {
-						sizeCondition = 'Стандартная';
-					}
+		for (let i = 0; i < data.items.length; i++) {
+			if (getPizzaSizeOrderCounter.length === 0) {
+				console.log(0)
+				cart.buildCart(data.items[i], order);
+				getPizzaSizeOrderCounter[i].textContent = String(Number(getPizzaSizeOrderCounter[i].textContent) + 1);
+			}
 
-					pizzaItem.classList.add('pizzaItem');
-					pizzaDesc.classList.add('pizzaDesc');
-					pizzaTitle.classList.add('pizzaTitle');
-					pizzaSize.classList.add('pizzaSize');
-					pizzaSizeCount.classList.add('pizzaSizeCount');
-					pizzaRemove.classList.add('pizzaRemove');
-					pizzaSizeOrderCounter.classList.add('pizzaSizeOrderCounter');
-					pizzaAdd.classList.add('pizzaAdd');
-					pizzaSum.classList.add('pizzaSum');
-
-					pizzaRemove.dataset.id = `${id}`;
-					pizzaRemove.dataset.size = `${size}`;
-
-					pizzaAdd.dataset.id = `${id}`;
-					pizzaAdd.dataset.size = `${size}`;
-
-					pizzaSizeOrderCounter.dataset.id = `${id}`;
-					pizzaSizeOrderCounter.dataset.size = `${size}`;
-
-					pizzaTitle.textContent = `${title}`;
-					pizzaSize.textContent = `${sizeCondition}`;
-					pizzaRemove.textContent = `-`;
-					pizzaAdd.textContent = `+`;
-					pizzaSum.textContent = `${(price / 10000).toFixed(2)}`;
-
-					order.append(pizzaItem);
-					pizzaItem.append(pizzaDesc);
-					pizzaDesc.append(pizzaTitle)
-					pizzaDesc.append(pizzaSize);
-					pizzaItem.append(pizzaSizeCount);
-					pizzaSizeCount.append(pizzaRemove);
-					pizzaSizeCount.append(pizzaSizeOrderCounter);
-					pizzaSizeCount.append(pizzaAdd);
-					pizzaItem.append(pizzaSum);
-					console.log(getPizzaSizeOrderCounter[i].getAttribute('data-id') === data.items[i].id)
-				// }
+			if (data.items[i].id !== getPizzaSizeOrderCounter[i].getAttribute('data-id') &&
+				data.items[i].size !== getPizzaSizeOrderCounter[i].getAttribute('data-size')) {
+				console.log(1)
+				cart.buildCart(data.items[i + 1], order);
+				getPizzaSizeOrderCounter[i + 1].textContent = String(Number(getPizzaSizeOrderCounter[i + 1].textContent) + 1)
+			} else {
+				console.log(2)
+				getPizzaSizeOrderCounter[i + 1].textContent = String(Number(getPizzaSizeOrderCounter[i + 1].textContent) + 1)
 			}
 		}
 	}
 
-	updateUICart(data) {
+	buildCart(data, order) {
+		const pizzaItem = document.createElement('div');
+		const pizzaDesc = document.createElement('div');
+		const pizzaTitle = document.createElement('h3');
+		const pizzaSize = document.createElement('h6');
+		const pizzaSizeCount = document.createElement('div');
+		const pizzaRemove = document.createElement('button');
+		const pizzaSizeOrderCounter = document.createElement('p');
+		const pizzaAdd = document.createElement('button');
+		const pizzaSum = document.createElement('p');
+		let sizeCondition = '';
 
+		if (data.size === 'big') {
+			sizeCondition = 'Большая';
+		} else if (data.size === 'medium') {
+			sizeCondition = 'Стандартная';
+		}
+
+		pizzaItem.classList.add('pizzaItem');
+		pizzaDesc.classList.add('pizzaDesc');
+		pizzaTitle.classList.add('pizzaTitle');
+		pizzaSize.classList.add('pizzaSize');
+		pizzaSizeCount.classList.add('pizzaSizeCount');
+		pizzaRemove.classList.add('pizzaRemove');
+		pizzaSizeOrderCounter.classList.add('pizzaSizeOrderCounter');
+		pizzaAdd.classList.add('pizzaAdd');
+		pizzaSum.classList.add('pizzaSum');
+
+		pizzaRemove.dataset.id = `${data.id}`;
+		pizzaRemove.dataset.size = `${data.size}`;
+
+		pizzaAdd.dataset.id = `${data.id}`;
+		pizzaAdd.dataset.size = `${data.size}`;
+
+		pizzaSizeOrderCounter.dataset.id = `${data.id}`;
+		pizzaSizeOrderCounter.dataset.size = `${data.size}`;
+
+		pizzaTitle.textContent = `${data.title}`;
+		pizzaSize.textContent = `${sizeCondition}`;
+		pizzaRemove.textContent = `-`;
+		pizzaSizeOrderCounter.textContent = `0`;
+		pizzaAdd.textContent = `+`;
+		pizzaSum.textContent = `${(data.price / 10000).toFixed(2)}`;
+
+		order.append(pizzaItem);
+		pizzaItem.append(pizzaDesc);
+		pizzaDesc.append(pizzaTitle)
+		pizzaDesc.append(pizzaSize);
+		pizzaItem.append(pizzaSizeCount);
+		pizzaSizeCount.append(pizzaRemove);
+		pizzaSizeCount.append(pizzaSizeOrderCounter);
+		pizzaSizeCount.append(pizzaAdd);
+		pizzaItem.append(pizzaSum);
 	}
 }
 
@@ -89,12 +104,12 @@ pzzNetService.getCart()
 
 $(document).on('click', '.pizzaAdd', event => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.updateUICart);
+		.then(cart.showBasket);
 })
 
 $(document).on('click', '.pizzaRemove', event => {
 	pzzNetService.removeProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.updateUICart);
+		.then(cart.showBasket);
 })
 
 // $(function (events, handler) {

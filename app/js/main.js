@@ -275,8 +275,11 @@ class Pizza {
 				btnAddToCart[j].style.display = 'flex';
 				btnCount[j].style.display = 'none';
 			}
-
 		}
+	}
+
+	collectNumberPizzas() {
+
 	}
 }
 
@@ -285,7 +288,8 @@ export const pizza = new Pizza();
 pzzNetService.getListPizzas()
 	.then(pizza.showListPizzas);
 pzzNetService.getCart()
-	.then(pizza.updateUI);
+	.then(pizza.updateUI)
+	.then(pizza.collectNumberPizzas);
 
 $(document).on('click', '.pizzaSizeAddToCart', (event) => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
