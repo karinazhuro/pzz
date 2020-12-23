@@ -22,21 +22,20 @@ class Cart {
 	updateUICart(data, order) {
 		const getPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
+		console.log(getPizzaSizeOrderCounter, getPizzaSizeOrderCounter.length)
 		for (let i = 0; i < data.items.length; i++) {
+
 			if (getPizzaSizeOrderCounter.length === 0) {
-				console.log(0)
-				cart.buildCart(data.items[i], order);
-				getPizzaSizeOrderCounter[i].textContent = String(Number(getPizzaSizeOrderCounter[i].textContent) + 1);
+				cart.buildCart(data.items[0], order);
+				getPizzaSizeOrderCounter[0].textContent = String(Number(getPizzaSizeOrderCounter[0].textContent) + 1);
 			}
 
-			if (data.items[i].id !== getPizzaSizeOrderCounter[i].getAttribute('data-id') &&
-				data.items[i].size !== getPizzaSizeOrderCounter[i].getAttribute('data-size')) {
-				console.log(1)
+			if (data.items[i + 1].id !== getPizzaSizeOrderCounter[i].getAttribute('data-id') &&
+				data.items[i + 1].size !== getPizzaSizeOrderCounter[i].getAttribute('data-size')) {
 				cart.buildCart(data.items[i + 1], order);
-				getPizzaSizeOrderCounter[i + 1].textContent = String(Number(getPizzaSizeOrderCounter[i + 1].textContent) + 1)
+				getPizzaSizeOrderCounter[i].textContent = String(Number(getPizzaSizeOrderCounter[i].textContent) + 1)
 			} else {
-				console.log(2)
-				getPizzaSizeOrderCounter[i + 1].textContent = String(Number(getPizzaSizeOrderCounter[i + 1].textContent) + 1)
+				getPizzaSizeOrderCounter[i].textContent = String(Number(getPizzaSizeOrderCounter[i].textContent) + 1)
 			}
 		}
 	}
@@ -81,7 +80,7 @@ class Cart {
 		pizzaTitle.textContent = `${data.title}`;
 		pizzaSize.textContent = `${sizeCondition}`;
 		pizzaRemove.textContent = `-`;
-		pizzaSizeOrderCounter.textContent = `0`;
+		// pizzaSizeOrderCounter.textContent = `0`;
 		pizzaAdd.textContent = `+`;
 		pizzaSum.textContent = `${(data.price / 10000).toFixed(2)}`;
 
@@ -95,12 +94,40 @@ class Cart {
 		pizzaSizeCount.append(pizzaAdd);
 		pizzaItem.append(pizzaSum);
 	}
+
+	getCollectPizzas(data) {
+		let collectPizzas = [];
+
+		for (let item of data.items) {
+			collectPizzas.push({
+				type: item.type,
+				title: item.title,
+				id: item.id,
+				size: item.size,
+				price: item.price,
+				count: 1,
+			})
+		}
+
+		// for (let piz = 0; piz < collectPizzas.length; piz++) {
+		// 	for (let piz1 = piz + 1; piz1 < collectPizzas.length; piz1++) {
+		// 		if (collectPizzas[piz].id === collectPizzas[piz1].id &&
+		// 			collectPizzas[piz].size === collectPizzas[piz1].size) {
+		// 			collectPizzas[piz].count += 1;
+		// 		}
+		// 	}
+		// }
+		console.log(collectPizzas)
+	}
 }
 
 const cart = new Cart();
 
 pzzNetService.getCart()
-	.then(cart.showBasket);
+	.then(cart.getCollectPizzas);
+
+// pzzNetService.getCart()
+// 	.then(cart.showBasket);
 
 $(document).on('click', '.pizzaAdd', event => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))

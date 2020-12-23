@@ -102,9 +102,9 @@ class Pizza {
 				pizzaSizeMediumOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 				pizzaSizeThinOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 
-				Array.prototype.forEach.call(contentPizzaSizeOrderCounter, element => {
-					element.textContent = '0';
-				});
+				// Array.prototype.forEach.call(contentPizzaSizeOrderCounter, element => {
+				// 	element.textContent = '0';
+				// });
 
 				pizzaSizeBigOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
 				pizzaSizeMediumOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
@@ -278,9 +278,6 @@ class Pizza {
 		}
 	}
 
-	collectNumberPizzas() {
-
-	}
 }
 
 export const pizza = new Pizza();
