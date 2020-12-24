@@ -97,27 +97,31 @@ class Cart {
 
 	getCollectPizzas(data) {
 		let collectPizzas = [];
+		let filtered = '';
 
-		for (let item of data.items) {
+		for (let i = 0; i < data.items.length; i++) {
 			collectPizzas.push({
-				type: item.type,
-				title: item.title,
-				id: item.id,
-				size: item.size,
-				price: item.price,
+				// type: data.items[i].type,
+				title: data.items[i].title,
+				id: data.items[i].id,
+				size: data.items[i].size,
+				price: data.items[i].price,
 				count: 1,
 			})
 		}
 
-		// for (let piz = 0; piz < collectPizzas.length; piz++) {
-		// 	for (let piz1 = piz + 1; piz1 < collectPizzas.length; piz1++) {
-		// 		if (collectPizzas[piz].id === collectPizzas[piz1].id &&
-		// 			collectPizzas[piz].size === collectPizzas[piz1].size) {
-		// 			collectPizzas[piz].count += 1;
-		// 		}
-		// 	}
-		// }
-		console.log(collectPizzas)
+		for (let i = 0; i < collectPizzas.length; i++) {
+			for (let j = i + 1; j < collectPizzas.length; j++) {
+				if (collectPizzas[i] === undefined) continue;
+				if (collectPizzas[i].id === collectPizzas[j].id &&
+					collectPizzas[i].size === collectPizzas[j].size) {
+					collectPizzas[i].count += 1;
+					collectPizzas[i].price += data.items[i].price;
+					delete collectPizzas[j];
+				}
+			}
+			filtered = collectPizzas.filter(el => Object.keys(el).length);
+		}
 	}
 }
 
