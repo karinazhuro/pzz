@@ -284,6 +284,7 @@ export const pizza = new Pizza();
 
 pzzNetService.getListPizzas()
 	.then(pizza.showListPizzas);
+
 pzzNetService.getCart()
 	.then(pizza.updateUI)
 	.then(pizza.collectNumberPizzas);
