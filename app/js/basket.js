@@ -17,9 +17,16 @@ class Cart {
 		}
 	}
 
+	changeCounter(data) {
+		const order = document.getElementById('order');
+
+		order.remove();
+		cart.getCollectPizzas(data);
+	}
+
 	getCollectPizzas(data) {
 		let collectPizzas = [];
-		let filtered = '';
+		let filtered;
 
 		for (let i = 0; i < data.items.length; i++) {
 			collectPizzas.push({
@@ -47,13 +54,13 @@ class Cart {
 			filtered = collectPizzas.filter(el => Object.keys(el).length);
 		}
 
-		for (let i = 0; i < filtered.length; i++) {
-			cart.updateUICart(filtered[i]);
-		}
+		cart.updateUICart(filtered);
 	}
 
 	updateUICart(filtered) {
-		// for (let i = 0; i < filtered.length; i++) {
+		const order = document.getElementById('order');
+
+		for (let i = 0; i < filtered.length; i++) {
 			const pizzaItem = document.createElement('div');
 			const pizzaDesc = document.createElement('div');
 			const pizzaTitle = document.createElement('h3');
@@ -74,7 +81,6 @@ class Cart {
 			pizzaSizeOrderCounter.classList.add('pizzaSizeOrderCounter');
 			pizzaAdd.classList.add('pizzaAdd');
 			pizzaSum.classList.add('pizzaSum');
-
 
 			order.append(pizzaItem);
 			pizzaItem.append(pizzaDesc);
@@ -107,7 +113,7 @@ class Cart {
 			pizzaSizeOrderCounter.textContent = `${filtered[i].count}`;
 			pizzaAdd.textContent = `+`;
 			pizzaSum.textContent = `${(filtered[i].price / 10000).toFixed(2)}`;
-		// }
+		}
 	}
 }
 
@@ -118,12 +124,12 @@ pzzNetService.getCart()
 
 $(document).on('click', '.pizzaAdd', event => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.showBasket);
+		.then(cart.changeCounter);
 })
 
 $(document).on('click', '.pizzaRemove', event => {
 	pzzNetService.removeProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.showBasket);
+		.then(cart.getCollectPizzas);
 })
 
 // $(function (events, handler) {
