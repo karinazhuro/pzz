@@ -32,7 +32,6 @@ class Cart {
 			})
 		}
 
-
 		for (let i = 0; i < collectPizzas.length; i++) {
 			for (let j = i + 1; j < collectPizzas.length; j++) {
 				if (collectPizzas[i] === undefined) continue;
