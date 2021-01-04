@@ -4,9 +4,6 @@ import {pzzNetService} from './pzzNetService.js';
 
 class Cart {
 	showBasket(data) {
-		// const notice = document.getElementById('notice');
-		// const orderRegistration = document.getElementById('orderRegistration');
-
 		if (data.items.length === 0) {
 			notice.style.display = 'flex';
 		} else {
@@ -18,10 +15,18 @@ class Cart {
 	}
 
 	changeCounter(data) {
-		const order = document.getElementById('order');
+		const pizzaItem = document.getElementsByClassName('pizzaItem');
 
-		order.remove();
-		cart.getCollectPizzas(data);
+		if (data.items.length !== 0) {
+			Array.prototype.forEach.call(pizzaItem, el => {
+				el.remove();
+			})
+
+			cart.getCollectPizzas(data);
+		} else {
+			notice.style.display = 'flex';
+			orderRegistration.style.display = 'none';
+		}
 	}
 
 	getCollectPizzas(data) {
@@ -54,11 +59,14 @@ class Cart {
 			filtered = collectPizzas.filter(el => Object.keys(el).length);
 		}
 
-		cart.updateUICart(filtered);
+		cart.updateUICart(data, filtered);
 	}
 
-	updateUICart(filtered) {
+	updateUICart(data, filtered) {
 		const order = document.getElementById('order');
+		// const totalCost = document.getElementById('totalCost');
+
+		// totalCost.textContent = `${(data.price / 10000).toFixed(2)}`
 
 		for (let i = 0; i < filtered.length; i++) {
 			const pizzaItem = document.createElement('div');
@@ -129,7 +137,7 @@ $(document).on('click', '.pizzaAdd', event => {
 
 $(document).on('click', '.pizzaRemove', event => {
 	pzzNetService.removeProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.getCollectPizzas);
+		.then(cart.changeCounter);
 })
 
 // $(function (events, handler) {

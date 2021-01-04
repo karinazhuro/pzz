@@ -46,12 +46,16 @@ body {
               padding: 12px 20px;
               max-width: 800px;
 
+              &:not(:first-child) {
+                border-top: 1px solid #c3c3c3;
+              }
+
               .pizzaDesc {
                 .pizzaTitle {
                   color: $primaryFirst;
                   font: 28px/1.2 Malina, sans-serif;
                   letter-spacing: -.5px;
-                  margin: 0 0 5px 0;
+
                 }
 
                 .pizzaSize {
