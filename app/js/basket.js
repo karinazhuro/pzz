@@ -3,32 +3,6 @@
 import {pzzNetService} from './pzzNetService.js';
 
 class Cart {
-	showBasket(data) {
-		if (data.items.length === 0) {
-			notice.style.display = 'flex';
-		} else {
-			notice.style.display = 'none';
-			orderRegistration.style.display = 'flex';
-
-			cart.getCollectPizzas(data);
-		}
-	}
-
-	changeCounter(data) {
-		const pizzaItem = document.getElementsByClassName('pizzaItem');
-
-		if (data.items.length !== 0) {
-			Array.prototype.forEach.call(pizzaItem, el => {
-				el.remove();
-			})
-
-			cart.getCollectPizzas(data);
-		} else {
-			notice.style.display = 'flex';
-			orderRegistration.style.display = 'none';
-		}
-	}
-
 	getCollectPizzas(data) {
 		let collectPizzas = [];
 		let filtered;
@@ -59,14 +33,26 @@ class Cart {
 			filtered = collectPizzas.filter(el => Object.keys(el).length);
 		}
 
-		cart.updateUICart(data, filtered);
+		return filtered;
 	}
 
-	updateUICart(data, filtered) {
-		const order = document.getElementById('order');
-		// const totalCost = document.getElementById('totalCost');
+	updateUICart(filtered) {
+		if (filtered === undefined) {
+			notice.style.display = 'flex';
+			orderRegistration.style.display = 'none';
 
-		// totalCost.textContent = `${(data.price / 10000).toFixed(2)}`
+		} else {
+			const getPizzaItem = document.getElementsByClassName('pizzaItem');
+
+			notice.style.display = 'none';
+			orderRegistration.style.display = 'flex';
+
+			if (getPizzaItem.length !== 0) {
+				Array.prototype.forEach.call(getPizzaItem, item => {
+					item.remove();
+				})
+			}
+		}
 
 		for (let i = 0; i < filtered.length; i++) {
 			const pizzaItem = document.createElement('div');
@@ -78,6 +64,7 @@ class Cart {
 			const pizzaSizeOrderCounter = document.createElement('p');
 			const pizzaAdd = document.createElement('button');
 			const pizzaSum = document.createElement('p');
+
 			let sizeCondition = '';
 
 			pizzaItem.classList.add('pizzaItem');
@@ -128,74 +115,24 @@ class Cart {
 const cart = new Cart();
 
 pzzNetService.getCart()
-	.then(cart.showBasket);
+	.then(cart.getCollectPizzas)
+	.then(cart.updateUICart);
 
 $(document).on('click', '.pizzaAdd', event => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.changeCounter);
+		.then(cart.getCollectPizzas)
+		.then(cart.updateUICart);
 })
 
 $(document).on('click', '.pizzaRemove', event => {
 	pzzNetService.removeProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
-		.then(cart.changeCounter);
+		.then(cart.getCollectPizzas)
+		.then(cart.updateUICart);
 })
 
 // $(function (events, handler) {
-// 		const totalCost = document.getElementById('totalCost');
-// 		const total = document.getElementById('total');
-//
-// 		function showBasket(data) {
-// 				for (let i = 0; i < data.items.length; i++) {
-// 						totalCost.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-// 						total.innerHTML = `${(data.total / 10000).toFixed(2)}`;
-// 				}
-// 		}
-//
-// 		$(document).on('click', ".orderPlus", addToCart);
-// 		$(document).on('click', '.orderMinus', removeToCart);
 // 		$(document).on('click', '#saveOrder', saveOrder);
 // 		$(document).on('click', '#sendOrder', sendOrder);
-//
-// 		async function addToCart(e) {
-// 				const id = e.target.dataset.id;
-// 				const size = e.target.dataset.size;
-//
-// 				await changeToCart(addToCartUrl, id, size);
-// 		}
-//
-// 		async function removeToCart(e) {
-// 				const removeToCartUrl = 'https://pzz.by/api/v1/basket/remove-item';
-// 				const id = e.target.dataset.id;
-// 				const size = e.target.dataset.size;
-//
-// 				await changeToCart(removeToCartUrl, id, size)
-// 		}
-//
-// 		async function changeToCart(url, id, size) {
-// 				const formData = new FormData();
-//
-// 				formData.append('type', 'pizza');
-// 				formData.append('id', id);
-// 				formData.append('size', size);
-// 				formData.append('dough', 'thin');
-//
-// 				await fetch(url, {
-// 						method: 'POST',
-// 						body: formData,
-// 				})
-// 				.then(function (response) {
-// 						response.json()
-// 						.then(function (obj) {
-// 								const data = obj.response.data;
-//
-// 								order.innerHTML = '';
-// 								totalCost.innerHTML = '';
-// 								total.innerHTML = '';
-//
-// 								showBasket(data)
-// 						})
-// 				})
-// 		}
 //
 // 		async function saveOrder(e) {
 // 				e.preventDefault();

@@ -277,7 +277,6 @@ class Pizza {
 			}
 		}
 	}
-
 }
 
 export const pizza = new Pizza();
@@ -286,8 +285,7 @@ pzzNetService.getListPizzas()
 	.then(pizza.showListPizzas);
 
 pzzNetService.getCart()
-	.then(pizza.updateUI)
-	.then(pizza.collectNumberPizzas);
+	.then(pizza.updateUI);
 
 $(document).on('click', '.pizzaSizeAddToCart', (event) => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
