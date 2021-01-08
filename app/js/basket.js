@@ -37,17 +37,20 @@ class Cart {
 	}
 
 	updateUICart(filtered) {
-		if (filtered === undefined) {
-			notice.style.display = 'flex';
-			orderRegistration.style.display = 'none';
+		const getNotice = document.getElementById('notice');
+		const getOrderRegistration = document.getElementById('orderRegistration');
+		const getOrder = document.getElementById('order');
 
+		if (filtered === undefined) {
+			getNotice.style.display = 'flex';
+			getOrderRegistration.style.display = 'none';
 		} else {
 			const getPizzaItem = document.getElementsByClassName('pizzaItem');
 
-			notice.style.display = 'none';
-			orderRegistration.style.display = 'flex';
+			getNotice.style.display = 'none';
+			getOrderRegistration.style.display = 'flex';
 
-			if (getPizzaItem.length !== 0) {
+			while (getPizzaItem.length !== 0) {
 				Array.prototype.forEach.call(getPizzaItem, item => {
 					item.remove();
 				})
@@ -77,9 +80,9 @@ class Cart {
 			pizzaAdd.classList.add('pizzaAdd');
 			pizzaSum.classList.add('pizzaSum');
 
-			order.append(pizzaItem);
+			getOrder.append(pizzaItem);
 			pizzaItem.append(pizzaDesc);
-			pizzaDesc.append(pizzaTitle)
+			pizzaDesc.append(pizzaTitle);
 			pizzaDesc.append(pizzaSize);
 			pizzaItem.append(pizzaSizeCount);
 			pizzaSizeCount.append(pizzaRemove);
@@ -122,13 +125,13 @@ $(document).on('click', '.pizzaAdd', event => {
 	pzzNetService.addProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
 		.then(cart.getCollectPizzas)
 		.then(cart.updateUICart);
-})
+});
 
 $(document).on('click', '.pizzaRemove', event => {
 	pzzNetService.removeProductToBasket(pzzNetService.makeProductFormData(event.target.dataset))
 		.then(cart.getCollectPizzas)
 		.then(cart.updateUICart);
-})
+});
 
 // $(function (events, handler) {
 // 		$(document).on('click', '#saveOrder', saveOrder);
