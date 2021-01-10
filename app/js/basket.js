@@ -14,6 +14,7 @@ class Cart {
 				id: data.items[i].id,
 				size: data.items[i].size,
 				price: data.items[i].price,
+				totalPrice: data.price,
 				count: 1,
 			})
 		}
@@ -68,6 +69,7 @@ class Cart {
 			const pizzaAdd = document.createElement('button');
 			const pizzaSum = document.createElement('p');
 
+			const getTotalCost = document.getElementById('totalCost');
 			let sizeCondition = '';
 
 			pizzaItem.classList.add('pizzaItem');
@@ -111,6 +113,8 @@ class Cart {
 			pizzaSizeOrderCounter.textContent = `${filtered[i].count}`;
 			pizzaAdd.textContent = `+`;
 			pizzaSum.textContent = `${(filtered[i].price / 10000).toFixed(2)}`;
+
+			getTotalCost.textContent = `${(filtered[i].totalPrice / 10000).toFixed(2)}`;
 		}
 	}
 }

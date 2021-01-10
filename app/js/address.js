@@ -1,15 +1,4 @@
-// !function (e) {
-// 		"function" != typeof e.matches && (e.matches = e.msMatchesSelector || e.mozMatchesSelector || e.webkitMatchesSelector || function (e) {
-// 				for (var t = this, o = (t.document || t.ownerDocument).querySelectorAll(e), n = 0; o[n] && o[n] !== t;) ++n;
-// 				return Boolean(o[n])
-// 		}), "function" != typeof e.closest && (e.closest = function (e) {
-// 				for (var t = this; t && 1 === t.nodeType;) {
-// 						if (t.matches(e)) return t;
-// 						t = t.parentNode
-// 				}
-// 				return null
-// 		})
-// }(window.Element.prototype);
+'use strict';
 
 // document.addEventListener('DOMContentLoaded', function () {
 // 		const modalButtons = document.getElementById('openModalLink');
@@ -52,66 +41,93 @@
 //
 // });
 
-$(document).on('input', '#street', searchStreet);
-$(document).on('focus', '#house', optionStreet);
-$(document).on('click', '#sendAddress', sendAddress);
+import {pzzNetService} from "./pzzNetService.js";
 
-let id = '';
-let houseTitleOrder = '';
+class Address {
+  searchStreet(data) {
+    let id = '';
 
-async function searchStreet(e) {
-		e.preventDefault();
+    for (let i = 0; i < data.length; i++) {
+      const option = document.createElement('option');
+      option.value = data[i].title;
+      $('#datalistStreet').append(option);
+      console.log(option);
+      // if (data[i].title === streetTitle) {
+      //   id = data[i].id;
+      // }
+    }
 
-		const streetTitle = $('#street').val();
-		const streetUrl = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${streetTitle.toUpperCase()}%2Ctitle%3A${streetTitle.toUpperCase()}`;
-
-		if (streetTitle.length >= 2) {
-				await fetch(streetUrl)
-				.then(function (response) {
-						response.json()
-						.then(function (obj) {
-								const data = obj.response.data;
-								for (let i = 0; i < data.length; i++) {
-										const option = document.createElement('option');
-										option.value = data[i].title;
-										$('#datalistStreet').append(option);
-										if (data[i].title === streetTitle) {
-												id = data[i].id;
-										}
-								}
-						})
-				})
-		}
+  }
 }
 
-async function optionStreet(e) {
-		e.preventDefault();
+export const address = new Address();
+// const getStreetValue = document.getElementById('street').value;
 
-		const streetOrderUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
+$(document).on('input', '#street', () => {
+  pzzNetService.getStreets()
+    .then(address.searchStreet);
+});
 
-		await fetch(streetOrderUrl)
-		.then(function (response) {
-				response.json()
-				.then(function (obj) {
-						const data = obj.response.data;
-						for (let i = 0; i < data.length; i++) {
-							const option = document.createElement('option');
-							option.value = data[i].title;
-							$('#datalistHouse').append(option);
-							houseTitleOrder = data[i].title;
-						}
-				})
-		})
-}
-
-// переписать функцию optionStreet на выбор улицы
-async function sendAddress(e) {
-		e.preventDefault();
-
-		const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${houseTitleOrder}`;
-
-		await fetch(houseUrl)
-		.then(function (response) {
-				response.json();
-		})
-}
+// $(document).on('input', '#street', searchStreet);
+// $(document).on('focus', '#house', optionStreet);
+// $(document).on('click', '#sendAddress', sendAddress);
+//
+// let id = '';
+// let houseTitleOrder = '';
+//
+// async function searchStreet(e) {
+// 		e.preventDefault();
+//
+// 		const streetTitle = $('#street').val();
+// 		const streetUrl = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${streetTitle.toUpperCase()}%2Ctitle%3A${streetTitle.toUpperCase()}`;
+//
+// 		if (streetTitle.length >= 2) {
+// 				await fetch(streetUrl)
+// 				.then(function (response) {
+// 						response.json()
+// 						.then(function (obj) {
+// 								const data = obj.response.data;
+// 								for (let i = 0; i < data.length; i++) {
+// 										const option = document.createElement('option');
+// 										option.value = data[i].title;
+// 										$('#datalistStreet').append(option);
+// 										if (data[i].title === streetTitle) {
+// 												id = data[i].id;
+// 										}
+// 								}
+// 						})
+// 				})
+// 		}
+// }
+//
+// async function optionStreet(e) {
+// 		e.preventDefault();
+//
+// 		const streetOrderUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
+//
+// 		await fetch(streetOrderUrl)
+// 		.then(function (response) {
+// 				response.json()
+// 				.then(function (obj) {
+// 						const data = obj.response.data;
+// 						for (let i = 0; i < data.length; i++) {
+// 							const option = document.createElement('option');
+// 							option.value = data[i].title;
+// 							$('#datalistHouse').append(option);
+// 							houseTitleOrder = data[i].title;
+// 						}
+// 				})
+// 		})
+// }
+//
+// // переписать функцию optionStreet на выбор улицы
+// async function sendAddress(e) {
+// 		e.preventDefault();
+//
+// 		const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${houseTitleOrder}`;
+//
+// 		await fetch(houseUrl)
+// 		.then(function (response) {
+// 				response.json();
+// 		})
+// }
