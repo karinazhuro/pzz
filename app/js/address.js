@@ -43,30 +43,36 @@
 
 import {pzzNetService} from "./pzzNetService.js";
 
-class Address {
-  searchStreet(data) {
-    let id = '';
+function searchStreet(data) {
+	let id = '';
 
-    for (let i = 0; i < data.length; i++) {
-      const option = document.createElement('option');
-      option.value = data[i].title;
-      $('#datalistStreet').append(option);
-      console.log(option);
-      // if (data[i].title === streetTitle) {
-      //   id = data[i].id;
-      // }
-    }
+	for (let i = 0; i < data.length; i++) {
+		const option = document.createElement('option');
 
-  }
+		option.textContent = data[i].title;
+		$('#datalistStreet').append(option);
+
+		if (data[i].title === option[i]) {
+			id = data[i].id;
+		}
+	}
 }
 
-export const address = new Address();
-// const getStreetValue = document.getElementById('street').value;
+	function debounce(func, time) {
+		let timer;
 
-$(document).on('input', '#street', () => {
-  pzzNetService.getStreets()
-    .then(address.searchStreet);
-});
+		return function (data) {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				func(data)
+			}, time);
+		}
+	}
+
+	$(document).on('input', '#street', () => {
+		pzzNetService.getStreets()
+			.then(debounce(searchStreet, 300));
+	});
 
 // $(document).on('input', '#street', searchStreet);
 // $(document).on('focus', '#house', optionStreet);
