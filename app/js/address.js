@@ -43,36 +43,55 @@
 
 import {pzzNetService} from "./pzzNetService.js";
 
-function searchStreet(data) {
-	let id = '';
+function debounce(func, time) {
+	let timer = '';
 
-	for (let i = 0; i < data.length; i++) {
-		const option = document.createElement('option');
-
-		option.textContent = data[i].title;
-		$('#datalistStreet').append(option);
-
-		if (data[i].title === option[i]) {
-			id = data[i].id;
-		}
+	return function (data) {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			func(data)
+		}, time);
 	}
 }
 
-	function debounce(func, time) {
-		let timer;
+function searchStreet(data) {
+	const getOption = document.querySelectorAll('option');
+	const getStreet = document.getElementById('street').value;
+	const getStreetWrapper = document.getElementById('streetWrapper');
+	const ul = document.createElement('ul');
+	let id = '';
 
-		return function (data) {
-			clearTimeout(timer);
-			timer = setTimeout(() => {
-				func(data)
-			}, time);
-		}
+	if (getOption.length > 0) {
+		getOption.forEach(elem.remove());
 	}
 
-	$(document).on('input', '#street', () => {
-		pzzNetService.getStreets()
-			.then(debounce(searchStreet, 300));
-	});
+	getStreetWrapper.append(ul);
+
+	for (let i = 0; i < data.length; i++) {
+		// const option = document.createElement('option');
+		const li = document.createElement('li');
+
+		li.classList.add('streetItem');
+		li.textContent = data[i].title;
+		ul.append(li);
+
+		// option.textContent = data[i].title;
+		// $('#datalistStreet').append(option);
+	}
+
+	// if (data[i].title === getStreet.value) {
+	// 	id = data[i].id;
+	// }
+
+	console.log(getStreet)
+
+	return id;
+}
+
+$(document).on('input', '#street', () => {
+	pzzNetService.getStreets()
+		.then(debounce(searchStreet, 500));
+});
 
 // $(document).on('input', '#street', searchStreet);
 // $(document).on('focus', '#house', optionStreet);
@@ -80,7 +99,7 @@ function searchStreet(data) {
 //
 // let id = '';
 // let houseTitleOrder = '';
-//
+
 // async function searchStreet(e) {
 // 		e.preventDefault();
 //
@@ -105,7 +124,7 @@ function searchStreet(data) {
 // 				})
 // 		}
 // }
-//
+
 // async function optionStreet(e) {
 // 		e.preventDefault();
 //

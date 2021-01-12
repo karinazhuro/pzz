@@ -7,6 +7,7 @@ class PzzNetService {
   basketUrl = `https://pzz.by/api/v1/basket`;
   addToCartUrl = `https://pzz.by/api/v1/basket/add-item`;
   removeToCartUrl = `https://pzz.by/api/v1/basket/remove-item`;
+  // streetOrderUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
   updateAddressUrl = `https://pzz.by/api/v1/basket/update-address`;
 
   async getListPizzas() {
@@ -69,7 +70,6 @@ class PzzNetService {
 
     return formData;
   }
-
 }
 
 export const pzzNetService = new PzzNetService();
