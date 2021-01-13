@@ -1,5 +1,7 @@
 'use strict';
 
+export const getInputStreet = document.getElementById('inputStreet');
+
 class PzzNetService {
   prefix = 'https://cors-anywhere.herokuapp.com/';
 
@@ -45,10 +47,10 @@ class PzzNetService {
   }
 
   async getStreets() {
-    const getStreetValue = document.getElementById('street').value.toUpperCase();
-    const streetUrl = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${getStreetValue}%2Ctitle%3A${getStreetValue}`;
+    const getInputStreetValue = getInputStreet.value.toUpperCase();
+    const streetUrl = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${getInputStreetValue}%2Ctitle%3A${getInputStreetValue}`;
 
-    if (getStreetValue.length >= 2) {
+    if (getInputStreet.value.length >= 2) {
       const response = await fetch(streetUrl);
       // const response = await fetch(this.prefix + this.streetUrl);
       const json = await response.json();

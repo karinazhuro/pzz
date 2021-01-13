@@ -1,47 +1,6 @@
 'use strict';
 
-// document.addEventListener('DOMContentLoaded', function () {
-// 		const modalButtons = document.getElementById('openModalLink');
-// 		const overlay = document.querySelector('.overlay-modal');
-// 		const closeButtons = document.querySelectorAll('.modal-close');
-//
-// 		modalButtons.addEventListener('click', function (e) {
-// 				e.preventDefault();
-//
-// 				const modalId = this.getAttribute('data-modal');
-// 				const modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
-//
-// 				modalElem.classList.add('active');
-// 				overlay.classList.add('active');
-// 		}); // end click
-//
-// 		closeButtons.forEach(function (item) {
-// 				item.addEventListener('click', function (e) {
-// 						const parentModal = this.closest('.modal');
-//
-// 						parentModal.classList.remove('active');
-// 						overlay.classList.remove('active');
-// 				});
-// 		});
-//
-// 		document.body.addEventListener('keyup', function (e) {
-// 				const key = e.keyCode;
-//
-// 				if (key === 27) {
-// 						document.querySelector('.modal.active').classList.remove('active');
-// 						document.querySelector('.overlay').classList.remove('active');
-// 				}
-// 		}, false);
-//
-// 		overlay.addEventListener('click', function () {
-// 				document.querySelector('.modal.active').classList.remove('active');
-// 				this.classList.remove('active');
-// 		});
-//
-//
-// });
-
-import {pzzNetService} from "./pzzNetService.js";
+import {pzzNetService, getInputStreet} from "./pzzNetService.js";
 
 function debounce(func, time) {
 	let timer = '';
@@ -56,42 +15,35 @@ function debounce(func, time) {
 
 function searchStreet(data) {
 	const getOption = document.querySelectorAll('option');
-	const getStreet = document.getElementById('street').value;
-	const getStreetWrapper = document.getElementById('streetWrapper');
-	const ul = document.createElement('ul');
-	let id = '';
 
 	if (getOption.length > 0) {
 		getOption.forEach(elem.remove());
 	}
 
-	getStreetWrapper.append(ul);
-
 	for (let i = 0; i < data.length; i++) {
-		// const option = document.createElement('option');
-		const li = document.createElement('li');
+		const option = document.createElement('option');
 
-		li.classList.add('streetItem');
-		li.textContent = data[i].title;
-		ul.append(li);
-
-		// option.textContent = data[i].title;
-		// $('#datalistStreet').append(option);
+		option.classList.add('streetItem');
+		option.textContent = data[i].title;
+		option.dataset.id = data[i].id;
+		$('#datalistStreet').append(option);
 	}
-
-	// if (data[i].title === getStreet.value) {
-	// 	id = data[i].id;
-	// }
-
-	console.log(getStreet)
-
-	return id;
 }
 
-$(document).on('input', '#street', () => {
+function getIdStreet() {
+	const getOption = document.getElementsByClassName('streetItem');
+const id = getInputStreet.getAttribute('data-id');
+	// for (let i = 0; i < )
+	console.log(id)
+}
+
+getInputStreet.addEventListener('input', () => {
 	pzzNetService.getStreets()
-		.then(debounce(searchStreet, 500));
+		.then(debounce(searchStreet, 500))
+	// .then(getIdStreet);
 });
+
+getInputStreet.addEventListener('change', getIdStreet);
 
 // $(document).on('input', '#street', searchStreet);
 // $(document).on('focus', '#house', optionStreet);
