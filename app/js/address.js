@@ -14,7 +14,7 @@ function debounce(func, time) {
 }
 
 function searchStreet(data) {
-	const getOption = document.querySelectorAll('option');
+	const getOption = document.getElementsByClassName('streetItem');
 
 	if (getOption.length > 0) {
 		getOption.forEach(elem.remove());
@@ -32,18 +32,26 @@ function searchStreet(data) {
 
 function getIdStreet() {
 	const getOption = document.getElementsByClassName('streetItem');
-const id = getInputStreet.getAttribute('data-id');
-	// for (let i = 0; i < )
-	console.log(id)
+
+	let id = '';
+
+	for (let item of getOption) {
+		if (getInputStreet.value === item.textContent) {
+			id = item.dataset.id;
+		}
+	}
+
+	return id;
 }
 
 getInputStreet.addEventListener('input', () => {
 	pzzNetService.getStreets()
-		.then(debounce(searchStreet, 500))
-	// .then(getIdStreet);
+		.then(debounce(searchStreet, 500));
 });
 
-getInputStreet.addEventListener('change', getIdStreet);
+getInputStreet.addEventListener('change', () => {
+	pzzNetService.choiceStreet(getIdStreet())
+});
 
 // $(document).on('input', '#street', searchStreet);
 // $(document).on('focus', '#house', optionStreet);

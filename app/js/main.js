@@ -66,7 +66,6 @@ class Pizza {
 
 				const btnPizzaSizeOrderMinus = document.getElementsByClassName('pizzaSizeOrderMinus');
 				const btnPizzaSizeOrderPlus = document.getElementsByClassName('pizzaSizeOrderPlus');
-				const contentPizzaSizeOrderCounter = document.getElementsByClassName('pizzaSizeOrderCounter');
 
 				const addToCartBig = [pizzaSizeBigAddToCart, pizzaSizeBigOrderPlus];
 				const addToCartMedium = [pizzaSizeMediumAddToCart, pizzaSizeMediumOrderPlus];
@@ -101,10 +100,6 @@ class Pizza {
 				pizzaSizeBigOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 				pizzaSizeMediumOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
 				pizzaSizeThinOrderCounter.classList.add(`${pizzaSizeOrderCounter}`);
-
-				// Array.prototype.forEach.call(contentPizzaSizeOrderCounter, element => {
-				// 	element.textContent = '0';
-				// });
 
 				pizzaSizeBigOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);
 				pizzaSizeMediumOrderPlus.classList.add(`${pizzaSizeOrderPlus}`);

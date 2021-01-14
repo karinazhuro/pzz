@@ -9,7 +9,6 @@ class PzzNetService {
   basketUrl = `https://pzz.by/api/v1/basket`;
   addToCartUrl = `https://pzz.by/api/v1/basket/add-item`;
   removeToCartUrl = `https://pzz.by/api/v1/basket/remove-item`;
-  // streetOrderUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
   updateAddressUrl = `https://pzz.by/api/v1/basket/update-address`;
 
   async getListPizzas() {
@@ -23,6 +22,7 @@ class PzzNetService {
     const response = await fetch(this.basketUrl);
     // const response = await fetch(this.prefix + this.basketUrl);
     const json = await response.json();
+
     return json.response.data;
   }
 
@@ -33,6 +33,7 @@ class PzzNetService {
       body: formData,
     });
     const json = await response.json();
+
     return json.response.data;
   }
 
@@ -43,6 +44,7 @@ class PzzNetService {
       body: formData,
     });
     const json = await response.json();
+
     return json.response.data;
   }
 
@@ -54,10 +56,20 @@ class PzzNetService {
       const response = await fetch(streetUrl);
       // const response = await fetch(this.prefix + this.streetUrl);
       const json = await response.json();
+
       return json.response.data;
     } else {
       return '';
     }
+  }
+
+  async choiceStreet(id) {
+    const streetOrderUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
+    const response = await fetch(streetOrderUrl);
+    // const response = await fetch(this.prefix + this.streetOrderUrl);
+    const json = await response.json();
+
+    return json.response.data;
   }
 
   makeProductFormData(date) {
