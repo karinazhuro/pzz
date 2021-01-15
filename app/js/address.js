@@ -1,89 +1,64 @@
 'use strict';
 
-import {pzzNetService, getInputStreet} from "./pzzNetService.js";
+import {pzzNetService, getInputStreet, getStreetItem} from "./pzzNetService.js";
 
 function debounce(func, time) {
-	let timer = '';
+  let timer = '';
 
-	return function (data) {
-		clearTimeout(timer);
-		timer = setTimeout(() => {
-			func(data)
-		}, time);
-	}
+  return function (data) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(data)
+    }, time);
+  }
 }
 
 function searchStreet(data) {
-	const getOption = document.getElementsByClassName('streetItem');
+  if (getStreetItem.length > 0) {
+    getStreetItem.forEach(elem.remove());
+  }
 
-	if (getOption.length > 0) {
-		getOption.forEach(elem.remove());
-	}
+  for (let i = 0; i < data.length; i++) {
+    const option = document.createElement('option');
 
-	for (let i = 0; i < data.length; i++) {
-		const option = document.createElement('option');
-
-		option.classList.add('streetItem');
-		option.textContent = data[i].title;
-		option.dataset.id = data[i].id;
-		$('#datalistStreet').append(option);
-	}
+    option.classList.add('streetItem');
+    option.textContent = data[i].title;
+    option.dataset.id = data[i].id;
+    $('#datalistStreet').append(option);
+  }
 }
 
-function getIdStreet() {
-	const getOption = document.getElementsByClassName('streetItem');
+function searchHouse(data) {
+  for (let i = 0; i < data.length; i++) {
+    const option = document.createElement('option');
 
-	let id = '';
-
-	for (let item of getOption) {
-		if (getInputStreet.value === item.textContent) {
-			id = item.dataset.id;
-		}
-	}
-
-	return id;
+    option.classList.add('houseItem');
+    option.textContent = data[i].title;
+    option.dataset.id = data[i].id;
+    $('#datalistHouse').append(option);
+  }
 }
 
 getInputStreet.addEventListener('input', () => {
-	pzzNetService.getStreets()
-		.then(debounce(searchStreet, 500));
+  pzzNetService.getStreets()
+    .then(debounce(searchStreet, 500));
 });
 
 getInputStreet.addEventListener('change', () => {
-	pzzNetService.choiceStreet(getIdStreet())
+  pzzNetService.choiceStreet()
+    .then(searchHouse);
 });
 
-// $(document).on('input', '#street', searchStreet);
+
+// getInputStreet.addEventListener('change', () => {
+//   pzzNetService.choiceStreet(getIdStreet())
+//     .then(searchHouse);
+// });
+
 // $(document).on('focus', '#house', optionStreet);
 // $(document).on('click', '#sendAddress', sendAddress);
 //
-// let id = '';
 // let houseTitleOrder = '';
-
-// async function searchStreet(e) {
-// 		e.preventDefault();
-//
-// 		const streetTitle = $('#street').val();
-// 		const streetUrl = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${streetTitle.toUpperCase()}%2Ctitle%3A${streetTitle.toUpperCase()}`;
-//
-// 		if (streetTitle.length >= 2) {
-// 				await fetch(streetUrl)
-// 				.then(function (response) {
-// 						response.json()
-// 						.then(function (obj) {
-// 								const data = obj.response.data;
-// 								for (let i = 0; i < data.length; i++) {
-// 										const option = document.createElement('option');
-// 										option.value = data[i].title;
-// 										$('#datalistStreet').append(option);
-// 										if (data[i].title === streetTitle) {
-// 												id = data[i].id;
-// 										}
-// 								}
-// 						})
-// 				})
-// 		}
-// }
 
 // async function optionStreet(e) {
 // 		e.preventDefault();
@@ -104,7 +79,7 @@ getInputStreet.addEventListener('change', () => {
 // 				})
 // 		})
 // }
-//
+
 // // переписать функцию optionStreet на выбор улицы
 // async function sendAddress(e) {
 // 		e.preventDefault();

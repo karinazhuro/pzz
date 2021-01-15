@@ -204,10 +204,10 @@ body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privat
 body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
   margin: 0 10px 0 0;
 }
-body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #street {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #inputStreet {
   width: 356px;
 }
-body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #house {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #inputHouse {
   width: 91px;
 }
 body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataComment #comment {
