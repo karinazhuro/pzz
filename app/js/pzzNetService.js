@@ -1,9 +1,9 @@
 'use strict';
 
 export const getInputStreet = document.getElementById('inputStreet');
-export const getInputHouse = document.getElementById('inputHouse');
-export const getStreetItem = document.getElementsByClassName('streetItem');
-export const getHouseItem = document.getElementsByClassName('houseItem');
+// export const getInputHouse = document.getElementById('inputHouse');
+// export const getStreetItem = document.getElementsByClassName('streetItem');
+// export const getHouseItem = document.getElementsByClassName('houseItem');
 
 
 class PzzNetService {
@@ -69,15 +69,7 @@ class PzzNetService {
 		}
 	}
 
-	async choiceStreet() {
-		let id = '';
-
-		for (let item of getStreetItem) {
-			if (getInputStreet.value === item.textContent) {
-				id = item.dataset.id;
-			}
-		}
-
+	async choiceStreet(id) {
 		const streetUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
 		const response = await fetch(streetUrl);
 		// const response = await fetch(this.prefix + this.streetUrl);
@@ -86,15 +78,7 @@ class PzzNetService {
 		return json.response.data;
 	}
 
-	async choiceHouse() {
-		let id = '';
-
-		for (let item of getHouseItem) {
-			if (getInputHouse.value === item.textContent) {
-				id = item.dataset.id;
-			}
-		}
-
+	async choiceHouse(id) {
 		const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${id}`;
 		const response = await fetch(houseUrl);
 		// const response = await fetch(this.prefix + this.streetOrderUrl);
@@ -102,6 +86,8 @@ class PzzNetService {
 
 		return json.response.data;
 	}
+
+
 
 	makeProductFormData(date) {
 		const formData = new FormData();
