@@ -1,6 +1,6 @@
 'use strict';
 
-import {pzzNetService, getInputStreet, getStreetItem} from "./pzzNetService.js";
+import {pzzNetService, getInputStreet, getInputHouse, getStreetItem} from "./pzzNetService.js";
 
 function debounce(func, time) {
   let timer = '';
@@ -49,38 +49,14 @@ getInputStreet.addEventListener('change', () => {
     .then(searchHouse);
 });
 
-
+getInputHouse.addEventListener('change', () => {
+  pzzNetService.choiceHouse()
+})
 // getInputStreet.addEventListener('change', () => {
 //   pzzNetService.choiceStreet(getIdStreet())
 //     .then(searchHouse);
 // });
 
-// $(document).on('focus', '#house', optionStreet);
-// $(document).on('click', '#sendAddress', sendAddress);
-//
-// let houseTitleOrder = '';
-
-// async function optionStreet(e) {
-// 		e.preventDefault();
-//
-// 		const streetOrderUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
-//
-// 		await fetch(streetOrderUrl)
-// 		.then(function (response) {
-// 				response.json()
-// 				.then(function (obj) {
-// 						const data = obj.response.data;
-// 						for (let i = 0; i < data.length; i++) {
-// 							const option = document.createElement('option');
-// 							option.value = data[i].title;
-// 							$('#datalistHouse').append(option);
-// 							houseTitleOrder = data[i].title;
-// 						}
-// 				})
-// 		})
-// }
-
-// // переписать функцию optionStreet на выбор улицы
 // async function sendAddress(e) {
 // 		e.preventDefault();
 //
