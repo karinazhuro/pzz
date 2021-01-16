@@ -1,10 +1,6 @@
 'use strict';
 
 export const getInputStreet = document.getElementById('inputStreet');
-// export const getInputHouse = document.getElementById('inputHouse');
-// export const getStreetItem = document.getElementsByClassName('streetItem');
-// export const getHouseItem = document.getElementsByClassName('houseItem');
-
 
 class PzzNetService {
 	prefix = 'https://cors-anywhere.herokuapp.com/';

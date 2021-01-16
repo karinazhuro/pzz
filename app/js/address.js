@@ -1,6 +1,7 @@
 'use strict';
 
 import {pzzNetService, getInputStreet} from "./pzzNetService.js";
+
 const getStreetItem = document.getElementsByClassName('streetItem');
 const getInputHouse = document.getElementById('inputHouse');
 
@@ -75,11 +76,6 @@ getInputHouse.addEventListener('change', () => {
   pzzNetService.choiceHouse(searchIDHouse())
     .then()
 });
-
-// getInputStreet.addEventListener('change', () => {
-//   pzzNetService.choiceStreet(getIdStreet())
-//     .then(searchHouse);
-// });
 
 // async function sendAddress(e) {
 // 		e.preventDefault();
