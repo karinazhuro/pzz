@@ -1,9 +1,13 @@
 'use strict';
 
-import {pzzNetService, getInputStreet} from "./pzzNetService.js";
+import {pzzNetService} from "./pzzNetService.js";
 
 const getStreetItem = document.getElementsByClassName('streetItem');
 const getInputHouse = document.getElementById('inputHouse');
+const getInputStreet = document.getElementById('inputStreet');
+const getTextarea = document.getElementsByClassName('textarea');
+
+let func = debounce(handleOnStreetInput, 300);
 
 function debounce(func, time) {
   let timerId;
@@ -12,6 +16,7 @@ function debounce(func, time) {
     timerId = setTimeout(func, time);
   }
 }
+
 function searchStreet(data) {
   if (getStreetItem.length > 0) {
     getStreetItem.forEach(elem.remove());
@@ -27,16 +32,21 @@ function searchStreet(data) {
   }
 }
 
-function searchIDStreet() {
+function handleOnStreetInput() {
+  if (getInputStreet.value.length >= 2) {
+    pzzNetService.getStreets(getInputStreet.value.toUpperCase()).then(searchStreet)
+  }
+}
+
+function findIdStreet() {
   let id = '';
 
   for (let item of getStreetItem) {
     if (getInputStreet.value === item.textContent) {
       id = item.dataset.id;
+      pzzNetService.choiceStreet(id).then(searchHouse);
     }
   }
-
-  return id;
 }
 
 function searchHouse(data) {
@@ -50,32 +60,23 @@ function searchHouse(data) {
   }
 }
 
-function searchIDHouse() {
+function findIdHouse() {
   const getHouseItem = document.getElementsByClassName('houseItem');
   let id = '';
 
   for (let item of getHouseItem) {
     if (getInputHouse.value === item.textContent) {
       id = item.dataset.id;
+      pzzNetService.choiceHouse(id).then()
     }
   }
-
-  return id;
 }
-
-let func =  debounce(() => pzzNetService.getStreets().then(searchStreet), 300);
 
 getInputStreet.addEventListener('input', func);
 
-getInputStreet.addEventListener('change', () => {
-  pzzNetService.choiceStreet(searchIDStreet())
-    .then(searchHouse);
-});
+getInputStreet.addEventListener('change', findIdStreet);
 
-getInputHouse.addEventListener('change', () => {
-  pzzNetService.choiceHouse(searchIDHouse())
-    .then()
-});
+getInputHouse.addEventListener('change', findIdHouse);
 
 // async function sendAddress(e) {
 // 		e.preventDefault();
