@@ -137,10 +137,6 @@ $(document).on('click', '.pizzaRemove', event => {
 		.then(cart.updateUICart);
 });
 
-// $(function (events, handler) {
-// 		$(document).on('click', '#saveOrder', saveOrder);
-// 		$(document).on('click', '#sendOrder', sendOrder);
-//
 // 		async function saveOrder(e) {
 // 				e.preventDefault();
 //
@@ -169,7 +165,7 @@ $(document).on('click', '.pizzaRemove', event => {
 // 						body: formData,
 // 				});
 // 		}
-//
+
 // 		async function sendOrder() {
 // 				const sendOrderUrl = `https://pzz.by/api/v1/basket/save`;
 //

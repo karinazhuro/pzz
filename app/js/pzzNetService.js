@@ -57,9 +57,9 @@ class PzzNetService {
   }
 
   async choiceStreet(id) {
-    const streetUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
-    const response = await fetch(streetUrl);
-    // const response = await fetch(this.prefix + this.streetUrl);
+    const streetsUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
+    const response = await fetch(streetsUrl);
+    // const response = await fetch(this.prefix + this.streetsUrl);
     const json = await response.json();
 
     return json.response.data;
@@ -69,6 +69,17 @@ class PzzNetService {
     const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${id}`;
     const response = await fetch(houseUrl);
     // const response = await fetch(this.prefix + this.streetOrderUrl);
+    const json = await response.json();
+
+    return json.response.data;
+  }
+
+  async updateInformation(formData) {
+    const response = await fetch(this.updateAddressUrl, {
+      // const response = await fetch(this.prefix + this.updateAddressUrl);
+      method: 'POST',
+      body: formData,
+    });
     const json = await response.json();
 
     return json.response.data;
@@ -86,6 +97,30 @@ class PzzNetService {
 
     return formData;
   }
+
+  makeInformationFormData() {
+    const formData = new FormData();
+
+    formData.append('name', $('#name').val());
+    formData.append('flat', $('#flat').val());
+    formData.append('entrance', $('#entrance').val());
+    formData.append('floor', $('#floor').val());
+    formData.append('intercom', $('#intercom').val());
+    formData.append('comment', $('#comment').val());
+    formData.append('preorder_datetime', '');
+    formData.append('no-contact-delivery', '1');
+    formData.append('renting', '');
+    formData.append('phone', $('#phone').val());
+    formData.append('preorder_date', '');
+    formData.append('preorder_time', '');
+    formData.append('no_contact_delivery', '0');
+    formData.append('street', $('#street').val());
+    formData.append('house', $('#house').val());
+    formData.append('payment', $('#charge').attr('id'));
+
+    return formData;
+  }
+
 }
 
 export const pzzNetService = new PzzNetService();

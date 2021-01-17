@@ -5,7 +5,7 @@ import {pzzNetService} from "./pzzNetService.js";
 const getStreetItem = document.getElementsByClassName('streetItem');
 const getInputHouse = document.getElementById('inputHouse');
 const getInputStreet = document.getElementById('inputStreet');
-const getTextarea = document.getElementsByClassName('textarea');
+const getSendOrder = document.getElementById('sendOrder');
 
 let func = debounce(handleOnStreetInput, 300);
 
@@ -77,6 +77,10 @@ getInputStreet.addEventListener('input', func);
 getInputStreet.addEventListener('change', findIdStreet);
 
 getInputHouse.addEventListener('change', findIdHouse);
+
+getSendOrder.addEventListener('change', () => {
+  pzzNetService.updateInformation(pzzNetService.makeInformationFormData())
+});
 
 // async function sendAddress(e) {
 // 		e.preventDefault();
