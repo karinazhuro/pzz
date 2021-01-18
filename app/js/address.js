@@ -72,16 +72,27 @@ function findIdHouse() {
   }
 }
 
+function getDeliveryContactInput() {
+  const getDeliveryContactInput = document.querySelector('input[name="no-contact-delivery"]:checked').value;
+  const getPaymentCheck = document.querySelector('input[name="payment"]:checked').value;
+
+  return {
+    getDeliveryContactInput,
+    getPaymentCheck,
+  };
+}
 getInputStreet.addEventListener('input', func);
 
 getInputStreet.addEventListener('change', findIdStreet);
 
 getInputHouse.addEventListener('change', findIdHouse);
 
-getSendOrder.addEventListener('change', () => {
-  pzzNetService.updateInformation(pzzNetService.makeInformationFormData())
+getSendOrder.addEventListener('click', () => {
+  pzzNetService.updateInformation(pzzNetService.makeInformationFormData(getDeliveryContactInput()))
+    .then();
 });
 
+// pzzNetService.makeInformationFormData(getDeliveryContactInput)
 // async function sendAddress(e) {
 // 		e.preventDefault();
 //
