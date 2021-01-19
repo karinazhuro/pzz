@@ -193,8 +193,9 @@ body {
             margin: 0 10px 0 0; }
             body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn .contactDeliveryInput {
               position: absolute;
-              clip: rect(0, 0, 0, 0);
               pointer-events: none; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .checked {
+            background-color: #16bc00; }
         body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment {
           margin: 35px 0; }
           body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentTitle {
@@ -211,10 +212,12 @@ body {
             background-color: #999;
             border-radius: 10px;
             margin: 0 10px 0 0; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn .paymentInput {
               position: absolute;
               clip: rect(0, 0, 0, 0);
               pointer-events: none; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentChoice {
+            background-color: #16bc00; }
         body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice {
           margin: 50px 0 0; }
           body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice #total {

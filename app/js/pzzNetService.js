@@ -1,5 +1,7 @@
 'use strict';
 
+// import {getDeliveryContactInput} from "./address.js";
+
 class PzzNetService {
 	prefix = 'https://cors-anywhere.herokuapp.com/';
 
@@ -26,7 +28,7 @@ class PzzNetService {
 
 	async addProductToBasket(formData) {
 		const response = await fetch(this.addItemUrl, {
-			// const response = await fetch(this.prefix + this.addToCartUrl, {
+		// 	const response = await fetch(this.prefix + this.addToCartUrl, {
 			method: 'POST',
 			body: formData,
 		});
@@ -37,7 +39,7 @@ class PzzNetService {
 
 	async removeProductToBasket(formData) {
 		const response = await fetch(this.removeItemUrl, {
-			// const response = await fetch(this.prefix + this.removeToCartUrl, {
+		// 	const response = await fetch(this.prefix + this.removeToCartUrl, {
 			method: 'POST',
 			body: formData,
 		});
@@ -48,7 +50,7 @@ class PzzNetService {
 
 	async getStreets(getInputStreetValue) {
 		const streetsUrl = `https://pzz.by/api/v1/streets?order=title%3Aasc&search=title%3A${getInputStreetValue}
-      %2Ctitle%3A${getInputStreetValue}`;
+       %2Ctitle%3A${getInputStreetValue}`;
 		const response = await fetch(streetsUrl);
 		// const response = await fetch(this.prefix + this.streetsUrl);
 		const json = await response.json();
@@ -57,8 +59,8 @@ class PzzNetService {
 	}
 
 	async choiceStreet(id) {
-		const streetsUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
-		const response = await fetch(streetsUrl);
+		const streetsIdUrl = `https://pzz.by/api/v1/streets/${id}?order=title:asc&load=region.pizzeria`;
+		const response = await fetch(streetsIdUrl);
 		// const response = await fetch(this.prefix + this.streetsUrl);
 		const json = await response.json();
 
@@ -68,7 +70,7 @@ class PzzNetService {
 	async choiceHouse(id) {
 		const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${id}`;
 		const response = await fetch(houseUrl);
-		// const response = await fetch(this.prefix + this.streetOrderUrl);
+		// const response = await fetch(this.prefix + this.houseUrl);
 		const json = await response.json();
 
 		return json.response.data;
@@ -76,7 +78,7 @@ class PzzNetService {
 
 	async updateInformation(formData) {
 		const response = await fetch(this.updateAddressUrl, {
-			// const response = await fetch(this.prefix + this.updateAddressUrl);
+		// 	const response = await fetch(this.prefix + this.updateAddressUrl, {
 			method: 'POST',
 			body: formData,
 		});
@@ -98,7 +100,7 @@ class PzzNetService {
 		return formData;
 	}
 
-	makeInformationFormData(getDeliveryContactInput, getPaymentCheck) {
+	makeInformationFormData(payment) {
 		const formData = new FormData();
 
 		formData.append('name', $('#name').val());
@@ -108,7 +110,7 @@ class PzzNetService {
 		formData.append('intercom', $('#intercom').val());
 		formData.append('comment', $('#comment').val());
 		formData.append('preorder_datetime', '');
-		formData.append('no-contact-delivery', getDeliveryContactInput);
+		formData.append('no-contact-delivery', '1');
 		formData.append('renting', '');
 		formData.append('phone', `+375${$('#phone').val()}`);
 		formData.append('preorder_date', '');
@@ -116,7 +118,7 @@ class PzzNetService {
 		formData.append('no_contact_delivery', '0');
 		formData.append('street', $('#inputStreet').val());
 		formData.append('house', $('#inputHouse').val());
-		formData.append('payment', getPaymentCheck);
+		formData.append('payment', payment);
 
 		return formData;
 	}

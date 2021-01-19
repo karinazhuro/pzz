@@ -73,32 +73,34 @@
 							<input class="textarea" type="text" id="comment">
 						</li>
 					</ul>
-					<div id="delivery">
-						<h3 id="deliveryTitle">Доставка без контакта с курьером</h3>
-						<p id="deliveryDesc">Бесконтактная доставка исключает необходимость контактировать с курьером
-							и доступна только при онлайн оплате заказа с доставкой.</p>
-						<label class="deliveryContactBtn" for="contactDelivery">
-							<input type="radio" class="contactDeliveryInput" id="contactDelivery" name="no-contact-delivery"
-							       value="0" checked>Привезите как обычно
-						</label>
-						<label class="deliveryContactBtn" for="noContactDelivery">
-							<input type="radio" class="contactDeliveryInput" id="noContactDelivery" name="no-contact-delivery"
-							       value="1">Доставка без контакта с курьером
-						</label>
-					</div>
+
+<!--					<div id="delivery">-->
+<!--						<h3 id="deliveryTitle">Доставка без контакта с курьером</h3>-->
+<!--						<p id="deliveryDesc">Бесконтактная доставка исключает необходимость контактировать с курьером-->
+<!--							и доступна только при онлайн оплате заказа с доставкой.</p>-->
+<!--						<label class="deliveryContactBtn" for="contactDelivery">-->
+<!--							<input type="radio" class="contactDeliveryInput" id="contactDelivery" name="no-contact-delivery"-->
+<!--							       value="0">Привезите как обычно-->
+<!--						</label>-->
+<!--						<label class="deliveryContactBtn" for="noContactDelivery">-->
+<!--							<input type="radio" class="contactDeliveryInput" id="noContactDelivery" name="no-contact-delivery"-->
+<!--							       value="1">Доставка без контакта с курьером-->
+<!--						</label>-->
+<!--					</div>-->
+
 					<div id="payment">
 						<h3 id="paymentTitle">Способ оплаты</h3>
 						<label class="paymentBtn" for="cash">
-							<input class="paymentCheck" type="radio" id="cash" name="payment">Наличными
+							<input class="paymentInput" type="radio" id="cash" value="cash" name="payment">Наличными
 						</label>
 						<label class="paymentBtn" for="charge">
-							<input class="paymentCheck" type="radio" id="charge" name="payment">Картой
+							<input class="paymentInput" type="radio" id="charge" value="charge" name="payment">Картой
 						</label>
 						<label class="paymentBtn" for="online">
-							<input class="paymentCheck" type="radio" id="online" name="payment">Онлайн
+							<input class="paymentInput" type="radio" id="online" value="online" name="payment">Онлайн
 						</label>
 						<label class="paymentBtn" for="halva">
-							<input class="paymentCheck" type="radio" id="halva" name="payment">Халва
+							<input class="paymentInput" type="radio" id="halva" value="halva" name="payment">Халва
 						</label>
 					</div>
 					<div class="totalPrice">

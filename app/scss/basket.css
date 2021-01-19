@@ -263,7 +263,7 @@ body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #paymen
   border-radius: 10px;
   margin: 0 10px 0 0;
 }
-body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn .paymentCheck {
+body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn .paymentInput {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;

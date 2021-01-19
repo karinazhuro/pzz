@@ -6,93 +6,102 @@ const getStreetItem = document.getElementsByClassName('streetItem');
 const getInputHouse = document.getElementById('inputHouse');
 const getInputStreet = document.getElementById('inputStreet');
 const getSendOrder = document.getElementById('sendOrder');
+const getPaymentInput = document.getElementsByClassName('paymentInput');
+// const getCheckedPayment = document.querySelector('input[name="payment"]:checked').value;
 
 let func = debounce(handleOnStreetInput, 300);
 
 function debounce(func, time) {
-  let timerId;
-  return function () {
-    clearTimeout(timerId);
-    timerId = setTimeout(func, time);
-  }
+	let timerId;
+	return function () {
+		clearTimeout(timerId);
+		timerId = setTimeout(func, time);
+	}
 }
 
 function searchStreet(data) {
-  if (getStreetItem.length > 0) {
-    getStreetItem.forEach(elem.remove());
-  }
+	if (getStreetItem.length > 0) {
+		getStreetItem.forEach(elem.remove());
+	}
 
-  for (let i = 0; i < data.length; i++) {
-    const option = document.createElement('option');
+	for (let i = 0; i < data.length; i++) {
+		const option = document.createElement('option');
 
-    option.classList.add('streetItem');
-    option.textContent = data[i].title;
-    option.dataset.id = data[i].id;
-    $('#datalistStreet').append(option);
-  }
+		option.classList.add('streetItem');
+		option.textContent = data[i].title;
+		option.dataset.id = data[i].id;
+		$('#datalistStreet').append(option);
+	}
 }
 
 function handleOnStreetInput() {
-  if (getInputStreet.value.length >= 2) {
-    pzzNetService.getStreets(getInputStreet.value.toUpperCase()).then(searchStreet)
-  }
+	if (getInputStreet.value.length >= 2) {
+		pzzNetService.getStreets(getInputStreet.value.toUpperCase()).then(searchStreet)
+	}
 }
 
 function findIdStreet() {
-  let id = '';
+	let id = '';
 
-  for (let item of getStreetItem) {
-    if (getInputStreet.value === item.textContent) {
-      id = item.dataset.id;
-      pzzNetService.choiceStreet(id).then(searchHouse);
-    }
-  }
+	for (let item of getStreetItem) {
+		if (getInputStreet.value === item.textContent) {
+			id = item.dataset.id;
+			pzzNetService.choiceStreet(id).then(searchHouse);
+		}
+	}
 }
 
 function searchHouse(data) {
-  for (let i = 0; i < data.length; i++) {
-    const option = document.createElement('option');
+	for (let i = 0; i < data.length; i++) {
+		const option = document.createElement('option');
 
-    option.classList.add('houseItem');
-    option.textContent = data[i].title;
-    option.dataset.id = data[i].id;
-    $('#datalistHouse').append(option);
-  }
+		option.classList.add('houseItem');
+		option.textContent = data[i].title;
+		option.dataset.id = data[i].id;
+		$('#datalistHouse').append(option);
+	}
 }
 
 function findIdHouse() {
-  const getHouseItem = document.getElementsByClassName('houseItem');
-  let id = '';
+	const getHouseItem = document.getElementsByClassName('houseItem');
+	let id = '';
 
-  for (let item of getHouseItem) {
-    if (getInputHouse.value === item.textContent) {
-      id = item.dataset.id;
-      pzzNetService.choiceHouse(id).then()
-    }
-  }
+	for (let item of getHouseItem) {
+		if (getInputHouse.value === item.textContent) {
+			id = item.dataset.id;
+			pzzNetService.choiceHouse(id).then()
+		}
+	}
 }
 
-function getDeliveryContactInput() {
-  const getDeliveryContactInput = document.querySelector('input[name="no-contact-delivery"]:checked').value;
-  const getPaymentCheck = document.querySelector('input[name="payment"]:checked').value;
-
-  return {
-    getDeliveryContactInput,
-    getPaymentCheck,
-  };
+function getInformationForDeliveryContact() {
+	return document.querySelector('input[name="payment"]:checked').value;
 }
+
 getInputStreet.addEventListener('input', func);
 
 getInputStreet.addEventListener('change', findIdStreet);
 
 getInputHouse.addEventListener('change', findIdHouse);
 
+Array.prototype.forEach.call(getPaymentInput, elem => {
+	const  a = elem.getElementsByClassName('paymentChoice');
+
+	if (a) {
+		console.log(a)
+		a.classList.remove();
+	}
+
+	elem.addEventListener('click', () => {
+		return elem.parentElement.classList.add('paymentChoice')
+	})
+})
+
 getSendOrder.addEventListener('click', () => {
-  pzzNetService.updateInformation(pzzNetService.makeInformationFormData(getDeliveryContactInput()))
-    .then();
+	pzzNetService.updateInformation(pzzNetService.makeInformationFormData(getInformationForDeliveryContact()))
+		.then();
 });
 
-// pzzNetService.makeInformationFormData(getDeliveryContactInput)
 // async function sendAddress(e) {
 // 		e.preventDefault();
 //

@@ -3,7 +3,7 @@ $primarySecond: #277dff;
 $primaryLight: #fff;
 $secondaryFirst: #000;
 $secondarySecond: #999;
-$hover: #16bc00;
+$checked: #16bc00;
 $active: #2b4e27;
 $inputBorder: #c3c3c3;
 $backgroundBtnBasket: #e9e9e9;
@@ -36,7 +36,7 @@ $backgroundDeliveryDesc: #F6F6F6;
       margin: auto 0;
 
       &:hover {
-        color: $hover;
+        color: $checked;
       }
     }
   }
@@ -101,7 +101,7 @@ $backgroundDeliveryDesc: #F6F6F6;
   transition: background 400ms;
 
   &:hover {
-    background: $hover;
+    background: $checked;
     color: $primaryLight;
     cursor: pointer;
   }
@@ -149,7 +149,7 @@ $backgroundDeliveryDesc: #F6F6F6;
   outline: none;
 
   &:hover {
-    background-color: $hover;
+    background-color: $checked;
   }
 }
 

@@ -15,7 +15,7 @@ body {
         font-size: 32px;
 
         &:hover {
-          color: $hover;
+          color: $checked;
         }
       }
     }
@@ -41,7 +41,7 @@ body {
             display: contents;
 
             &:hover {
-              color: $hover;
+              color: $checked;
               cursor: pointer;
             }
           }

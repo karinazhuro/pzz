@@ -244,9 +244,13 @@ body {
 
                 .contactDeliveryInput {
                   position: absolute;
-                  clip: rect(0, 0, 0, 0);
+                  //clip: rect(0, 0, 0, 0);
                   pointer-events: none;
                 }
+              }
+
+              .checked {
+                background-color: $checked;
               }
             }
 
@@ -270,11 +274,15 @@ body {
                 border-radius: 10px;
                 margin: 0 10px 0 0;
 
-                .paymentCheck {
+                .paymentInput {
                   position: absolute;
                   clip: rect(0, 0, 0, 0);
                   pointer-events: none;
                 }
+              }
+
+              .paymentChoice {
+                background-color: $checked;
               }
             }
 
@@ -311,7 +319,7 @@ body {
               min-width: 357px;
 
               &:hover {
-                background-color: $hover;
+                background-color: $checked;
               }
             }
           }
