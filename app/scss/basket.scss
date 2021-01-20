@@ -110,7 +110,7 @@ body {
               font: 20px/22px Malina, sans-serif;
             }
 
-            #totalCost {
+            .totalCost {
               @include totalCost;
             }
           }

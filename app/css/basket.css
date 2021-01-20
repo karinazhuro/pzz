@@ -111,7 +111,7 @@ body {
           padding: 0 20px 0 0;
           color: #999;
           font: 20px/22px Malina, sans-serif; }
-        body #wrapper #content #orderRegistration #ourOrder .totalPrice #totalCost {
+        body #wrapper #content #orderRegistration #ourOrder .totalPrice .totalCost {
           font-size: 32px;
           color: #000;
           font-family: Helvetica, Arial, sans-serif;

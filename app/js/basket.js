@@ -69,7 +69,7 @@ class Cart {
 			const pizzaAdd = document.createElement('button');
 			const pizzaSum = document.createElement('p');
 
-			const getTotalCost = document.getElementById('totalCost');
+			const getTotalCost = document.getElementsByClassName('totalCost');
 			let sizeCondition = '';
 
 			pizzaItem.classList.add('pizzaItem');
@@ -114,7 +114,9 @@ class Cart {
 			pizzaAdd.textContent = `+`;
 			pizzaSum.textContent = `${(filtered[i].price / 10000).toFixed(2)}`;
 
-			getTotalCost.textContent = `${(filtered[i].totalPrice / 10000).toFixed(2)}`;
+			Array.prototype.forEach.call(getTotalCost, elem => {
+				elem.textContent = `${(filtered[i].totalPrice / 10000).toFixed(2)}`;
+			})
 		}
 	}
 }
