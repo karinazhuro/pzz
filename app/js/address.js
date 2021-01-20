@@ -6,8 +6,7 @@ const getStreetItem = document.getElementsByClassName('streetItem');
 const getInputHouse = document.getElementById('inputHouse');
 const getInputStreet = document.getElementById('inputStreet');
 const getSendOrder = document.getElementById('sendOrder');
-const getPaymentInput = document.getElementsByClassName('paymentInput');
-// const getCheckedPayment = document.querySelector('input[name="payment"]:checked').value;
+const getPaymentBtn = document.getElementsByClassName('paymentBtn');
 
 let func = debounce(handleOnStreetInput, 300);
 
@@ -84,16 +83,14 @@ getInputStreet.addEventListener('change', findIdStreet);
 
 getInputHouse.addEventListener('change', findIdHouse);
 
-Array.prototype.forEach.call(getPaymentInput, elem => {
-	const  a = elem.getElementsByClassName('paymentChoice');
-
-	if (a) {
-		console.log(a)
-		a.classList.remove();
-	}
-
+Array.prototype.forEach.call(getPaymentBtn, elem => {
 	elem.addEventListener('click', () => {
-		return elem.parentElement.classList.add('paymentChoice')
+		const getPaymentChecked = document.querySelector('input[name="payment"]:checked')
+
+		if (getPaymentChecked) {
+			getPaymentChecked.parentElement.classList.remove('checked');
+			elem.classList.add('checked');
+		}
 	})
 })
 

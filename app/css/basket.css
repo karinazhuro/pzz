@@ -203,21 +203,24 @@ body {
             font: 20px/1.1 Malina, sans-serif;
             letter-spacing: -.5px;
             margin: 15px 0 35px; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn {
-            cursor: pointer;
-            color: #fff;
-            font: 17px/1 Malina, sans-serif;
-            letter-spacing: -.25px;
-            padding: 14px 20px;
-            background-color: #999;
-            border-radius: 10px;
-            margin: 0 10px 0 0; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentBtn .paymentInput {
-              position: absolute;
-              clip: rect(0, 0, 0, 0);
-              pointer-events: none; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment .paymentChoice {
-            background-color: #16bc00; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns {
+            display: flex;
+            flex-wrap: wrap; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .paymentBtn {
+              cursor: pointer;
+              color: #fff;
+              font: 17px/1 Malina, sans-serif;
+              letter-spacing: -.25px;
+              padding: 14px 20px;
+              background-color: #999;
+              border-radius: 10px;
+              margin: 10px 10px 10px 0; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .paymentBtn .paymentInput {
+                position: absolute;
+                clip: rect(0, 0, 0, 0);
+                pointer-events: none; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .checked {
+              background-color: #16bc00; }
         body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice {
           margin: 50px 0 0; }
           body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice #total {

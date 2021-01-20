@@ -264,25 +264,30 @@ body {
                 margin: 15px 0 35px;
               }
 
-              .paymentBtn {
-                cursor: pointer;
-                color: $primaryLight;
-                font: 17px/1 Malina, sans-serif;
-                letter-spacing: -.25px;
-                padding: 14px 20px;
-                background-color: $secondarySecond;
-                border-radius: 10px;
-                margin: 0 10px 0 0;
+              #paymentBtns {
+                display: flex;
+                flex-wrap: wrap;
 
-                .paymentInput {
-                  position: absolute;
-                  clip: rect(0, 0, 0, 0);
-                  pointer-events: none;
+                .paymentBtn {
+                  cursor: pointer;
+                  color: $primaryLight;
+                  font: 17px/1 Malina, sans-serif;
+                  letter-spacing: -.25px;
+                  padding: 14px 20px;
+                  background-color: $secondarySecond;
+                  border-radius: 10px;
+                  margin: 10px 10px 10px 0;
+
+                  .paymentInput {
+                    position: absolute;
+                    clip: rect(0, 0, 0, 0);
+                    pointer-events: none;
+                  }
                 }
-              }
 
-              .paymentChoice {
-                background-color: $checked;
+                .checked {
+                  background-color: $checked;
+                }
               }
             }
 
