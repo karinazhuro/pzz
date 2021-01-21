@@ -100,7 +100,7 @@ class PzzNetService {
 		return formData;
 	}
 
-	makeInformationFormData(payment) {
+	makeInformationFormData(inf) {
 		const formData = new FormData();
 
 		formData.append('name', $('#name').val());
@@ -111,14 +111,14 @@ class PzzNetService {
 		formData.append('comment', $('#comment').val());
 		formData.append('preorder_datetime', '');
 		formData.append('no-contact-delivery', '1');
-		formData.append('renting', '');
+		formData.append('renting', inf.getChangeInput);
 		formData.append('phone', `+375${$('#phone').val()}`);
 		formData.append('preorder_date', '');
 		formData.append('preorder_time', '');
 		formData.append('no_contact_delivery', '0');
 		formData.append('street', $('#inputStreet').val());
 		formData.append('house', $('#inputHouse').val());
-		formData.append('payment', payment);
+		formData.append('payment', inf.getCheckedPayment);
 
 		return formData;
 	}

@@ -139,11 +139,7 @@ body {
               }
 
               .textarea {
-                border: 1px solid $inputBorder;
-                padding: 4px 6px 4px 12px;
-                margin: 2px 0;
-                color: $secondaryFirst;
-                font: 21px Helvetica, Arial, sans-serif;
+                @include textarea;
               }
 
               #privateDataName {
@@ -292,10 +288,28 @@ body {
             }
 
             .totalPrice {
-              margin: 50px 0 0;
+              margin: 50px 0 30px;
 
               #total {
                 @include totalCost;
+              }
+            }
+
+            #change {
+              display: none;
+              text-align: end;
+
+              #changeTitle {
+                font: 17px/1.2 Helvetica,Arial,sans-serif;
+                color: $secondaryFirst;
+              }
+
+              .textarea {
+                @include textarea;
+
+                width: 80px;
+                font-weight: 700;
+                text-align: center;
               }
             }
 

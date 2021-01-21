@@ -139,35 +139,6 @@ $(document).on('click', '.pizzaRemove', event => {
 		.then(cart.updateUICart);
 });
 
-// 		async function saveOrder(e) {
-// 				e.preventDefault();
-//
-// 				const updateAddressUrl = `https://pzz.by/api/v1/basket/update-address`;
-// 				const formData = new FormData();
-//
-// 				formData.append('name', $('#name').val());
-// 				formData.append('flat', $('#flat').val());
-// 				formData.append('entrance', $('#entrance').val());
-// 				formData.append('floor', $('#floor').val());
-// 				formData.append('intercom', $('#intercom').val());
-// 				formData.append('comment', $('#comment').val());
-// 				formData.append('preorder_datetime', '');
-// 				formData.append('no-contact-delivery', '1');
-// 				formData.append('renting', '');
-// 				formData.append('phone', $('#phone').val());
-// 				formData.append('preorder_date', '');
-// 				formData.append('preorder_time', '');
-// 				formData.append('no_contact_delivery', '0');
-// 				formData.append('street', $('#street').val());
-// 				formData.append('house', $('#house').val());
-// 				formData.append('payment', $('#charge').attr('id'));
-//
-// 				await fetch(updateAddressUrl, {
-// 						method: 'POST',
-// 						body: formData,
-// 				});
-// 		}
-
 // 		async function sendOrder() {
 // 				const sendOrderUrl = `https://pzz.by/api/v1/basket/save`;
 //

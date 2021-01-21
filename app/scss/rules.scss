@@ -159,3 +159,11 @@ $backgroundDeliveryDesc: #F6F6F6;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 42px;
 }
+
+@mixin textarea {
+  border: 1px solid $inputBorder;
+  padding: 4px 6px 4px 12px;
+  margin: 2px 0;
+  color: $secondaryFirst;
+  font: 21px Helvetica, Arial, sans-serif;
+}

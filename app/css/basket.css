@@ -222,12 +222,27 @@ body {
             body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .checked {
               background-color: #16bc00; }
         body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice {
-          margin: 50px 0 0; }
+          margin: 50px 0 30px; }
           body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice #total {
             font-size: 32px;
             color: #000;
             font-family: Helvetica, Arial, sans-serif;
             line-height: 42px; }
+        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change {
+          display: none;
+          text-align: end; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change #changeTitle {
+            font: 17px/1.2 Helvetica,Arial,sans-serif;
+            color: #000; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change .textarea {
+            border: 1px solid #c3c3c3;
+            padding: 4px 6px 4px 12px;
+            margin: 2px 0;
+            color: #000;
+            font: 21px Helvetica, Arial, sans-serif;
+            width: 80px;
+            font-weight: 700;
+            text-align: center; }
         body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #currency {
           color: #999;
           line-height: 1.2;

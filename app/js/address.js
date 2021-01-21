@@ -74,7 +74,13 @@ function findIdHouse() {
 }
 
 function getInformationForDeliveryContact() {
-	return document.querySelector('input[name="payment"]:checked').value;
+	const getCheckedPayment = document.querySelector('input[name="payment"]:checked').value;
+	const getChangeInput = document.getElementById('changeInput').value;
+
+	return {
+		getCheckedPayment,
+		getChangeInput,
+	}
 }
 
 getInputStreet.addEventListener('input', func);
@@ -85,11 +91,18 @@ getInputHouse.addEventListener('change', findIdHouse);
 
 Array.prototype.forEach.call(getPaymentBtn, elem => {
 	elem.addEventListener('click', () => {
-		const getPaymentChecked = document.querySelector('input[name="payment"]:checked')
+		const getPaymentChecked = document.querySelector('input[name="payment"]:checked');
+		const getChange = document.getElementById('change');
 
 		if (getPaymentChecked) {
 			getPaymentChecked.parentElement.classList.remove('checked');
 			elem.classList.add('checked');
+
+			if (elem.children[0].getAttribute('id') === 'cash') {
+				getChange.style.display = 'block'
+			} else {
+				getChange.style.display = 'none';
+			}
 		}
 	})
 })
@@ -98,14 +111,3 @@ getSendOrder.addEventListener('click', () => {
 	pzzNetService.updateInformation(pzzNetService.makeInformationFormData(getInformationForDeliveryContact()))
 		.then();
 });
-
-// async function sendAddress(e) {
-// 		e.preventDefault();
-//
-// 		const houseUrl = `https://pzz.by/api/v1/house/resolve-pizzeria/${houseTitleOrder}`;
-//
-// 		await fetch(houseUrl)
-// 		.then(function (response) {
-// 				response.json();
-// 		})
-// }
