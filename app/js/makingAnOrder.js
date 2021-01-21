@@ -109,5 +109,5 @@ Array.prototype.forEach.call(getPaymentBtn, elem => {
 
 getSendOrder.addEventListener('click', () => {
 	pzzNetService.updateInformation(pzzNetService.makeInformationFormData(getInformationForDeliveryContact()))
-		.then();
+		// .then(pzzNetService.saveOrder);
 });

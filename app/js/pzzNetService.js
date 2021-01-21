@@ -1,6 +1,6 @@
 'use strict';
 
-// import {getDeliveryContactInput} from "./address.js";
+// import {getDeliveryContactInput} from "./makingAnOrder.js";
 
 class PzzNetService {
 	prefix = 'https://cors-anywhere.herokuapp.com/';
@@ -10,6 +10,7 @@ class PzzNetService {
 	addItemUrl = `https://pzz.by/api/v1/basket/add-item`;
 	removeItemUrl = `https://pzz.by/api/v1/basket/remove-item`;
 	updateAddressUrl = `https://pzz.by/api/v1/basket/update-address`;
+	saveUrl = `https://pzz.by/api/v1/basket/save`;
 
 	async getListPizzas() {
 		const response = await fetch(this.pizzasUrl);
@@ -85,6 +86,13 @@ class PzzNetService {
 		const json = await response.json();
 
 		return json.response.data;
+	}
+
+	async saveOrder() {
+		const response = await fetch(this.saveUrl, {
+		// const response = await fetch(this.prefix + this.saveUrl, {
+			method: 'POST',
+		});
 	}
 
 	makeProductFormData(date) {
