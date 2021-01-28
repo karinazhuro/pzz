@@ -6,6 +6,7 @@ $secondarySecond: #999;
 $checked: #16bc00;
 $active: #2b4e27;
 $inputBorder: #c3c3c3;
+$inputBorderFocus: #9c9c9c;
 $backgroundBtnBasket: #e9e9e9;
 $backgroundDeliveryDesc: #F6F6F6;
 
@@ -17,11 +18,13 @@ $backgroundDeliveryDesc: #F6F6F6;
 @mixin header {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 30px 0;
+  flex-wrap: wrap;
+  margin: 0 10% 30px;
   font-family: Malina, sans-serif;
 
   #logo {
     display: flex;
+    margin: 0 15px 15px;
 
     #logoImg {
       height: 45px;
@@ -162,8 +165,14 @@ $backgroundDeliveryDesc: #F6F6F6;
 
 @mixin textarea {
   border: 1px solid $inputBorder;
+  border-radius: 4px;
   padding: 4px 6px 4px 12px;
   margin: 2px 0;
   color: $secondaryFirst;
   font: 21px Helvetica, Arial, sans-serif;
+
+  &:focus {
+    border: 2px solid #9c9c9c;
+    outline: none !important;
+  }
 }

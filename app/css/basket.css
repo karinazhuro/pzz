@@ -3,214 +3,201 @@
   src: url("../fonts/malina_webfont.ttf") format("truetype"); }
 
 body {
-  padding: 30px 90px; }
-  body #wrapper header {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 0 30px 0;
-    font-family: Malina, sans-serif; }
-    body #wrapper header #logo {
-      display: flex; }
-      body #wrapper header #logo #logoImg {
-        height: 45px;
-        margin: 0 10px 0 0; }
-      body #wrapper header #logo #title {
-        color: #ff5201;
-        font-size: 22px;
-        line-height: 22px;
-        text-decoration: none;
-        margin: auto 0; }
-        body #wrapper header #logo #title:hover {
-          color: #16bc00; }
-  body #wrapper #content {
-    font-family: Malina, sans-serif; }
-    body #wrapper #content #notice {
-      display: none;
-      flex-direction: column; }
-      body #wrapper #content #notice #imgPzz {
-        margin: 100px auto; }
-    body #wrapper #content #orderRegistration {
-      display: none;
+  padding: 20px 12%; }
+  body #wrapper {
+    max-width: 725px;
+    margin: 0 auto; }
+    body #wrapper header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 0 10% 30px;
       font-family: Malina, sans-serif;
-      color: #000;
-      flex-direction: column;
-      max-width: 725px;
-      margin: 0 auto; }
-      body #wrapper #content #orderRegistration #ourOrder #caption {
-        font: 34px/1.1 Malina, sans-serif;
-        letter-spacing: -1px;
-        margin: 20px 0;
-        color: #000; }
-      body #wrapper #content #orderRegistration #ourOrder #order > #orderPizza:not(:first-child) {
-        border-top: 1px solid #c3c3c3; }
-      body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem {
+      margin: 0 0 30px; }
+      body #wrapper header #logo {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 20px;
-        max-width: 800px; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem:not(:first-child) {
+        margin: 0 15px 15px; }
+        body #wrapper header #logo #logoImg {
+          height: 45px;
+          margin: 0 10px 0 0; }
+        body #wrapper header #logo #title {
+          color: #ff5201;
+          font-size: 22px;
+          line-height: 22px;
+          text-decoration: none;
+          margin: auto 0; }
+          body #wrapper header #logo #title:hover {
+            color: #16bc00; }
+      body #wrapper header #logo {
+        margin: 15px 0 15px; }
+    body #wrapper #content {
+      font-family: Malina, sans-serif; }
+      body #wrapper #content #notice {
+        display: none;
+        flex-direction: column; }
+        body #wrapper #content #notice #imgPzz {
+          margin: 100px auto; }
+      body #wrapper #content #orderRegistration {
+        display: none;
+        font-family: Malina, sans-serif;
+        color: #000;
+        flex-direction: column;
+        margin: 0 auto; }
+        body #wrapper #content #orderRegistration #ourOrder #caption {
+          font: 34px/1.1 Malina, sans-serif;
+          letter-spacing: -1px;
+          margin: 20px 0;
+          color: #000; }
+        body #wrapper #content #orderRegistration #ourOrder #order > #orderPizza:not(:first-child) {
           border-top: 1px solid #c3c3c3; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc {
-          margin: 0 15px 0 0; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc .pizzaTitle {
-            color: #ff5201;
-            font: 28px/1.2 Malina, sans-serif;
-            letter-spacing: -.5px; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc .pizzaSize {
-            font: 13px/1 Arial, Helvetica, sans-serif;
-            color: #999; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount {
+        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem {
           display: flex;
-          margin: 15px; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaRemove {
-            cursor: pointer;
-            color: #fff;
-            width: 30px;
-            height: 30px;
-            font: 30px/1 Malina, sans-serif;
-            letter-spacing: -1px;
-            border: none;
-            border-radius: 50%;
-            background-color: #277dff;
-            margin: 0 10px;
-            outline: none;
-            margin: 0; }
-            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaRemove:hover {
-              background-color: #16bc00; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaSizeOrderCounter {
-            color: #000;
-            font-size: 21px;
-            font-weight: 700;
-            line-height: 30px;
-            min-width: 35px;
-            text-align: center;
-            font-family: Helvetica, Arial, sans-serif; }
-          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaAdd {
-            cursor: pointer;
-            color: #fff;
-            width: 30px;
-            height: 30px;
-            font: 30px/1 Malina, sans-serif;
-            letter-spacing: -1px;
-            border: none;
-            border-radius: 50%;
-            background-color: #277dff;
-            margin: 0 10px;
-            outline: none;
-            margin: 0; }
-            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaAdd:hover {
-              background-color: #16bc00; }
-        body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSum {
-          font-weight: 700;
-          font-size: 21px;
-          font-family: Helvetica, Arial, sans-serif;
-          margin: 0 15px; }
-      body #wrapper #content #orderRegistration #ourOrder .totalPrice {
-        display: flex;
-        justify-content: flex-end;
-        align-items: baseline;
-        margin: 50px 0; }
-        body #wrapper #content #orderRegistration #ourOrder .totalPrice .totalTitle {
-          letter-spacing: -.5px;
-          padding: 0 20px 0 0;
-          color: #999;
-          font: 20px/22px Malina, sans-serif; }
-        body #wrapper #content #orderRegistration #ourOrder .totalPrice .totalCost {
-          font-size: 32px;
-          color: #000;
-          font-family: Helvetica, Arial, sans-serif;
-          line-height: 42px; }
-      body #wrapper #content #orderRegistration #ourOrder #address {
-        font: 34px/1.1 Malina, sans-serif;
-        letter-spacing: -1px;
-        margin: 30px 0; }
-      body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress {
-        margin: 10px 0; }
-        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData {
-          list-style: none; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData > li {
-            margin: 20px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .nameForTextarea {
-            font-size: 17px;
-            font: 17px/1.2 Helvetica, Arial, sans-serif;
-            color: #000;
-            margin: 2px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .textarea {
-            border: 1px solid #c3c3c3;
-            padding: 4px 6px 4px 12px;
-            margin: 2px 0;
-            color: #000;
-            font: 21px Helvetica, Arial, sans-serif; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataName #name {
-            width: 230px; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
-            width: 75px;
-            margin: 2px 5px 0 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #phone {
-            width: 147px;
-            margin: 2px 12px 2px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #example {
-            color: #999;
-            font-size: 13px;
-            line-height: 16px;
-            padding: 2px 0 0 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress {
-            margin: 0 0 20px 0;
-            display: flex;
-            flex-wrap: wrap; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper {
-              margin: 0 20px 0 0; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 20px;
+          max-width: 800px; }
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem:not(:first-child) {
+            border-top: 1px solid #c3c3c3; }
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc {
+            margin: 0 15px 0 0; }
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc .pizzaTitle {
+              color: #ff5201;
+              font: 28px/1.2 Malina, sans-serif;
+              letter-spacing: -.5px; }
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaDesc .pizzaSize {
+              font: 13px/1 Arial, Helvetica, sans-serif;
               color: #999; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
-              width: 71px; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
-              margin: 0 10px 0 0; }
-              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #inputStreet {
-                width: 356px; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #inputHouse {
-              width: 91px; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataComment #comment {
-            width: 100%; }
-        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery {
-          margin: 40px 0 0 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery #deliveryTitle {
-            color: #999;
-            font: 20px/1.1 Malina, sans-serif;
-            letter-spacing: -.5px;
-            margin: 0 0 20px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery #deliveryDesc {
-            background-color: #F6F6F6;
-            padding: 20px;
-            font: 17px/1.2 Helvetica, Arial, sans-serif;
-            width: 669px;
-            margin: 0 0 40px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn {
-            cursor: pointer;
-            color: #fff;
-            font: 17px/1 Malina, sans-serif;
-            letter-spacing: -.25px;
-            padding: 14px 20px;
-            background-color: #999;
-            border-radius: 10px;
-            margin: 0 10px 0 0; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn .contactDeliveryInput {
-              position: absolute;
-              pointer-events: none; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .checked {
-            background-color: #16bc00; }
-        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment {
-          margin: 35px 0; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentTitle {
-            color: #999;
-            font: 20px/1.1 Malina, sans-serif;
-            letter-spacing: -.5px;
-            margin: 15px 0 35px; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns {
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount {
             display: flex;
-            flex-wrap: wrap; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .paymentBtn {
+            margin: 15px; }
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaRemove {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px;
+              outline: none;
+              margin: 0; }
+              body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaRemove:hover {
+                background-color: #16bc00; }
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaSizeOrderCounter {
+              color: #000;
+              font-size: 21px;
+              font-weight: 700;
+              line-height: 30px;
+              min-width: 35px;
+              text-align: center;
+              font-family: Helvetica, Arial, sans-serif; }
+            body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaAdd {
+              cursor: pointer;
+              color: #fff;
+              width: 30px;
+              height: 30px;
+              font: 30px/1 Malina, sans-serif;
+              letter-spacing: -1px;
+              border: none;
+              border-radius: 50%;
+              background-color: #277dff;
+              margin: 0 10px;
+              outline: none;
+              margin: 0; }
+              body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSizeCount .pizzaAdd:hover {
+                background-color: #16bc00; }
+          body #wrapper #content #orderRegistration #ourOrder #order .pizzaItem .pizzaSum {
+            font-weight: 700;
+            font-size: 21px;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0 15px; }
+        body #wrapper #content #orderRegistration #ourOrder .totalPrice {
+          display: flex;
+          justify-content: flex-end;
+          align-items: baseline;
+          margin: 50px 0; }
+          body #wrapper #content #orderRegistration #ourOrder .totalPrice .totalTitle {
+            letter-spacing: -.5px;
+            padding: 0 20px 0 0;
+            color: #999;
+            font: 20px/22px Malina, sans-serif; }
+          body #wrapper #content #orderRegistration #ourOrder .totalPrice .totalCost {
+            font-size: 32px;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            line-height: 42px; }
+        body #wrapper #content #orderRegistration #ourOrder #address {
+          font: 34px/1.1 Malina, sans-serif;
+          letter-spacing: -1px;
+          margin: 30px 0; }
+        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress {
+          margin: 10px 0; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData {
+            list-style: none; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData > li {
+              margin: 20px 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .nameForTextarea {
+              font-size: 17px;
+              font: 17px/1.2 Helvetica, Arial, sans-serif;
+              color: #000;
+              margin: 2px 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .textarea {
+              border: 1px solid #c3c3c3;
+              border-radius: 4px;
+              padding: 4px 6px 4px 12px;
+              margin: 2px 0;
+              color: #000;
+              font: 21px Helvetica, Arial, sans-serif; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData .textarea:focus {
+                border: 2px solid #9c9c9c;
+                outline: none !important; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataName #name {
+              width: 230px; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #phoneCode {
+              width: 75px;
+              margin: 2px 5px 0 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #phone {
+              width: 147px;
+              margin: 2px 12px 2px 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataPhone #example {
+              color: #999;
+              font-size: 13px;
+              line-height: 16px;
+              padding: 2px 0 0 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress {
+              margin: 0 0 20px 0;
+              display: flex;
+              flex-wrap: wrap; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper {
+                margin: 0 20px 10px 0; }
+                body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouse {
+                  color: #999; }
+                body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress .privateDataWrapper .privateDataHouseTextArea {
+                  width: 71px; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet {
+                margin: 0 10px 0 0; }
+                body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperStreet #inputStreet {
+                  width: 356px; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataAddress #addressWrapperHouse #inputHouse {
+                width: 91px; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #privateData #privateDataComment #comment {
+              width: 100%; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery {
+            margin: 40px 0 0 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery #deliveryTitle {
+              color: #999;
+              font: 20px/1.1 Malina, sans-serif;
+              letter-spacing: -.5px;
+              margin: 0 0 20px 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery #deliveryDesc {
+              background-color: #F6F6F6;
+              padding: 20px;
+              font: 17px/1.2 Helvetica, Arial, sans-serif;
+              width: 669px;
+              margin: 0 0 40px 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn {
               cursor: pointer;
               color: #fff;
               font: 17px/1 Malina, sans-serif;
@@ -218,53 +205,81 @@ body {
               padding: 14px 20px;
               background-color: #999;
               border-radius: 10px;
-              margin: 10px 10px 10px 0; }
-              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .paymentBtn .paymentInput {
+              margin: 0 10px 0 0; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .deliveryContactBtn .contactDeliveryInput {
                 position: absolute;
-                clip: rect(0, 0, 0, 0);
                 pointer-events: none; }
-            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .checked {
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #delivery .checked {
               background-color: #16bc00; }
-        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice {
-          margin: 50px 0 30px; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice #total {
-            font-size: 32px;
-            color: #000;
-            font-family: Helvetica, Arial, sans-serif;
-            line-height: 42px; }
-        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change {
-          display: none;
-          text-align: end; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change #changeTitle {
-            font: 17px/1.2 Helvetica,Arial,sans-serif;
-            color: #000; }
-          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change .textarea {
-            border: 1px solid #c3c3c3;
-            padding: 4px 6px 4px 12px;
-            margin: 2px 0;
-            color: #000;
-            font: 21px Helvetica, Arial, sans-serif;
-            width: 80px;
-            font-weight: 700;
-            text-align: center; }
-        body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #currency {
-          color: #999;
-          line-height: 1.2;
-          font: 15px Helvetica, Arial, sans-serif;
-          padding-right: 2.6em;
-          text-align: end; }
-      body #wrapper #content #orderRegistration #ourOrder #btnSendOrder {
-        text-align: end;
-        margin: 30px 0; }
-        body #wrapper #content #orderRegistration #ourOrder #btnSendOrder #sendOrder {
-          cursor: pointer;
-          color: #fff;
-          font: 32px/1 Malina, sans-serif;
-          letter-spacing: -1px;
-          background-color: #ff5201;
-          border-radius: 10px;
-          padding: 14px 20px;
-          border: none;
-          min-width: 357px; }
-          body #wrapper #content #orderRegistration #ourOrder #btnSendOrder #sendOrder:hover {
-            background-color: #16bc00; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment {
+            margin: 35px 0; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentTitle {
+              color: #999;
+              font: 20px/1.1 Malina, sans-serif;
+              letter-spacing: -.5px;
+              margin: 15px 0 10px; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns {
+              display: flex;
+              flex-wrap: wrap; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .paymentBtn {
+                cursor: pointer;
+                color: #fff;
+                font: 17px/1 Malina, sans-serif;
+                letter-spacing: -.25px;
+                padding: 14px 20px;
+                background-color: #999;
+                border-radius: 10px;
+                margin: 10px 10px 10px 0; }
+                body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .paymentBtn .paymentInput {
+                  position: absolute;
+                  clip: rect(0, 0, 0, 0);
+                  pointer-events: none; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #payment #paymentBtns .checked {
+                background-color: #16bc00; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice {
+            margin: 50px 0 30px; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress .totalPrice #total {
+              font-size: 32px;
+              color: #000;
+              font-family: Helvetica, Arial, sans-serif;
+              line-height: 42px; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change {
+            display: none;
+            text-align: end; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change #changeTitle {
+              font: 17px/1.2 Helvetica, Arial, sans-serif;
+              color: #000; }
+            body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change .textarea {
+              border: 1px solid #c3c3c3;
+              border-radius: 4px;
+              padding: 4px 6px 4px 12px;
+              margin: 2px 0;
+              color: #000;
+              font: 21px Helvetica, Arial, sans-serif;
+              width: 80px;
+              font-weight: 700;
+              text-align: center; }
+              body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #change .textarea:focus {
+                border: 2px solid #9c9c9c;
+                outline: none !important; }
+          body #wrapper #content #orderRegistration #ourOrder #fullDeliveryAddress #currency {
+            color: #999;
+            line-height: 1.2;
+            font: 15px Helvetica, Arial, sans-serif;
+            padding-right: 2.6em;
+            text-align: end; }
+        body #wrapper #content #orderRegistration #ourOrder #btnSendOrder {
+          text-align: end;
+          margin: 30px 0; }
+          body #wrapper #content #orderRegistration #ourOrder #btnSendOrder #sendOrder {
+            cursor: pointer;
+            color: #fff;
+            font: 32px/1 Malina, sans-serif;
+            letter-spacing: -1px;
+            background-color: #ff5201;
+            border-radius: 10px;
+            padding: 14px 20px;
+            border: none;
+            min-width: 357px; }
+            body #wrapper #content #orderRegistration #ourOrder #btnSendOrder #sendOrder:hover {
+              background-color: #16bc00; }

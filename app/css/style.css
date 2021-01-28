@@ -7,10 +7,12 @@ body {
   body #wrapper header {
     display: flex;
     justify-content: space-between;
-    margin: 0 0 30px 0;
+    flex-wrap: wrap;
+    margin: 0 10% 30px;
     font-family: Malina, sans-serif; }
     body #wrapper header #logo {
-      display: flex; }
+      display: flex;
+      margin: 0 15px 15px; }
       body #wrapper header #logo #logoImg {
         height: 45px;
         margin: 0 10px 0 0; }
@@ -26,7 +28,7 @@ body {
       text-decoration: none;
       color: #ff5201;
       letter-spacing: -.5px;
-      margin: 5px 0;
+      margin: 5px 15px;
       font-size: 32px; }
       body #wrapper header #cart:hover {
         color: #16bc00; }
